@@ -1,0 +1,143 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+
+
+
+
+
+
+
+html {
+  	font-family: 'Bitstream Vera Sans';
+	/*color: #505050;*/
+	color:#040f3d;
+}
+a {
+	text-decoration:none;
+	color: #040f3d;
+}
+a:hover {
+	color: #040f3d;
+	text-decoration: none;
+}
+section {
+	margin-top: 6.9em;
+}
+
+/*three basic colors:
+#4bffa5 -green (color)
+#040f3d -blue (text)
+#c6c4c5 -gray (canvas)
+*/
+
+
+
+/**********library**********/
+.lifeC::before {
+	font-family: "Glyphicons Halflings";
+	content:"\e005"; /*heart*/
+}
+
+.aws::before {
+	font-family: "Glyphicons Halflings";
+	content:"\e006"; /*star*/
+}
+
+.good::before {
+	font-family: "Glyphicons Halflings";
+	content:"\e013"; /*ok*/
+}
+
+.prog::before{
+	font-family: "Glyphicons Halflings";
+	content:"\e031"; /*load*/
+}
+
+.bad::before {
+	font-family: "Glyphicons Halflings";
+	content:"\e014"; /*cross*/
+	/*color: #c94c4c;*/
+}
+
+section li:not(.lifeC):not(.aws):not(.good):not(.prog):not(.bad){
+	padding-left: 1.2em;
+}
+
+section ul{
+	/*font-weight: bold;
+	font-style: italic;
+	font-size: 2em;*/
+	margin: 2%;
+	padding-top: 0.7em;
+	padding-bottom: 0.7em;
+	padding-left: 0.3em;
+	padding-right: 0.3em;
+	list-style-type: none;
+	border: solid 1px #bbbbbb;
+	border-radius: 10px;
+	box-shadow: 0px 0px 20px 0px #dddddd; 
+}
+
+#dictionary li {
+	cursor: pointer;
+}
+
+
+
+/**********navigation**********/
+nav{
+	background-color: white;
+	border-bottom: solid 1px #c6c4c5;
+	box-shadow: 1px 0px 17px 0px #d1d1d1;
+	padding: 1em;
+	font-size: 1.2em;
+	position: fixed;
+	top: 0;
+	right:0;
+	left:0;
+}
+nav ul {
+	list-style-type: none;
+  	margin-top: 1em;
+	display:inline-block;
+	float:right;
+}
+
+#logo{
+	height: 3.8em;
+	display:inline-block;
+}
+
+nav li {
+	display: inline-block;
+	text-align: center;
+	padding: 0.6em 0.7em;
+}
+
+nav li:hover {
+ 	background-color: #c6c4c5;
+}
+a:active { background-color: #c6c4c5; }

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<!-- https://getbootstrap.com/docs/3.3/components/ -->
+	<link rel="stylesheet" href="css/style.css" >
+
+
+
+  </head>
+  <body>
+	<nav>
+		<a href="html/home.html"> <img id="logo" src="pic/LOGO1.png" /> </a>
+		<ul>
+			<li><a href="html/index.html"> Začetna stran </a></li>
+			<li><a href="html/library.html"> Knjige </a></li>
+			<li><a href="html/cv.html"> CV </a></li>
+			<li><a href="html/contact.html"> Kontakt </a></li>
+		</ul>
+	</nav>
+
+
+    <section>
+		
+      
+    </section>
+
+
+
+	<script>
+		$("nav a").on('click', function(event){
+			event.preventDefault();
+			var page = event.currentTarget.attributes.href.value; //get text of element a clicked
+		
+			$("section").load(page);		
+		});		
+		
+	</script>
+  </body>
+</html>
