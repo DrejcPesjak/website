@@ -31,8 +31,8 @@ jeziki:
 vozniški izpit: kategorije AM,A1,B,G
 deskanje na snegu, vožnja monokolesa
 programiranje čipa Atmega8, Arduino
-(računalniški jeziki) Linux terminal(bash), C#, java, javascript, jQuery, SQL, HTML, CSS, python, Octave, C++, C, Assembly
-delo z računalnikom (Excel, Word, obdelovanje slik, nalaganje operacijskih sistemov (tudi mobilnih), odklenitev telefona, osnovno omreževanje, grafično oblikovanje, izdelava spletne strani, vzpostavitev web strežnika, izdelava Android aplikacije, izdelava okenske aplikacije, programska obdelava podatkov, delo z git repozitoriji...)
+(računalniški jeziki) Linux terminal(bash), C#, java, javascript, jQuery, Node.js, SQL, HTML, CSS, python, Octave, C++, C, Assembly, 
+delo z računalnikom (Excel, Word, obdelovanje slik, nalaganje operacijskih sistemov (tudi mobilnih), odklenitev telefona, osnovno omreževanje, grafično oblikovanje, izdelava spletne strani, vzpostavitev web strežnika, načrtovanje podatkovne baze, uporaba CASE orodij, izdelava Android aplikacije, izdelava okenske aplikacije, programska obdelava podatkov, delo z git repozitoriji...)
 opravljen SAT izpit
 branje knjig ~1 knjiga na teden
 meditacija
