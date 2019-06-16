@@ -1,4 +1,4 @@
-console.log("V rit me piši!");
+//console.log("V rit me piši!");
 /*
 $(document).ready(function () {
  
