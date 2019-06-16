@@ -1,18 +1,6 @@
-//console.log("V rit me piši!");
-/*
-$(document).ready(function () {
- 
-	var dic = document.querySelectorAll('#dictionary li');
-	for(var a in dic) {
-		//console.log(a);
-		dic[a].onclick = markBooks();
-	}	
-
-});
-*/
 function markBooks() {
-	console.log(event.originalTarget.className);
-	var classA = event.originalTarget.className;
+	//console.log(event.target.className);
+	var classA = event.target.className;
 	var books = document.querySelectorAll("li");
 	
 	for(var b in books) {
