@@ -11,8 +11,9 @@ $(document).ready(function () {
 });
 */
 function markBooks() {
-	console.log(event.originalTarget.className);
-	var classA = event.originalTarget.className;
+	console.log(event);
+	console.log(event.originalTarget);
+	/*var classA = event.originalTarget.className;
 	var books = document.querySelectorAll("li");
 	
 	for(var b in books) {
@@ -21,6 +22,6 @@ function markBooks() {
 			books[b].style.color = "blue";
 		else
 			books[b].style.color = "black";
-	}
+	}*/
 
 }
