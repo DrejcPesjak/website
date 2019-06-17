@@ -44,6 +44,11 @@
 
 
 	<script>
+		$(document).ready(function() { 
+			//console.log("krava ti crkne");
+			$("section").load("./html/home.html");
+		 });
+
 		$("nav a").on('click', function(event){
 			event.preventDefault();
 			var page = event.currentTarget.attributes.href.value; //get text of element a clicked

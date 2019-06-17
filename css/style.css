@@ -37,14 +37,14 @@ html {
 }
 a {
 	text-decoration:none;
-	color: #040f3d;
+	color: #333;
 }
 a:hover {
-	color: #040f3d;
+	color: #333;
 	text-decoration: none;
 }
 section {
-	margin-top: 6.9em;
+	margin-top: 6em;
 }
 
 h4 {
@@ -104,7 +104,7 @@ section ul{
 	padding-right: 0.3em;
 	list-style-type: none;
 	border: solid 1px #bbbbbb;
-	border-radius: 10px;
+	border-radius: 5px;
 	box-shadow: 0px 0px 20px 0px #dddddd; 
 }
 
@@ -132,7 +132,7 @@ section div{
 	padding-left: 0.3em;
 	padding-right: 0.3em;
 	border: solid 1px #bbbbbb;
-	border-radius: 10px;
+	border-radius: 5px;
 	box-shadow: 0px 0px 20px 0px #dddddd; 
 }
 
