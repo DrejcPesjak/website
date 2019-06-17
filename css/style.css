@@ -93,7 +93,7 @@ section li:not(.lifeC):not(.aws):not(.good):not(.prog):not(.bad){
 	padding-left: 1.2em;
 }
 
-section ul{
+section ul:not(.slike){
 	/*font-weight: bold;
 	font-style: italic;
 	font-size: 2em;*/
@@ -115,17 +115,15 @@ section ul{
 /**********home**********/
 
 #jeziki img {
-	height: 12em;
-	display: block;
+	max-width:100%;
+	max-height: 11em;
 	margin: auto;
+	display: block;
 }
-section div {
-	margin: 2%;
-	padding: 0.7em;
-}
-table{width:100%;}
+#jeziki ul { list-style-type: none; }
+#jeziki li { display: inline-block; width: 33%;}
 
-section div{
+section > div{
 	margin: 2%;
 	padding-top: 0.7em;
 	padding-bottom: 0.7em;
@@ -135,6 +133,12 @@ section div{
 	border-radius: 5px;
 	box-shadow: 0px 0px 20px 0px #dddddd; 
 }
+
+
+
+
+
+/**********footer**********/
 
 footer img {
 	width: 30px;
