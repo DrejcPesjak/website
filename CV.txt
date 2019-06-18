@@ -38,6 +38,11 @@ branje knjig ~1 knjiga na teden
 meditacija
 organiziranje 
 
+*Področja zanimanja:
+	- računalništvo, elektronika, avtomatika/mehatronika, strojništvo,
+	  fizika, matematika, podjetništvo, finance, politika, zdravje, 
+	  fitness, gurmanstvo, psihologija, filozofija...
+
 ------šolanje------------
 I. OŠ Žalec
 Šolski center Celje, Srednja šola za kemijo, elektrotehniko in računalništvo (naziv: Tehnik računalništva)
