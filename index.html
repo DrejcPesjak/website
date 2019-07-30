@@ -17,7 +17,7 @@
 		<ul>
 			<li><a href="html/home.html"> Začetna stran </a></li>
 			<li><a href="html/library.html"> Knjige </a></li>
-			<li><a href="html/cv.html"> CV </a></li>
+			<li><a href="html/CV-Pesjak.pdf"> CV </a></li>
 			<li><a href="html/contact.html"> Kontakt </a></li>
 		</ul>
 	</nav>
@@ -52,6 +52,7 @@
 			event.preventDefault();
 			var page = event.currentTarget.attributes.href.value; //get text of element a clicked
 		
+			if(page == "html/CV-Pesjak.pdf") window.open(page, "_self");
 			if(page == "html/contact.html") document.body.scrollIntoView(false);
 
 			$("section").load(page);		
