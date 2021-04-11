@@ -17,6 +17,7 @@ time, mark, audio, video {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
+	list-style-type: none;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
@@ -43,9 +44,6 @@ a:hover {
 	color: #333;
 	text-decoration: none;
 }
-section {
-	margin-top: 6em;
-}
 
 h4 {
 	font-size: 1.2em;
@@ -63,49 +61,13 @@ h4 {
 /**********library**********/
 ::before {vertical-align: middle;}
 
-.lifeC::before {
-	font-family: "Glyphicons Halflings";
-	content:"\e005"; /*heart*/
+.none {
+	padding-left: 1.4em;
+	padding-top: 0.3em;
 }
 
-.aws::before {
-	font-family: "Glyphicons Halflings";
-	content:"\e006"; /*star*/
-}
-
-.good::before {
-	font-family: "Glyphicons Halflings";
-	content:"\e013"; /*ok*/
-}
-
-.prog::before{
-	font-family: "Glyphicons Halflings";
-	content:"\e031"; /*load*/
-}
-
-.bad::before {
-	font-family: "Glyphicons Halflings";
-	content:"\e014"; /*cross*/
-	/*color: #c94c4c;*/
-}
-
-section li:not(.lifeC):not(.aws):not(.good):not(.prog):not(.bad){
-	padding-left: 1.2em;
-}
-
-section ul:not(.slike){
-	/*font-weight: bold;
-	font-style: italic;
-	font-size: 2em;*/
-	margin: 2%;
-	padding-top: 1.5em;
-	padding-bottom: 1.5em;
-	padding-left: 1.3em;
-	padding-right: 1.3em;
-	list-style-type: none;
-	border: solid 1px #bbbbbb;
-	border-radius: 5px;
-	box-shadow: 0px 0px 20px 0px #dddddd; 
+.glyphicon {
+	vertical-align: 5px;
 }
 
 #dictionary li {
@@ -114,43 +76,15 @@ section ul:not(.slike){
 
 /**********home**********/
 
-#jeziki img {
-	max-width:100%;
-	max-height: 11em;
-	margin: auto;
-	display: block;
+#dogodki li {
+	padding-left: 1.2em;
+	padding-top: 5px;
 }
-#jeziki ul { list-style-type: none; }
-#jeziki li { display: inline-block; width: 33%;}
 
-section > div{
+.card {
 	margin: 2%;
-	padding-top: 0.7em;
-	padding-bottom: 0.7em;
-	padding-left: 0.3em;
-	padding-right: 0.3em;
-	border: solid 1px #bbbbbb;
-	border-radius: 5px;
+	padding: 2%;
 	box-shadow: 0px 0px 20px 0px #dddddd; 
-}
-
-#o-meni img{
-	display: inline-block;
-	max-width: 30%;
-	margin: 2em;
-	max-height: 19em;
-	border: solid 1px #bbbbbb;
-}
-
-#o-meni > div{
-	display: inline-block;
-	max-width: 60%;
-	position: absolute;
-	margin-top: 1.5em;
-}
-
-#o-meni > div > div{
-	margin: 1em;
 }
 
 bold {
@@ -187,34 +121,10 @@ body{
 }
 
 /**********navigation**********/
-nav{
-	background-color: white;
-	border-bottom: solid 1px #c6c4c5;
-	box-shadow: 1px 0px 17px 0px #d1d1d1;
-	padding: 1em;
-	font-size: 1.2em;
-	position: fixed;
-	top: 0;
-	right:0;
-	left:0;
-	z-index:1;
-}
-nav ul {
-	list-style-type: none;
-  	margin-top: 1em;
-	display:inline-block;
-	float:right;
-}
 
 #logo{
 	height: 3em;
 	display:inline-block;
-}
-
-nav li {
-	display: inline-block;
-	text-align: center;
-	padding: 0.6em 0.7em;
 }
 
 nav li:hover {
