@@ -33,7 +33,7 @@
 		    <a class="nav-link" href="html/library.html">Knijge</a>
 		  </li>
 		  <li class="nav-item">
-		    <a class="nav-link" href="html/CV-Pesjak.pdf">CV</a>
+		    <a class="nav-link" href="pic/forbidden-403page.webp">CV</a>
 		  </li>
 		  <li class="nav-item">
 		    <a class="nav-link" href="html/contact.html">Kontakt</a>
@@ -76,6 +76,7 @@
 			var page = event.currentTarget.attributes.href.value; //get text of element a clicked
 		
 			if(page == "html/CV-Pesjak.pdf") window.open(page, "_self");
+			if(page.includes("403")) window.open(page, "_self");
 			if(page == "html/contact.html") document.body.scrollIntoView(false);
 			
 			$("section").load(page);		
