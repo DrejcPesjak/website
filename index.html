@@ -1,87 +1,312 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css">
-	<!-- https://getbootstrap.com/docs/3.3/components/ -->
-	<link rel="stylesheet" href="css/style.css">
-	<script type="text/javascript" src="./js/lib.js"></script>
-  </head>
-  <body>
-	
-	<!-- navigation bar -->
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drejc Pesjak - Portfolio</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/devicon@2.16.0/devicon.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    /* Define custom colors */
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #1D1E2C; /* Main background color */
+      color: #FFFFFF; /* Text color */
+    }
+    h1, h2, h3 {
+      font-family: 'Orbitron', sans-serif;
+      color: #D94344; /* Accent color for headings */
+    }
+    a:hover {
+      color: #FFFFFF;
+    }
+    .bg-primary {
+      background-color: #1D1E2C; /* Dark background */
+    }
+    .bg-secondary {
+      background-color: #59656F; /* Alternating lighter dark */
+    }
+    .text-accent {
+      color: #D94344; /* Accent color */
+    }
+    .bg-accent {
+      background-color: #D94344; /* Accent color for buttons */
+    }
+    .text-soft {
+      color: #D7CDCC; /* Soft text color */
+    }
+    button:hover {
+      background-color: #D94344;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      width: 4px;
+      background: #D94344;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .timeline-card {
+      background: #59656F;
+      border: 1px solid #D7CDCC;
+      border-radius: 8px;
+      padding: 16px;
+      position: relative;
+      color: #FFFFFF;
+    }
+    .timeline-dot {
+      width: 12px;
+      height: 12px;
+      background: #D94344;
+      border-radius: 50%;
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  </style>
+</head>
+<body>
 
-	  <a class="navbar-brand" href="html/home.html">
-		<img id="logo" src="pic/LOGO1.png" />
-	  </a>
+  <!-- Header -->
+  <header class="bg-primary">
+    <div class="container mx-auto px-6 py-6 flex justify-between items-center">
+      <img src="pic/logo.svg" alt="Drejc Pesjak Logo" class="w-64">
+      <nav class="hidden md:block">
+        <ul class="flex space-x-6 text-lg">
+          <li><a href="#about" class="hover:underline text-soft">About</a></li>
+          <li><a href="#skills" class="hover:underline text-soft">Skills</a></li>
+          <li><a href="#projects" class="hover:underline text-soft">Projects</a></li>
+          <li><a href="#events" class="hover:underline text-soft">Events</a></li>
+          <li><a href="#contact" class="hover:underline text-soft">Contact</a></li>
+        </ul>
+      </nav>
+      <button id="nav-toggle" class="block md:hidden text-white">☰</button>
+    </div>
+    <nav id="mobile-nav" class="hidden bg-secondary text-white p-4">
+      <ul class="space-y-4">
+        <li><a href="#about" class="block hover:underline">About</a></li>
+        <li><a href="#skills" class="block hover:underline">Skills</a></li>
+        <li><a href="#projects" class="block hover:underline">Projects</a></li>
+        <li><a href="#events" class="block hover:underline">Events</a></li>
+        <li><a href="#contact" class="block hover:underline">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
-	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-		<span class="navbar-toggler-icon"></span>
-	  </button>
-	  
-	  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-		<ul class="navbar-nav ml-auto">
-		  <li class="nav-item">
-		    <a class="nav-link" href="html/home.html">Začetna stran</a>
-		  </li>
-		  <li class="nav-item">
-		    <a class="nav-link" href="html/library.html">Knijge</a>
-		  </li>
-		  <li class="nav-item">
-		    <a class="nav-link" href="pic/forbidden-403page.webp">CV</a>
-		  </li>
-		  <li class="nav-item">
-		    <a class="nav-link" href="html/contact.html">Kontakt</a>
-		  </li>
-		</ul>  
-	  </div>
+  <script>
+    const navToggle = document.getElementById('nav-toggle');
+    const mobileNav = document.getElementById('mobile-nav');
+    navToggle.addEventListener('click', () => {
+      mobileNav.classList.toggle('hidden');
+    });
+  </script>
 
-	</nav>
+  <!-- Hero Section -->
+  <section class="text-white text-center py-20 bg-primary">
+    <h2 class="text-5xl font-bold mb-4 text-accent">Hi, I'm Drejc Pesjak</h2>
+    <p class="text-lg mb-8">Data Scientist | AI Researcher | Software Engineer</p>
+    <a href="#projects" class="bg-secondary py-2 px-6 ml-4 rounded shadow-lg hover:bg-gray-600 transition">
+      View Projects
+    </a>
+    <a href="path/to/your-resume.pdf" download class="bg-secondary py-2 px-6 ml-4 rounded shadow-lg hover:bg-gray-600 transition">
+      Download CV
+    </a>
+  </section>
 
+  <!-- About Section -->
+  <section id="about" class="py-12 bg-secondary">
+    <div class="container mx-auto px-6 text-center">
+      <h2 class="text-4xl font-bold mb-8 text-white">About Me</h2>
+      <p class="text-lg leading-relaxed">
+        I'm a Data Scientist and AI Researcher with almost 10 years of experience in programming, specializing in LLMs, robotics, and innovative AI solutions. I’m currently pursuing my Master’s in Data Science at the University of Ljubljana.
+      </p>
+    </div>
+  </section>
 
-	<!-- Main body -->
-    <section class="container">
-		
-      
-    </section>
+  <!-- Skills Section -->
+  <section id="skills" class="py-12 bg-primary text-center">
+    <div class="container mx-auto">
+      <h2 class="text-4xl font-bold text-white mb-8">Skills & Tools</h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+        <!-- AI Frameworks -->
+        <i class="devicon-tensorflow-original-wordmark text-5xl"></i>
+        <i class="devicon-pytorch-plain-wordmark text-5xl"></i>
+        <i class="devicon-keras-plain-wordmark text-5xl"></i>
+        <i class="devicon-scikitlearn-plain text-5xl"></i>
+        <i class="devicon-numpy-plain-wordmark text-5xl"></i>
+        <i class="devicon-pandas-plain-wordmark text-5xl"></i>
+        <i class="devicon-opencv-plain-wordmark text-5xl"></i>
+  
+        <!-- Programming Languages -->
+        <i class="devicon-python-plain-wordmark text-5xl"></i>
+        <i class="devicon-r-plain text-5xl"></i>
+        <i class="devicon-cplusplus-plain text-5xl"></i>
+        <i class="devicon-c-plain text-5xl"></i>
+        <i class="devicon-java-plain-wordmark text-5xl"></i>
+        <i class="devicon-csharp-plain text-5xl"></i>
+        <i class="devicon-javascript-plain text-5xl"></i>
+        <i class="devicon-typescript-plain text-5xl"></i>
+        <i class="devicon-kotlin-plain-wordmark text-5xl"></i>
+        <i class="devicon-bash-plain text-5xl"></i>
+  
+        <!-- Data Tools & Databases -->
+        <i class="devicon-mysql-plain-wordmark text-5xl"></i>
+        <i class="devicon-postgresql-plain-wordmark text-5xl"></i>
+        <i class="devicon-mongodb-plain-wordmark text-5xl"></i>
+        <i class="devicon-kaggle-original-wordmark text-5xl"></i>
+        <i class="devicon-jupyter-plain-wordmark text-5xl"></i>
+        <i class="devicon-matlab-plain text-5xl"></i>
+  
+        <!-- Cloud & DevOps -->
+        <i class="devicon-docker-plain-wordmark text-5xl"></i>
+        <i class="devicon-kubernetes-plain-wordmark text-5xl"></i>
+        <i class="devicon-googlecloud-plain-wordmark text-5xl"></i>
+        <i class="devicon-amazonwebservices-plain-wordmark text-5xl"></i>
+        <i class="devicon-heroku-original-wordmark text-5xl"></i>
+        <i class="devicon-apacheairflow-plain-wordmark text-5xl"></i>
+        <i class="devicon-apachekafka-original-wordmark text-5xl"></i>
+        <i class="devicon-git-plain-wordmark text-5xl"></i>
+        <i class="devicon-github-original-wordmark text-5xl"></i>
+        <i class="devicon-bitbucket-original-wordmark text-5xl"></i>
+        <i class="devicon-linux-plain text-5xl"></i>
+        <i class="devicon-latex-original text-5xl"></i>
+        <i class="devicon-vscode-plain-wordmark text-5xl"></i>
+  
+        <!-- Robotics & Automation -->
+        <i class="devicon-arduino-plain-wordmark text-5xl"></i>
+        <i class="devicon-gazebo-plain-wordmark text-5xl"></i>
+        <i class="devicon-selenium-original text-5xl"></i>
+  
+        <!-- Web Technologies -->
+        <i class="devicon-html5-plain-wordmark text-5xl"></i>
+        <i class="devicon-css3-plain-wordmark text-5xl"></i>
+        <i class="devicon-bootstrap-plain text-5xl"></i>
+        <i class="devicon-nodejs-plain-wordmark text-5xl"></i>
+        <i class="devicon-jquery-plain-wordmark text-5xl"></i>
+        <i class="devicon-angular-plain-wordmark text-5xl"></i>
+        <i class="devicon-streamlit-plain-wordmark text-5xl"></i>
+        <i class="devicon-typescript-plain text-5xl"></i>
+        <i class="devicon-androidstudio-plain-wordmark text-5xl"></i>
+      </div>
+    </div>
+  </section>
+  
 
+  <!-- Projects Section -->
+  <section id="projects" class="py-12 bg-secondary">
+    <div class="container mx-auto text-center">
+      <h2 class="text-4xl font-bold text-white mb-8">Projects</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Scaling Monosemanticity -->
+        <div class="relative">
+          <img src="pic/scaling-monosemanticity.png" class="w-full h-48 object-cover rounded shadow-lg">
+          <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center opacity-0 hover:opacity-100 transition">
+            <h3 class="text-xl text-white font-bold">Scaling Monosemanticity</h3>
+            <a href="https://github.com/drejcpesjak/scaling-monosemanticity-llama" class="mt-4 bg-accent py-2 px-4 rounded hover:bg-gray-600">View on GitHub</a>
+          </div>
+        </div>
+        <!-- NYC Violation Tickets Analysis -->
+        <div class="relative">
+          <img src="pic/nyc-analysis.png" class="w-full h-48 object-cover rounded shadow-lg">
+          <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center opacity-0 hover:opacity-100 transition">
+            <h3 class="text-xl text-white font-bold">NYC Violation Tickets</h3>
+            <a href="https://github.com/drejcpesjak/nyc-violation-tickets-analysis" class="mt-4 bg-accent py-2 px-4 rounded hover:bg-gray-600">View on GitHub</a>
+          </div>
+        </div>
+        <!-- Unbalanced Media -->
+        <div class="relative">
+          <img src="pic/unbalanced-media.png" class="w-full h-48 object-cover rounded shadow-lg">
+          <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center opacity-0 hover:opacity-100 transition">
+            <h3 class="text-xl text-white font-bold">Unbalanced Media</h3>
+            <a href="https://github.com/drejcpesjak/unbalanced-media" class="mt-4 bg-accent py-2 px-4 rounded hover:bg-gray-600">View on GitHub</a>
+          </div>
+        </div>
+        <!-- Weather Prediction MLOps -->
+        <div class="relative">
+          <img src="pic/mlops.png" class="w-full h-48 object-cover rounded shadow-lg">
+          <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center opacity-0 hover:opacity-100 transition">
+            <h3 class="text-xl text-white font-bold">Weather Prediction MLOps</h3>
+            <a href="https://github.com/drejcpesjak/weather-prediction-mlops" class="mt-4 bg-accent py-2 px-4 rounded hover:bg-gray-600">View on GitHub</a>
+          </div>
+        </div>
+        <!-- Compare Color Detectors -->
+        <div class="relative">
+          <img src="pic/compare-color.png" class="w-full h-48 object-cover rounded shadow-lg">
+          <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center opacity-0 hover:opacity-100 transition">
+            <h3 class="text-xl text-white font-bold">Compare Color Detectors</h3>
+            <a href="https://github.com/drejcpesjak/compare_color-detectors" class="mt-4 bg-accent py-2 px-4 rounded hover:bg-gray-600">View on GitHub</a>
+          </div>
+        </div>
+        <!-- Face Detection Study -->
+        <div class="relative">
+          <img src="pic/face-detection-study.jpg" class="w-full h-48 object-cover rounded shadow-lg">
+          <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center opacity-0 hover:opacity-100 transition">
+            <h3 class="text-xl text-white font-bold">Face Detection Study</h3>
+            <a href="https://github.com/drejcpesjak/face-detection_study" class="mt-4 bg-accent py-2 px-4 rounded hover:bg-gray-600">View on GitHub</a>
+          </div>
+        </div>
+        <!-- DPhate - Double Paraphrasing -->
+        <div class="relative">
+          <img src="pic/dphate.png" class="w-full h-48 object-cover rounded shadow-lg">
+          <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center opacity-0 hover:opacity-100 transition">
+            <h3 class="text-xl text-white font-bold">DPhate</h3>
+            <a href="https://github.com/drejcpesjak/DPhate-double-paraphrasing-hate-speech" class="mt-4 bg-accent py-2 px-4 rounded hover:bg-gray-600">View on GitHub</a>
+          </div>
+        </div>
+        <!-- Herz Bot -->
+        <div class="relative">
+          <img src="pic/hertz-bot.jpg" class="w-full h-48 object-cover rounded shadow-lg">
+          <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center opacity-0 hover:opacity-100 transition">
+            <h3 class="text-xl text-white font-bold">Herz Bot</h3>
+            <a href="https://github.com/drejcpesjak/Herz-bot" class="mt-4 bg-accent py-2 px-4 rounded hover:bg-gray-600">View on GitHub</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
 
+  <!-- Events Section -->
+  <section id="events" class="py-12 bg-primary text-white relative">
+    <div class="container mx-auto">
+      <h2 class="text-4xl font-bold text-white mb-8 text-center">Events & Conferences</h2>
+      <div class="relative timeline">
+        <div class="timeline-card mb-8">
+          <div class="timeline-dot"></div>
+          <h3 class="text-lg font-bold">NeurIPS 2023</h3>
+          <p>New Orleans, USA</p>
+          <p>Workshop on Self-Supervised Learning</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-	<!--footer with contacts-->
-	<footer>
-		<ul>
-			<li> <a href="mailto:drejcpesjak.pesjak@gmail.com">  <img src="./pic/contact-mail.png" >   </a> </li>
-			<li> <a href="https://www.facebook.com/dr.pesjak">  <img src="./pic/contact-facebook.png" >   </a> </li>
-			<li> <a href="https://bitbucket.org/dpesjak/">  <img src="./pic/contact-bitbucket.png" >   </a> </li>
-			<li> <a href="https://github.com/DrejcPesjak">  <img src="./pic/contact-github.png" >   </a> </li>		
-		</ul>
+  <!-- Contact Section -->
+  <section id="contact" class="py-12 bg-secondary text-white">
+    <div class="container mx-auto text-center">
+      <h2 class="text-4xl font-bold mb-8 text-white">Get in Touch</h2>
+      <form class="max-w-lg mx-auto">
+        <div class="mb-4">
+          <input type="email" id="email" class="w-full py-2 px-4 rounded bg-primary border border-soft text-white" placeholder="Your Email" required>
+        </div>
+        <div class="mb-4">
+          <input type="text" id="name" class="w-full py-2 px-4 rounded bg-primary border border-soft text-white" placeholder="Your Name" required>
+        </div>
+        <div class="mb-4">
+          <textarea id="message" class="w-full py-2 px-4 rounded bg-primary border border-soft text-white" placeholder="Your Message" required></textarea>
+        </div>
+        <button type="submit" class="bg-accent py-2 px-4 rounded hover:bg-gray-600">Send</button>
+      </form>
+    </div>
+  </section>
 
-		Copyright © 2019 - All Rights Reserved <br>
-		Designed by Dr.exe		
-	</footer>
+  <!-- Footer -->
+  <footer class="bg-primary text-center py-6 text-soft">
+    <p>© 2024 Drejc Pesjak. All Rights Reserved.</p>
+  </footer>
 
-
-	<script>
-		$(document).ready(function() { 
-			$("section").load("./html/home.html");
-		 });
-
-		$("nav a").on('click', function(event){
-			event.preventDefault();
-			var page = event.currentTarget.attributes.href.value; //get text of element a clicked
-		
-			if(page == "html/CV-Pesjak.pdf") window.open(page, "_self");
-			if(page.includes("403")) window.open(page, "_self");
-			if(page == "html/contact.html") document.body.scrollIntoView(false);
-			
-			$("section").load(page);		
-		});		
-		
-	</script>
-  </body>
+</body>
 </html>
