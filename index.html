@@ -7,66 +7,8 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/devicon@2.16.0/devicon.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    /* Define custom colors */
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: #1D1E2C; /* Main background color */
-      color: #FFFFFF; /* Text color */
-    }
-    h1, h2, h3 {
-      font-family: 'Orbitron', sans-serif;
-      color: #D94344; /* Accent color for headings */
-    }
-    a:hover {
-      color: #FFFFFF;
-    }
-    .bg-primary {
-      background-color: #1D1E2C; /* Dark background */
-    }
-    .bg-secondary {
-      background-color: #59656F; /* Alternating lighter dark */
-    }
-    .text-accent {
-      color: #D94344; /* Accent color */
-    }
-    .bg-accent {
-      background-color: #D94344; /* Accent color for buttons */
-    }
-    .text-soft {
-      color: #D7CDCC; /* Soft text color */
-    }
-    button:hover {
-      background-color: #D94344;
-    }
-    .timeline::before {
-      content: '';
-      position: absolute;
-      width: 4px;
-      background: #D94344;
-      top: 0;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-    .timeline-card {
-      background: #59656F;
-      border: 1px solid #D7CDCC;
-      border-radius: 8px;
-      padding: 16px;
-      position: relative;
-      color: #FFFFFF;
-    }
-    .timeline-dot {
-      width: 12px;
-      height: 12px;
-      background: #D94344;
-      border-radius: 50%;
-      position: absolute;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
 <body>
 
@@ -95,14 +37,6 @@
       </ul>
     </nav>
   </header>
-
-  <script>
-    const navToggle = document.getElementById('nav-toggle');
-    const mobileNav = document.getElementById('mobile-nav');
-    navToggle.addEventListener('click', () => {
-      mobileNav.classList.toggle('hidden');
-    });
-  </script>
 
   <!-- Hero Section -->
   <section class="text-white text-center py-20 bg-primary">
@@ -270,16 +204,163 @@
   
 
   <!-- Events Section -->
-  <section id="events" class="py-12 bg-primary text-white relative">
+  <section id="events" class="py-12 bg-primary text-white">
     <div class="container mx-auto">
-      <h2 class="text-4xl font-bold text-white mb-8 text-center">Events & Conferences</h2>
-      <div class="relative timeline">
-        <div class="timeline-card mb-8">
-          <div class="timeline-dot"></div>
-          <h3 class="text-lg font-bold">NeurIPS 2023</h3>
-          <p>New Orleans, USA</p>
-          <p>Workshop on Self-Supervised Learning</p>
+      <h2 class="text-4xl font-bold mb-8 text-center">Events & Conferences</h2>
+      <div class="space-y-6">
+        <!-- 2024 Events -->
+        <div>
+          <h3 class="text-2xl font-bold bg-secondary py-2 px-4 rounded">2024</h3>
+          <ul class="space-y-2 pl-4">
+            <li>
+              Spark Sessions 002: Data Science@UL-FRI 
+              <span class="block text-sm text-gray-400">(10. 12. 2024, UL FRI)</span>
+            </li>
+            <li>
+              Ali bo umetna inteligenca pisala kot Ivan Cankar?: Knjižni sejem, RTV Slo 
+              <span class="block text-sm text-gray-400">(27. 11. 2024, LJ)</span>
+            </li>
+            <li>
+              Ai4Gov Evaluation Workshop 
+              <span class="block text-sm text-gray-400">(27. 11. 2024, IJS LJ)</span>
+            </li>
+            <li>
+              Kompetentna in etična uporaba orodij generativne umetne inteligence: Karierni center UL 
+              <span class="block text-sm text-gray-400">(26. 11. 2024, online)</span>
+            </li>
+            <li>
+              LLM's and Audio Understanding: Slo AI Meetup 
+              <span class="block text-sm text-gray-400">(21. 11. 2024, Sportradar LJ)</span>
+            </li>
+            <li>
+              Spark Sessions 001: Data Science@UL-FRI 
+              <span class="block text-sm text-gray-400">(22. 10. 2024, UL FRI)</span>
+            </li>
+            <li>
+              Nič več znanstvena fantastika: AI in napredne tehnologije v znanosti: BEST 
+              <span class="block text-sm text-gray-400">(22. 10. 2024, UL FRI)</span>
+            </li>
+            <li>
+              LLM Dojo: Jan Rupnik 
+              <span class="block text-sm text-gray-400">(18. 10. 2024, IJS E3)</span>
+            </li>
+            <li>
+              Okrogla miza o vplivu umetne inteligence na znanost in družbo: SMASH 
+              <span class="block text-sm text-gray-400">(8. 10. 2024, Vipava)</span>
+            </li>
+            <li>
+              Snowflake beginner course by In516ht 
+              <span class="block text-sm text-gray-400">(15. 2. - 5. 6. 2024)</span>
+            </li>
+            <li>
+              Geometric Deep Learning, Categorical Deep Learning: Petar Veličković, DeepMind 
+              <span class="block text-sm text-gray-400">(21. 5. 2024, FRI)</span>
+            </li>
+            <li>
+              Data Streaming with Kafka - A Modernist Approach: Jure Ham and Matic Žgur, Outbrain 
+              <span class="block text-sm text-gray-400">(15. 5. 2024, FRI)</span>
+            </li>
+            <li>
+              Usage of AWS in data engineering: Anžej Curk and Denis Turšič, Result 
+              <span class="block text-sm text-gray-400">(8. 5. 2024, FRI)</span>
+            </li>
+            <li>
+              Reinforcement fundamentals and state of the art: Joshua B. Evans 
+              <span class="block text-sm text-gray-400">(10.-11. 1. 2024, FRI)</span>
+            </li>
+          </ul>
         </div>
+  
+        <!-- 2023 Events -->
+        <div>
+          <h3 class="text-2xl font-bold bg-secondary py-2 px-4 rounded">2023</h3>
+          <ul class="space-y-2 pl-4">
+            <li>
+              Graph Deep Learning - Fundamentals and Applications of Graph Convolutional Layers: Florian Thamm 
+              <span class="block text-sm text-gray-400">(23. 11. 2023, FRI)</span>
+            </li>
+            <li>
+              Okrogla miza: UI - ustaviti ali pospešiti njen razvoj? 
+              <span class="block text-sm text-gray-400">(29. 9. 2023, FRI)</span>
+            </li>
+            <li>
+              Outbrain DataScience summer school 
+              <span class="block text-sm text-gray-400">(10.-14. 7. 2023)</span>
+            </li>
+            <li>
+              ŠO FRI: Sodobna umetna inteligenca: Tehnologije in dileme 
+              <span class="block text-sm text-gray-400">(29. 3. 2023, FRI)</span>
+            </li>
+            <li>
+              EESTEC JobFair: Svet Prihodnosti 
+              <span class="block text-sm text-gray-400">(16. 3. 2023, FRI)</span>
+            </li>
+            <li>
+              Data Science@UL-FRI: Recommender systems with TensorFlow workshop 
+              <span class="block text-sm text-gray-400">(22. 2. 2023, FRI)</span>
+            </li>
+          </ul>
+        </div>
+  
+        <!-- Older Events -->
+        <div>
+            <h3 class="text-2xl font-bold bg-secondary py-2 px-4 rounded">Older Events</h3>
+            <ul class="space-y-2 pl-4">
+            <li>
+                Data Science@UL-FRI: Introduction to state of the art NLP (BERT and GPT) 
+                <span class="block text-sm text-gray-400">(17.6.2021, online)</span>
+            </li>
+            <li>
+                Gašper Beguš, Ph.D.: Kako se umetna inteligenca uči govoriti? 
+                <span class="block text-sm text-gray-400">(11.11.2020, online)</span>
+            </li>
+            <li>
+                Umetna inteligenca in digitalni marketing - Kaj pa Watson? - OpenLab 
+                <span class="block text-sm text-gray-400">(21.10.2019, Kranj)</span>
+            </li>
+            <li>
+                Umetna inteligenca - malo zares in malo za hec 
+                <span class="block text-sm text-gray-400">(17.10.2019, Ljubljana)</span>
+            </li>
+            <li>
+                The subtle art of recommendation (algorithms) 
+                <span class="block text-sm text-gray-400">(14.10.2019, Ljubljana)</span>
+            </li>
+            <li>
+                MEi:CogSci Conference 
+                <span class="block text-sm text-gray-400">(13.-15.6.2019, Ljubljana)</span>
+            </li>
+            <li>
+                Deep Machine Vision - From Research to Market 
+                <span class="block text-sm text-gray-400">(25.4.2019)</span>
+            </li>
+            <li>
+                Artificial Intelligence at your fingertips with Microsoft Azure 
+                <span class="block text-sm text-gray-400">(18.4.2019)</span>
+            </li>
+            <li>
+                Ali ima umetna inteligenca zdravo pamet? : Vid Kocijan 
+                <span class="block text-sm text-gray-400">(16.4.2019, SAZU LJ)</span>
+            </li>
+            <li>
+                Debate KUI 
+                <span class="block text-sm text-gray-400">(četrtki 2019, FRI)</span>
+            </li>
+            <li>
+                Okrogla miza "Možnosti umetne inteligence" EESTEC JobFair 
+                <span class="block text-sm text-gray-400">(21.3.2019, FE LJ)</span>
+            </li>
+            <li>
+                Konferenca AI4GOOD - Huawei 
+                <span class="block text-sm text-gray-400">(FRI, 26.9.2018)</span>
+            </li>
+            <li>
+                FeelTheFuture sejem 
+                <span class="block text-sm text-gray-400">(19.-21. 10. 2017, Celje)</span>
+            </li>
+            </ul>
+        </div>
+  
       </div>
     </div>
   </section>

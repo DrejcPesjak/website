@@ -1,0 +1,59 @@
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #1D1E2C; /* Main background color */
+    color: #FFFFFF; /* Text color */
+}
+h1, h2, h3 {
+    font-family: 'Orbitron', sans-serif;
+}
+h1 {
+    color: #D94344; /* Accent color for headings */
+}
+a:hover {
+    color: #FFFFFF;
+}
+.bg-primary {
+    background-color: #1D1E2C; /* Dark background */
+}
+.bg-secondary {
+    background-color: #59656F; /* Alternating lighter dark */
+}
+.text-accent {
+    color: #D94344; /* Accent color */
+}
+.bg-accent {
+    background-color: #D94344; /* Accent color for buttons */
+}
+.text-soft {
+    color: #D7CDCC; /* Soft text color */
+}
+button:hover {
+    background-color: #D94344;
+}
+.timeline::before {
+    content: '';
+    position: absolute;
+    width: 4px;
+    background: #D94344;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.timeline-card {
+    background: #59656F;
+    border: 1px solid #D7CDCC;
+    border-radius: 8px;
+    padding: 16px;
+    position: relative;
+    color: #FFFFFF;
+}
+.timeline-dot {
+    width: 12px;
+    height: 12px;
+    background: #D94344;
+    border-radius: 50%;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
