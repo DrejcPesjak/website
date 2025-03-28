@@ -1,3 +1,8 @@
+Dan umetne inteligence NVIDIA & FRI AI Day (25. 3. 2025, UL FRI)
+Spark Sessions 003 : Data Science@UL-FRI (25. 2. 2025, UL FRI)
+AI x Pravo - Umetna inteligenca za pravo : Law Brainer (20. - 21. 2. 2025, FMF UL, PF UL)
+Lessons from Building AI Coding Assistants - Context and Evaluation : Slovenian AI Meetup (11. 2. 2025, Outbrain LJ)
+AI/LLM monitoring and observability with New Relic and OpenTelemetry: Harry Kimpel (15. 1. 2025, UL FRI)
 Spark Sessions 002 : Data Science@UL-FRI (10. 12. 2024, UL FRI)
 Ali bo umetna inteligenca pisala kot Ivan Cankar? : Knjižni sejem, RTV Slo (27. 11. 2024, LJ)
 Ai4Gov Evaluation Workshop (27. 11. 2024, IJS LJ)
