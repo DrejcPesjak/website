@@ -1,3 +1,8 @@
+Cognitive Science conference (9. 10. 2025, IJS LJ)
+Slovenian Conference on Artificial Intelligence (8. 10. 2025, IJS LJ)
+Data Mining and Data wearhouses: SiKDD conference (6. 10. 2025, IJS LJ)
+Predicting Traffic Intensity on Motorway Sections: Matic Kladnik (22. 9. 2025, IPS LJ)
+Umetna inteligenca za znanost: Na poti k ustvarjalnim, odprtim agentom umetne inteligence: dr. Nenad Tomašev (1. 7. 2025, IJS LJ)
 Dan umetne inteligence NVIDIA & FRI AI Day (25. 3. 2025, UL FRI)
 Spark Sessions 003 : Data Science@UL-FRI (25. 2. 2025, UL FRI)
 AI x Pravo - Umetna inteligenca za pravo : Law Brainer (20. - 21. 2. 2025, FMF UL, PF UL)
