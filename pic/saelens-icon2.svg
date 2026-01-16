@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 100" width="200" height="100">
+  <rect width="220" height="100" rx="8" fill="none"/>
+  
+  <polygon points="30,40 60,15 60,85 30,60" fill="#1f2937" stroke="#3a475c" stroke-width="1.5"/>
+  
+  <g>
+    <circle cx="65" cy="25" r="2.5" fill="#3a475c" opacity="0.4"/>
+    <circle cx="65" cy="35" r="2.5" fill="#3a475c" opacity="0.4"/>
+    <circle cx="65" cy="45" r="2.5" fill="#3a475c" opacity="0.4"/>
+    <circle cx="65" cy="55" r="2.5" fill="#3a475c" opacity="0.4"/>
+    <circle cx="65" cy="65" r="2.5" fill="#3a475c" opacity="0.4"/>
+    <circle cx="65" cy="75" r="2.5" fill="#3a475c" opacity="0.4"/>
+    
+    <circle cx="65" cy="35" r="3" fill="#00f2ff"/>
+    <circle cx="65" cy="65" r="3" fill="#00f2ff"/>
+  </g>
+
+  <polygon points="70,15 100,40 100,60 70,85" fill="#1f2937" stroke="#3a475c" stroke-width="1.5"/>
+
+  <text x="105" y="62" font-family="Arial, sans-serif" font-weight="bold" font-size="34" fill="#e6edf3">
+    <tspan fill="#1f2937">Lens</tspan>
+  </text>
+</svg>
