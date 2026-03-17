@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Scaling Monosemanticity on LLaMA – Notes</title>
+  <meta name="description" content="Lessons learned from replicating Scaling Monosemanticity using sparse autoencoders on LLaMA models: training setup, common failure modes, and practical takeaways." />
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+</head>
+
+<body class="bg-primary text-white">
+
+  <!-- Simple header -->
+  <header class="bg-primary">
+    <div class="container mx-auto px-6 py-6 flex items-center justify-between">
+      <a href="../index.html" class="flex items-center gap-3">
+        <img src="../pic/logo.svg" alt="Drejc Pesjak Logo" class="w-48">
+      </a>
+      <nav class="text-soft">
+        <a href="../index.html" class="hover:underline mr-4">Home</a>
+        <a href="https://github.com/drejcpesjak/scaling-monosemanticity-llama"
+           class="hover:underline"
+           target="_blank" rel="noopener noreferrer">
+          GitHub
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Article -->
+  <main class="container mx-auto px-6 pb-16">
+    <article class="max-w-3xl mx-auto">
+
+      <div class="bg-secondary rounded-lg overflow-hidden shadow-lg">
+        <img
+          src="../pic/scaling-monosemanticity.png"
+          alt="Scaling Monosemanticity"
+          class="w-full h-64 object-cover"
+        />
+      </div>
+
+      <header class="mt-8">
+        <h1 class="text-4xl font-bold text-white leading-tight">
+          Scaling Monosemanticity on LLaMA
+        </h1>
+        <p class="text-soft mt-3">
+          Notes from replicating “Scaling Monosemanticity” style sparse autoencoders on LLaMA. This is a practical write-up: what worked, what broke, and what I’d do differently next time.
+        </p>
+
+        <div class="mt-5 flex flex-wrap gap-2">
+          <span class="px-3 py-1 rounded border border-gray-500 text-soft text-sm">Sparse Autoencoders</span>
+          <span class="px-3 py-1 rounded border border-gray-500 text-soft text-sm">LLaMA</span>
+          <span class="px-3 py-1 rounded border border-gray-500 text-soft text-sm">HPC</span>
+          <span class="px-3 py-1 rounded border border-gray-500 text-soft text-sm">Mechanistic Interpretability</span>
+        </div>
+
+        
+      </header>
+
+      <section class="mt-10 space-y-6 text-soft">
+        <h2 class="text-2xl font-semibold text-white">Why I did this</h2>
+        <p>
+          I wanted hands-on experience with SAE training on modern transformer models, and to understand where “nice demo results” survive contact with real infrastructure: multi-GPU training, memory limits, and messy checkpoints.
+        </p>
+
+        <h2 class="text-2xl font-semibold text-white">Setup in one paragraph</h2>
+        <p>
+          The core loop is straightforward: collect activations from a chosen layer, train a sparse autoencoder to reconstruct them, and then inspect the learned features by activating them and looking at the downstream effect. In practice, most time went into stable data collection, batching, and making sure the run is reproducible on an HPC cluster.
+        </p>
+
+        <h2 class="text-2xl font-semibold text-white">What went wrong (and how I debugged it)</h2>
+        <ul class="list-disc pl-6 space-y-2">
+          <li>
+            <span class="text-white">Data pipeline bottlenecks:</span> activation extraction can become the slowest part. I ended up caching activations and treating extraction like a dataset-building step.
+          </li>
+          <li>
+            <span class="text-white">Memory surprises:</span> layer choice and sequence length matter more than expected. Small changes silently doubled VRAM use.
+          </li>
+          <li>
+            <span class="text-white">Training instability:</span> some runs “look fine” early and then collapse. Logging reconstruction loss + sparsity + feature norms helped catch it fast.
+          </li>
+          <li>
+            <span class="text-white">Feature interpretability isn’t free:</span> you can get a good loss curve and still learn features that are hard to name. Good evaluation needs more than a single dashboard metric.
+          </li>
+        </ul>
+
+        <h2 class="text-2xl font-semibold text-white">What actually mattered</h2>
+        <ul class="list-disc pl-6 space-y-2">
+          <li><span class="text-white">Good activation sampling:</span> diversity in prompts and stable preprocessing beat fancy tricks.</li>
+          <li><span class="text-white">Clear evaluation criteria:</span> decide early what “success” means (loss, sparsity, downstream behavior, feature usefulness).</li>
+          <li><span class="text-white">Reproducibility:</span> fixed seeds, saved configs, and deterministic data shards saved days later.</li>
+        </ul>
+
+        <!--figure class="my-8">
+            <img src="../pic/mlops.png"
+                 alt="Test image"
+                 class="w-full rounded-lg shadow-lg" />
+            <figcaption class="text-soft text-sm mt-2">
+              Figure 1: Example figure inside the post.
+            </figcaption>
+        </figure-->
+        <!--figure class="my-8">
+            <img src="../pic/mlops.png"
+                 alt="Test image"
+                 class="w-full sm:w-2/3 mx-auto rounded-lg shadow-lg" />
+            <figcaption class="text-soft text-sm mt-2 text-center">
+              Figure 2: Example figure inside the post.
+            </figcaption>
+        </figure-->
+
+        <h2 class="text-2xl font-semibold text-white">Lessons learned</h2>
+        <p>
+          The biggest takeaway: SAE training is not the hard part — building a clean pipeline around it is. Once extraction + caching + evaluation are stable, iteration becomes fast and you can actually learn something from the features.
+        </p>
+
+        <h2 class="text-2xl font-semibold text-white">Next steps</h2>
+        <ul class="list-disc pl-6 space-y-2">
+          <li>Compare features across layers (how “semantic” features shift with depth).</li>
+          <li>Test targeted interventions (boost/suppress specific features) on controlled tasks.</li>
+          <li>Document a minimal “starter recipe” for SAE training on your own infra.</li>
+        </ul>
+
+      </section>
+
+      <footer>
+        <div class="mt-6 rounded-lg p-4 rounded border border-gray-500">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+              <p class="text-soft text-sm">
+                  Code: <a href="https://github.com/drejcpesjak/scaling-monosemanticity-llama"
+                           class="text-white hover:underline"
+                           target="_blank" rel="noopener noreferrer">
+                    github.com/drejcpesjak/scaling-monosemanticity-llama
+                  </a>
+                </p>
+              <p class="text-soft text-sm">Last updated: 2025-04-22</p>
+            </div>
+          </div>
+      </footer>
+    </article>
+  </main>
+
+  <footer class="bg-primary text-center py-6 text-soft">
+    <p>© 2024 Drejc Pesjak. All Rights Reserved.</p>
+  </footer>
+
+</body>
+</html>
