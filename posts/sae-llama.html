@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Scaling Monosemanticity on LLaMA – Notes</title>
-  <meta name="description" content="Lessons learned from replicating Scaling Monosemanticity using sparse autoencoders on LLaMA models: training setup, common failure modes, and practical takeaways." />
+  <title>Scaling Monosemanticity on a Small LLaMA (and What Broke Along the Way)</title>
+  <meta name="description" content="A practical write-up on training sparse autoencoders on LLaMA activations, finding interpretable features, steering them, and debugging the systems problems that showed up along the way." />
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
@@ -45,15 +45,16 @@
 
       <header class="mt-8">
         <h1 class="text-4xl font-bold text-white leading-tight">
-          Scaling Monosemanticity on LLaMA
+          Scaling Monosemanticity on a Small LLaMA (and What Broke Along the Way)
         </h1>
         <p class="text-soft mt-3">
-          Notes from replicating “Scaling Monosemanticity” style sparse autoencoders on LLaMA. This is a practical write-up: what worked, what broke, and what I’d do differently next time.
+          I wanted to see if I could reproduce the <em>shape</em> of Anthropic’s Scaling Monosemanticity result on a much smaller, open model. Not the exact scale, not the same guarantees. Just: can I train a sparse autoencoder on LLaMA activations, find meaningful features, and then actually <em>do something</em> with them?
         </p>
 
         <div class="mt-5 flex flex-wrap gap-2">
           <span class="px-3 py-1 rounded border border-gray-500 text-soft text-sm">Sparse Autoencoders</span>
           <span class="px-3 py-1 rounded border border-gray-500 text-soft text-sm">LLaMA</span>
+          <span class="px-3 py-1 rounded border border-gray-500 text-soft text-sm">Interpretability</span>
           <span class="px-3 py-1 rounded border border-gray-500 text-soft text-sm">HPC</span>
           <span class="px-3 py-1 rounded border border-gray-500 text-soft text-sm">Mechanistic Interpretability</span>
         </div>
@@ -62,67 +63,238 @@
       </header>
 
       <section class="mt-10 space-y-6 text-soft">
-        <h2 class="text-2xl font-semibold text-white">Why I did this</h2>
+        <h2 class="text-2xl font-semibold text-white">What I Was Trying To Do</h2>
         <p>
-          I wanted hands-on experience with SAE training on modern transformer models, and to understand where “nice demo results” survive contact with real infrastructure: multi-GPU training, memory limits, and messy checkpoints.
+          The high-level idea was simple:
+        </p>
+        <ol class="list-decimal pl-6 space-y-2">
+          <li>Run a LLaMA model on a large text stream.</li>
+          <li>Save activations from a middle layer, per token.</li>
+          <li>Train a sparse autoencoder (SAE) to reconstruct those activations.</li>
+          <li>Treat the sparse latents as “features,” then inspect and steer them.</li>
+        </ol>
+        <p>
+          In practice, that means you are not asking “which neuron means X?” You are asking: can a learned sparse <em>basis</em> make features more legible than single neurons, and can you <em>intervene</em> on those features at inference time?
+        </p>
+        <p>
+          That was the bet.
         </p>
 
-        <h2 class="text-2xl font-semibold text-white">Setup in one paragraph</h2>
+        <h2 class="text-2xl font-semibold text-white">The Actual Setup (Verified)</h2>
+        <ul class="list-disc pl-6 space-y-2">
+          <li><span class="text-white">Base model:</span> <code>meta-llama/Llama-3.2-3B</code>.</li>
+          <li><span class="text-white">Activations:</span> middle-layer activations, around layer 15 or 16.</li>
+          <li><span class="text-white">Hidden size:</span> <code>3072</code>.</li>
+          <li><span class="text-white">SAE:</span> one hidden layer, ReLU, overcomplete width <code>2^16 = 65536</code>.</li>
+          <li><span class="text-white">Data:</span> streamed from <code>monology/pile-uncopyrighted</code>.</li>
+          <li><span class="text-white">Each activation row saved:</span> <em>per token</em> with metadata for reverse lookup (sentence id, token index, token id).</li>
+        </ul>
         <p>
-          The core loop is straightforward: collect activations from a chosen layer, train a sparse autoencoder to reconstruct them, and then inspect the learned features by activating them and looking at the downstream effect. In practice, most time went into stable data collection, batching, and making sure the run is reproducible on an HPC cluster.
+          If you want one sentence: we trained an SAE on token-level LLaMA activations and built a full inspection loop to retrieve top-activating contexts and manipulate features.
         </p>
 
-        <h2 class="text-2xl font-semibold text-white">What went wrong (and how I debugged it)</h2>
-        <ul class="list-disc pl-6 space-y-2">
-          <li>
-            <span class="text-white">Data pipeline bottlenecks:</span> activation extraction can become the slowest part. I ended up caching activations and treating extraction like a dataset-building step.
-          </li>
-          <li>
-            <span class="text-white">Memory surprises:</span> layer choice and sequence length matter more than expected. Small changes silently doubled VRAM use.
-          </li>
-          <li>
-            <span class="text-white">Training instability:</span> some runs “look fine” early and then collapse. Logging reconstruction loss + sparsity + feature norms helped catch it fast.
-          </li>
-          <li>
-            <span class="text-white">Feature interpretability isn’t free:</span> you can get a good loss curve and still learn features that are hard to name. Good evaluation needs more than a single dashboard metric.
-          </li>
-        </ul>
-
-        <h2 class="text-2xl font-semibold text-white">What actually mattered</h2>
-        <ul class="list-disc pl-6 space-y-2">
-          <li><span class="text-white">Good activation sampling:</span> diversity in prompts and stable preprocessing beat fancy tricks.</li>
-          <li><span class="text-white">Clear evaluation criteria:</span> decide early what “success” means (loss, sparsity, downstream behavior, feature usefulness).</li>
-          <li><span class="text-white">Reproducibility:</span> fixed seeds, saved configs, and deterministic data shards saved days later.</li>
-        </ul>
-
-        <!--figure class="my-8">
-            <img src="../pic/mlops.png"
-                 alt="Test image"
-                 class="w-full rounded-lg shadow-lg" />
+        <figure class="my-8">
+            <img src="https://github.com/DrejcPesjak/scaling-monosemanticity-llama/blob/main/pictures/methods.png?raw=true"
+                 alt="Overview of the sparse autoencoder pipeline"
+                 class="w-full sm:w-1/2 mx-auto rounded-lg shadow-lg" />
             <figcaption class="text-soft text-sm mt-2">
-              Figure 1: Example figure inside the post.
+              Overview of the pipeline: collect token-level activations, train the sparse autoencoder, then inspect and intervene on learned features.
             </figcaption>
-        </figure-->
-        <!--figure class="my-8">
-            <img src="../pic/mlops.png"
-                 alt="Test image"
-                 class="w-full sm:w-2/3 mx-auto rounded-lg shadow-lg" />
-            <figcaption class="text-soft text-sm mt-2 text-center">
-              Figure 2: Example figure inside the post.
-            </figcaption>
-        </figure-->
+        </figure>
 
-        <h2 class="text-2xl font-semibold text-white">Lessons learned</h2>
+        <h2 class="text-2xl font-semibold text-white">The First Real Lesson: Retrieval Is the Instrument</h2>
         <p>
-          The biggest takeaway: SAE training is not the hard part — building a clean pipeline around it is. Once extraction + caching + evaluation are stable, iteration becomes fast and you can actually learn something from the features.
+          I learned this the hard way. If you cannot map an activation back to the exact token and its context, you do not have interpretability. You have numbers.
+        </p>
+        <p>
+          Saving token ids, sentence ids, and positions was not a logging detail. It was part of the <em>scientific apparatus</em>.
+        </p>
+        <p>
+          This shaped everything else: file layout, memory budget, batch sizes, and the way I wrote the activation extraction code.
         </p>
 
-        <h2 class="text-2xl font-semibold text-white">Next steps</h2>
+        <h2 class="text-2xl font-semibold text-white">What Worked (and Was Actually Exciting)</h2>
+        <h3 class="text-xl font-semibold text-white">1. Interpretable features showed up early</h3>
+        <p>
+          Even with a modest model and a relatively straightforward SAE, features popped out that were <strong>clearly</strong> meaningful:
+        </p>
         <ul class="list-disc pl-6 space-y-2">
-          <li>Compare features across layers (how “semantic” features shift with depth).</li>
-          <li>Test targeted interventions (boost/suppress specific features) on controlled tasks.</li>
-          <li>Document a minimal “starter recipe” for SAE training on your own infra.</li>
+          <li>medical and scientific writing</li>
+          <li>emotions (positive vs negative)</li>
+          <li>language and multilingual patterns</li>
+          <li>AI and programming domains</li>
+          <li>gender-bias artifacts</li>
         </ul>
+        <p>
+          This alone was a big win. It suggested you don’t need frontier-scale models to get <em>some</em> interpretability traction. Concretely, a “medical/clinical” feature would spike on fragments like “patients were randomized,” “clinical trial,” “diagnosed with,” “mg/kg,” or “double-blind,” and the top-activating contexts looked exactly like paper abstracts and methods sections.
+        </p>
+
+        <figure class="my-8">
+            <img src="https://github.com/DrejcPesjak/scaling-monosemanticity-llama/blob/main/pictures/feat_expl.png?raw=true"
+                 alt="Example of an interpretable feature explanation"
+                 class="w-full sm:w-4/5 mx-auto rounded-lg shadow-lg" />
+            <figcaption class="text-soft text-sm mt-2">
+              Top SAE features with the highest mean activation on clinical-study prompts, including patterns like scientific study purpose, academic references, and clinical study patients.
+            </figcaption>
+        </figure>
+
+        <h3 class="text-xl font-semibold text-white">2. Some features were genuinely steerable</h3>
+        <p>
+          Once you can isolate a feature, you can try boosting it at inference. If that sentence is opaque, here is the operational version: you take the hidden activation vector at a layer, add a scaled version of a single SAE feature to it via the SAE decoder, and then let the model continue the forward pass. That is literally “turning the knob” on one learned feature direction.
+        </p>
+        <p>
+          That was the most compelling part of the project. A bias-related feature, when boosted, made stereotyped role assignments show up more often in completions (e.g., woman=nurse, man=doctor). A “medical” feature pushed the model into clinical-sounding continuations, like switching from “I am a student…” to something that starts talking about diagnoses, patients, trials, or treatment language. It is not deterministic, but the distribution visibly shifts.
+        </p>
+        <p>
+          That does not prove clean monosemanticity. But it <em>does</em> show a causal knob, which is stronger evidence than pure correlation.
+        </p>
+
+        <figure class="my-8">
+            <img src="https://github.com/DrejcPesjak/scaling-monosemanticity-llama/blob/main/pictures/influence_image2.png?raw=true"
+                 alt="Example of steering a learned feature during inference"
+                 class="w-full sm:w-4/5 mx-auto rounded-lg shadow-lg" />
+            <figcaption class="text-soft text-sm mt-2">
+              Two steering examples: boosting gender bias shifts the completion toward stereotyped roles, while boosting factual manipulation pushes the model toward a false capital-city answer.
+            </figcaption>
+        </figure>
+
+        <h3 class="text-xl font-semibold text-white">3. Some features were language-independent, others language-specific</h3>
+        <p>
+          One fun qualitative result: a medical feature lit up across English and Spanish. At the same time, there were distinct features that seemed mostly language-specific, especially Spanish or French.
+        </p>
+        <p>
+          That is exactly the kind of mixed behavior you’d expect if the features are partially semantic and partially surface-form driven. In practice, a multilingual “medical” feature might activate on English <em>and</em> Spanish clinical text, while a language feature lights up on grammar and function words unique to one language.
+        </p>
+
+        <h2 class="text-2xl font-semibold text-white">What Was Actually Hard</h2>
+        <h3 class="text-xl font-semibold text-white">1. Sparsity is fragile, boring, and hard to debug</h3>
+        <p>
+          Most failures looked like this:
+        </p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li>near-zero activations (collapsed sparsity)</li>
+          <li>dead features</li>
+          <li>sparse-looking features that were really just punctuation or scaffolding</li>
+          <li>metrics that looked okay until they were inspected carefully</li>
+        </ul>
+        <p>
+          You can get apparent sparsity without meaningful decomposition. ReLU already creates zeros. That is not the same thing as useful sparsity.
+        </p>
+        <p>
+          The “boring” version looks like a feature that fires on commas, “the,” or line breaks, because those are everywhere and easy to compress.
+        </p>
+        <p>
+          A lot of time went into fixing loss formulas, sanity-checking the active-feature percentage, and tuning <code>l1_lambda</code> with much smaller changes than I expected.
+        </p>
+
+        <h3 class="text-xl font-semibold text-white">2. High-frequency patterns dominate unless you fight them</h3>
+        <p>
+          A naive SAE will happily spend its capacity on:
+        </p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li>punctuation</li>
+          <li>frequent articles</li>
+          <li>boilerplate phrasing</li>
+        </ul>
+        <p>
+          This doesn’t mean the method is wrong. It means you need to actively shape the data distribution and maybe the layer choice. Stratified sampling and higher-layer activations seem like obvious next steps. Otherwise, your dictionary fills up with “grammar scaffolding” before it gets to concepts you actually care about.
+        </p>
+
+        <h3 class="text-xl font-semibold text-white">3. Tooling details changed qualitative results</h3>
+        <p>
+          One of the more annoying surprises: <strong>same family of model weights, wildly different behavior</strong> depending on how they were loaded.
+        </p>
+        <p>
+          The base model from Hugging Face gave poor feature explanations. The instruct version worked much better for automated labeling. That is not a subtle difference. It is the kind that can invalidate your entire “feature interpretation” loop if you do not notice it.
+        </p>
+        <p>
+          For example, an LLM-based “feature naming” pass went from nonsense fragments to coherent labels once we switched variants. (Yes, we used a separate LLM to help label/name features; it’s a practical shortcut, not a ground-truth oracle.)
+        </p>
+
+        <h3 class="text-xl font-semibold text-white">4. A data pipeline bug distorted my conclusions</h3>
+        <p>
+          At one point, validation was loading full activation files (~81k vectors) instead of respecting batch size. That made it <em>look</em> like batch size didn’t matter. It did. The pipeline was just bypassing it.
+        </p>
+        <p>
+          Lesson: before you interpret a hyperparameter effect, verify that the data path actually uses it. In this case, batch size <em>appeared</em> irrelevant because validation loaded an entire activation file at once, bypassing the batch settings entirely.
+        </p>
+
+        <h2 class="text-2xl font-semibold text-white">The HPC Detour</h2>
+        <p>
+          Once the experiments got large enough, I moved the pipeline onto HPC. The surprising part was not the GPU run itself, but the monitoring.
+        </p>
+        <p>
+          I ended up building a minimal monitoring stack inside the job:
+        </p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li>Node Exporter (CPU)</li>
+          <li>NVIDIA DCGM Exporter (GPU)</li>
+          <li>Prometheus (metrics)</li>
+          <li>Grafana (dashboards)</li>
+        </ul>
+        <p>
+          It sounds like overkill until you’ve lost a 48-hour job to silent OOMs. After that, the dashboards are worth it. You can see GPU utilization, CPU saturation, and memory spikes in real time instead of guessing from logs.
+        </p>
+
+        <figure class="my-8">
+            <img src="https://github.com/DrejcPesjak/scaling-monosemanticity-llama/blob/main/pictures/grafana-cpu-screenshot.png?raw=true"
+                 alt="Grafana CPU monitoring dashboard"
+                 class="w-full sm:w-4/5 mx-auto rounded-lg shadow-lg" />
+            <figcaption class="text-soft text-sm mt-2">
+              General Grafana dashboard tracking CPU, RAM, disk, and network activity during training of a SAE.
+            </figcaption>
+        </figure>
+
+        <figure class="my-8">
+            <img src="https://github.com/DrejcPesjak/scaling-monosemanticity-llama/blob/main/pictures/grafana-gpu-screenshot.png?raw=true"
+                 alt="Grafana GPU monitoring dashboard"
+                 class="w-full sm:w-4/5 mx-auto rounded-lg shadow-lg" />
+            <figcaption class="text-soft text-sm mt-2">
+              Grafana GPU dashboard showing temperature and power usage, with per-GPU time series that make device-level behavior easy to inspect.
+            </figcaption>
+        </figure>
+
+        <figure class="my-8">
+            <img src="https://github.com/DrejcPesjak/scaling-monosemanticity-llama/blob/main/pictures/prometheus-cpu-sec-screenshot.png?raw=true"
+                 alt="Prometheus monitoring snapshot"
+                 class="w-full sm:w-4/5 mx-auto rounded-lg shadow-lg" />
+            <figcaption class="text-soft text-sm mt-2">
+              Prometheus live view of one of many metrics, useful as a quick sanity check that the monitoring stack is working.
+            </figcaption>
+        </figure>
+
+        <h2 class="text-2xl font-semibold text-white">The Honest Version of the Result</h2>
+        <p>
+          I did <em>not</em> reproduce Anthropic’s scale or guarantees. I did build an end-to-end sparse-feature pipeline on a smaller open model, and I got qualitative, steerable features with clear interpretability value.
+        </p>
+        <p>
+          That is a real result. But the work wasn’t about one magical model. It was about everything around it: retrieval, data indexing, loss debugging, sampling, monitoring.
+        </p>
+        <p>
+          If I had to compress the lesson into one line:
+        </p>
+        <p class="italic text-white">
+          After a certain point, interpretability stops being a modeling problem and becomes a systems problem.
+        </p>
+
+        <h2 class="text-2xl font-semibold text-white">What I’d Do Next</h2>
+        <p>
+          If I were starting over, I’d do these earlier:
+        </p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li>Build retrieval and metadata storage before any training.</li>
+          <li>Test top-k or switch SAE variants instead of only vanilla ReLU SAEs.</li>
+          <li>Stratify sampling to avoid frequency domination.</li>
+          <li>Move to HPC earlier, and monitor from day one.</li>
+        </ul>
+
+        <h2 class="text-2xl font-semibold text-white">Final Take</h2>
+        <p>
+          Sparse features are real enough to be useful, but not clean enough to be romantic about. The pipeline can surface meaningful structure, but it fails in boring, subtle, <em>engineering</em> ways before it succeeds.
+        </p>
+        <p>
+          That is the takeaway I wish I had at the beginning.
+        </p>
 
       </section>
 
