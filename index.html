@@ -62,7 +62,7 @@
     <a href="#projects" class="bg-secondary py-2 px-6 ml-4 rounded shadow-lg hover:bg-gray-600 transition">
       View Projects
     </a>
-    <a href="path/to/resume.pdf" download class="bg-secondary py-2 px-6 ml-4 rounded shadow-lg hover:bg-gray-600 transition">
+    <a href="pic/Gemini_Generated_404.png" download class="bg-secondary py-2 px-6 ml-4 rounded shadow-lg hover:bg-gray-600 transition">
       Download CV
     </a>
   </section>
@@ -317,6 +317,26 @@
       </p>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
+        <a href="posts/future-mi.html"
+          class="block bg-secondary rounded-lg overflow-hidden shadow-lg hover:opacity-95 transition">
+          <img src="pic/mind-map-preview.png"
+              alt="The Future of Mech Interp"
+              class="w-full h-48 object-cover">
+
+          <div class="p-5">
+            <h3 class="text-xl font-bold text-white">The Future of Mech Interp</h3>
+            <p class="text-soft mt-2">
+              Seven underexplored areas that feel especially important right now, pulled from a giant research mind map.
+            </p>
+
+            <div class="mt-4 flex flex-wrap gap-2">
+              <span class="px-3 py-1 rounded bg-primary text-soft text-sm">Interp Agents</span>
+              <span class="px-3 py-1 rounded bg-primary text-soft text-sm">Reasoning Models</span>
+              <span class="px-3 py-1 rounded bg-primary text-soft text-sm">Causality</span>
+            </div>
+          </div>
+        </a>
+
         <!-- Note card -->
         <a href="posts/sae-llama.html"
           class="block bg-secondary rounded-lg overflow-hidden shadow-lg hover:opacity-95 transition">
@@ -350,6 +370,10 @@
         <div>
           <h3 class="text-2xl font-bold bg-secondary py-2 px-4 rounded">2026</h3>
           <ul class="space-y-2 pl-4">
+            <li>
+              AI for Materials Science Tuning Laser-Induced Graphene Production : Lars Kotthoff
+              <span class="block text-sm text-gray-400">(23. 4. 2026, IJS LJ)</span>
+            </li>
             <li>
               From Understanding People to Securing AI - A Human-Centered Research Journey Through Large Language Models : Erik Derner
               <span class="block text-sm text-gray-400">(16. 3. 2026, IJS LJ)</span>
@@ -585,7 +609,7 @@
   <section id="contact" class="py-12 bg-secondary text-white">
     <div class="container mx-auto text-center">
       <h2 class="text-4xl font-bold mb-8 text-white">Get in Touch</h2>
-      <form class="max-w-lg mx-auto">
+      <form id="contact-form" class="max-w-lg mx-auto">
         <div class="mb-4">
           <input type="email" id="email" class="w-full py-2 px-4 rounded bg-primary border border-soft text-white" placeholder="Your Email" required>
         </div>

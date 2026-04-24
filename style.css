@@ -57,3 +57,83 @@ button:hover {
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
+article figure img.lightbox-trigger {
+    cursor: zoom-in;
+}
+
+.lightbox-open {
+    overflow: hidden;
+}
+
+.lightbox-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 10, 16, 0.92);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 0;
+}
+
+.lightbox-overlay.hidden {
+    display: none;
+}
+
+.lightbox-shell {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.lightbox-toolbar {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    z-index: 1001;
+}
+
+.lightbox-btn {
+    background: #59656F;
+    color: #FFFFFF;
+    border: 1px solid #D7CDCC;
+    border-radius: 8px;
+    padding: 8px 14px;
+    line-height: 1;
+}
+
+.lightbox-btn-icon {
+    min-width: 42px;
+    font-size: 22px;
+    padding: 8px 10px;
+}
+
+.lightbox-stage {
+    flex: 1;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: grab;
+    user-select: none;
+}
+
+.lightbox-stage.is-dragging {
+    cursor: grabbing;
+}
+
+.lightbox-image {
+    transform-origin: center center;
+    max-width: min(96vw, 96vw);
+    max-height: min(92vh, 92vh);
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    will-change: transform;
+}
