@@ -15,632 +15,468 @@
   <meta name="google-site-verification" content="dt7wyyo9S0ee3g5QwsJ37Gfbn5AKXAKkB07ul0s2mmM" />
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Drejc Pesjak - PhD Student</title>
-  <meta name="description" content="AI researcher and PhD student at Jožef Stefan Institute (Ljubljana). Working on mechanistic interpretability of LLMs, sparse autoencoders, and probing methods. Projects and research notes.">
+  <title>Drejc Pesjak - LLM Interpretability Researcher</title>
+  <meta name="description" content="PhD student at Jožef Stefan Institute working on mechanistic interpretability for transformer language models, sparse autoencoders, probing, interventions, and research prototypes.">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/devicon@2.16.0/devicon.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="pic/favicon.png" type="image/png">
   <script src="script.js" defer></script>
 </head>
 <body>
 
-  <!-- Header -->
-  <header class="bg-primary">
-    <div class="container mx-auto px-6 py-6 flex justify-between items-center">
-      <img src="pic/logo.svg" alt="Drejc Pesjak Logo" class="w-64">
-      <nav class="hidden md:block">
-        <ul class="flex space-x-6 text-lg">
-          <li><a href="#about" class="hover:underline text-soft">About</a></li>
-          <li><a href="#skills" class="hover:underline text-soft">Skills</a></li>
-          <li><a href="#projects" class="hover:underline text-soft">Projects</a></li>
+  <header class="bg-primary site-header">
+    <div class="site-container py-5 flex justify-between items-center">
+      <a href="#top" class="block">
+        <img src="pic/logo_cropped.svg" alt="Drejc Pesjak Logo" class="w-48 md:w-56">
+      </a>
+      <nav class="hidden lg:block">
+        <ul class="flex space-x-6 text-base">
+          <li><a href="#research" class="hover:underline text-soft">Research</a></li>
           <li><a href="#notes" class="hover:underline text-soft">Notes</a></li>
-          <li><a href="https://docs.google.com/presentation/d/1gxqpNWv6xB8cvFh9NjGwcAtcWf3-ohrWVr2azOIOo4A/edit?usp=sharing" class="hover:underline text-soft">Presentations</a></li>
-          <li><a href="#events" class="hover:underline text-soft">Events</a></li>
+          <li><a href="#projects" class="hover:underline text-soft">Projects</a></li>
+          <li><a href="#timeline" class="hover:underline text-soft">Timeline</a></li>
+          <li><a href="pic/Gemini_Generated_404.png" download class="hover:underline text-soft">CV</a></li>
           <li><a href="#contact" class="hover:underline text-soft">Contact</a></li>
         </ul>
       </nav>
-      <button id="nav-toggle" class="block md:hidden text-white">☰</button>
+      <button id="nav-toggle" class="block lg:hidden text-white" type="button" aria-label="Toggle navigation">☰</button>
     </div>
     <nav id="mobile-nav" class="hidden bg-secondary text-white p-4">
       <ul class="space-y-4">
-        <li><a href="#about" class="block hover:underline">About</a></li>
-        <li><a href="#skills" class="block hover:underline">Skills</a></li>
-        <li><a href="#projects" class="block hover:underline">Projects</a></li>
+        <li><a href="#research" class="block hover:underline">Research</a></li>
         <li><a href="#notes" class="block hover:underline">Notes</a></li>
-        <li><a href="https://docs.google.com/presentation/d/1gxqpNWv6xB8cvFh9NjGwcAtcWf3-ohrWVr2azOIOo4A/edit?usp=sharing" class="block hover:underline">Presentations</a></li>
-        <li><a href="#events" class="block hover:underline">Events</a></li>
+        <li><a href="#projects" class="block hover:underline">Projects</a></li>
+        <li><a href="#timeline" class="block hover:underline">Timeline</a></li>
+        <li><a href="pic/Gemini_Generated_404.png" download class="block hover:underline">CV</a></li>
         <li><a href="#contact" class="block hover:underline">Contact</a></li>
       </ul>
     </nav>
   </header>
 
-  <!-- Hero Section -->
-  <section class="text-white py-8 md:py-10 bg-primary overflow-hidden">
-    <div class="container mx-auto px-6">
-      <div class="flex flex-col md:flex-row md:items-center">
-        <div class="w-full md:w-1/2 flex justify-center md:justify-end md:shrink-0">
-          <img
-            src="pic/me_transparent.png"
-            alt="Stylized portrait of Drejc Pesjak"
-            class="w-full max-w-sm mb-4 md:mb-0 md:max-w-md lg:max-w-lg object-contain"
-          >
-        </div>
-
-        <div class="w-full md:w-1/2 text-center md:text-left md:-ml-10 lg:-ml-16">
-          <h2 class="text-5xl font-bold mb-4 text-accent">Hi, I'm Drejc Pesjak</h2>
-          <p class="text-lg mb-8">AI Researcher | PhD Student | ML Engineer</p>
-          <div class="flex flex-col sm:flex-row sm:justify-center md:justify-start gap-4">
-            <a href="#projects" class="bg-secondary py-2 px-6 rounded shadow-lg hover:bg-gray-600 transition">
-              View Projects
-            </a>
-            <a href="pic/Gemini_Generated_404.png" download class="bg-secondary py-2 px-6 rounded shadow-lg hover:bg-gray-600 transition">
-              Download CV
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- About Section -->
-  <section id="about" class="py-12 bg-secondary">
-    <div class="container mx-auto px-6 text-center">
-      <h2 class="text-4xl font-bold mb-8 text-white">About Me</h2>
-      <p class="text-lg leading-relaxed">
-        I’m a PhD student and AI researcher at the Jožef Stefan Institute in Ljubljana. I’m currently working on mechanistic interpretability for transformer models, including probing approaches, sparse autoencoders, and intervention-style analyses.
-        <br>
-        <br>
-        I completed a Master’s degree in Data Science and have ten years of programming experience, with prior work in applied machine learning systems including MLOps, large-scale data analysis, and computer vision on the edge.
-      </p>
-    </div>
-  </section>
-
-  <!-- Skills / Stack Section -->
-  <section id="skills" class="py-12 bg-primary">
-    <div class="container mx-auto px-6">
-      <h2 class="text-4xl font-bold text-white mb-3 text-center">Research Stack</h2>
-      <p class="text-soft text-center max-w-3xl mx-auto mb-10">
-        Tools and libraries I actively use for research, experimentation, and analysis.
-      </p>
-
-      <!-- Current focus and tooling -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
-        <div class="bg-secondary rounded-lg p-6">
-          <h3 class="text-xl font-semibold text-white mb-2">Recent work</h3>
-            <ul class="text-soft space-y-1">
-              <li>Trained sparse autoencoders on large models on an HPC cluster.</li>
-              <li>Identified and suppressed deceptive features in LLaMA models.</li>
-              <li>Beat prior NER results using MI-based analysis.</li>
-              <li>Built agentic social simulations with LLMs.</li>
-              <li>Connected LLMs to a robotic arm for planning and control.</li>
-            </ul>
-        </div>
-
-        <div class="bg-secondary rounded-lg p-6">
-          <h3 class="text-xl font-semibold text-white mb-4">Mech Interp libraries</h3>
-        
-          <!-- Each row: fixed-size icon box + name text -->
-          <ul class="space-y-3">
-            <li class="flex items-center gap-3">
-              <span class="w-11 h-11 flex items-center justify-center rounded shrink-0">
-                <img src="pic/huggingface-icon.svg" alt="Hugging Face" class="w-11 h-11 object-contain" />
-              </span>
-              <span class="text-soft">Hugging Face</span>
-            </li>
-        
-            <li class="flex items-center gap-3">
-              <span class="w-11 h-11 flex items-center justify-center rounded shrink-0">
-                <img src="pic/translens.svg" alt="TransformerLens" class="w-11 h-11 object-contain" />
-              </span>
-              <span class="text-soft">TransformerLens</span>
-            </li>
-        
-            <li class="flex items-center gap-3">
-              <span class="w-11 h-11 flex items-center justify-center rounded shrink-0">
-                <img src="pic/saelens-icon3.svg" alt="SAE Lens" class="w-11 h-11 object-contain" />
-              </span>
-              <span class="text-soft">SAE Lens</span>
-            </li>
-        
-            <li class="flex items-center gap-3">
-              <span class="w-11 h-11 flex items-center justify-center rounded shrink-0">
-                <img src="pic/logitlens-icon2.svg" alt="Logit Lens" class="w-11 h-11 object-contain" />
-              </span>
-              <span class="text-soft">Logit Lens</span>
-            </li>
-        
-            <li class="flex items-center gap-3">
-              <span class="w-11 h-11 flex items-center justify-center rounded shrink-0">
-                <img src="pic/gemma-icon3.svg" alt="GemmaScope" class="w-11 h-11 object-contain" />
-              </span>
-              <span class="text-soft">GemmaScope 2</span>
-            </li>
-          </ul>
-        
-        </div>
-      </div>
-
-      <!-- Current tools (curated icons) -->
-      <div class="bg-secondary rounded-lg p-6 mb-6">
-        <h3 class="text-xl font-semibold text-white mb-4">Current tools</h3>
-        <div class="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-4 items-center justify-items-center">
-          <!-- ML / Python -->
-          <i class="devicon-python-plain-wordmark text-5xl" title="Python"></i>
-          <i class="devicon-pytorch-plain-wordmark text-5xl" title="PyTorch"></i>
-          <i class="devicon-scikitlearn-plain text-5xl" title="scikit-learn"></i>
-          <i class="devicon-numpy-plain-wordmark text-5xl" title="NumPy"></i>
-          <i class="devicon-pandas-plain-wordmark text-5xl" title="pandas"></i>
-          <i class="devicon-jupyter-plain-wordmark text-5xl" title="Jupyter"></i>
-          <i class="devicon-tensorflow-original-wordmark text-5xl" title="TensorFlow"></i>
-          <i class="devicon-keras-plain-wordmark text-5xl" title="Keras"></i>
-          <i class="devicon-matplotlib-plain text-5xl" title="Matplotlib"></i>
-
-          <!-- System / Dev -->
-          <i class="devicon-linux-plain text-5xl" title="Linux"></i>
-          <i class="devicon-git-plain-wordmark text-5xl" title="Git"></i>
-          <i class="devicon-github-original-wordmark text-5xl" title="GitHub"></i>
-          <i class="devicon-docker-plain-wordmark text-5xl" title="Docker"></i>
-          <i class="devicon-googlecloud-plain-wordmark text-5xl" title="GCP"></i>
-          <i class="devicon-apacheairflow-plain-wordmark text-5xl" title="Airflow"></i>
-
-          <!-- Writing / figures -->
-          <i class="devicon-latex-original text-5xl" title="LaTeX"></i>
-        </div>
-      </div>
-
-      <!-- Optional: other tools (collapsed) -->
-      <div class="text-center">
-        <button
-          id="other-tools-toggle"
-          class="bg-secondary text-white py-2 px-4 rounded hover:bg-gray-600 transition"
-          type="button"
-        >
-          Show other tools
-        </button>
-      </div>
-
-      <!-- ALL original icons -->
-      <div id="other-tools" class="hidden mt-6 bg-secondary rounded-lg p-6">
-        <h3 class="text-xl font-semibold text-white mb-4">Other tools from my past</h3>
-
-        <div class="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-10 gap-4 items-center justify-items-center opacity-90">
-          <!-- Programming Languages -->
-          <i class="devicon-r-plain text-5xl" title="R"></i>
-          <i class="devicon-cplusplus-plain text-5xl" title="C++"></i>
-          <i class="devicon-c-plain text-5xl" title="C"></i>
-          <i class="devicon-java-plain-wordmark text-5xl" title="Java"></i>
-          <i class="devicon-csharp-plain text-5xl" title="C#"></i>
-          <i class="devicon-javascript-plain text-5xl" title="JavaScript"></i>
-          <i class="devicon-kotlin-plain-wordmark text-5xl" title="Kotlin"></i>
-          <i class="devicon-bash-plain text-5xl" title="Bash"></i>
-
-          <!-- Data Tools & Databases -->
-          <i class="devicon-mysql-plain-wordmark text-5xl" title="MySQL"></i>
-          <i class="devicon-postgresql-plain-wordmark text-5xl" title="PostgreSQL"></i>
-          <i class="devicon-mongodb-plain-wordmark text-5xl" title="MongoDB"></i>
-          <i class="devicon-kaggle-original-wordmark text-5xl" title="Kaggle"></i>
-          <i class="devicon-matlab-plain text-5xl" title="MATLAB"></i>
-          <i class="devicon-opencv-plain-wordmark text-5xl" title="OpenCV"></i>
-
-          <!-- Cloud & DevOps -->
-          <i class="devicon-kubernetes-plain-wordmark text-5xl" title="Kubernetes"></i>
-          <i class="devicon-amazonwebservices-plain-wordmark text-5xl" title="AWS"></i>
-          <i class="devicon-heroku-original-wordmark text-5xl" title="Heroku"></i>
-          <i class="devicon-apachekafka-original-wordmark text-5xl" title="Kafka"></i>
-          <i class="devicon-bitbucket-original-wordmark text-5xl" title="Bitbucket"></i>
-          <i class="devicon-vscode-plain-wordmark text-5xl" title="VS Code"></i>
-
-          <!-- Robotics & Automation -->
-          <i class="devicon-arduino-plain-wordmark text-5xl" title="Arduino"></i>
-          <i class="devicon-gazebo-plain-wordmark text-5xl" title="Gazebo"></i>
-          <i class="devicon-selenium-original text-5xl" title="Selenium"></i>
-
-          <!-- Web Technologies -->
-          <i class="devicon-html5-plain-wordmark text-5xl" title="HTML5"></i>
-          <i class="devicon-css3-plain-wordmark text-5xl" title="CSS3"></i>
-          <i class="devicon-bootstrap-plain text-5xl" title="Bootstrap"></i>
-          <i class="devicon-nodejs-plain-wordmark text-5xl" title="Node.js"></i>
-          <i class="devicon-jquery-plain-wordmark text-5xl" title="jQuery"></i>
-          <i class="devicon-angular-plain-wordmark text-5xl" title="Angular"></i>
-          <i class="devicon-streamlit-plain-wordmark text-5xl" title="Streamlit"></i>
-          <i class="devicon-typescript-plain text-5xl" title="TypeScript"></i>
-          <i class="devicon-androidstudio-plain-wordmark text-5xl" title="Android Studio"></i>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Projects Section -->
-  <section id="projects" class="py-12 bg-secondary">
-    <div class="container mx-auto text-center">
-      <h2 class="text-4xl font-bold text-white mb-8">Projects</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- Scaling Monosemanticity -->
-        <div class="relative">
-          <img src="pic/scaling-monosemanticity.png" class="w-full h-48 object-cover rounded shadow-lg">
-          <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center opacity-0 hover:opacity-100 transition">
-            <h3 class="text-xl text-white font-bold">Scaling Monosemanticity</h3>
-            <a href="https://github.com/drejcpesjak/scaling-monosemanticity-llama" class="mt-4 bg-accent py-2 px-4 rounded hover:bg-gray-600">View on GitHub</a>
-          </div>
-        </div>
-        <!-- NYC Violation Tickets Analysis -->
-        <div class="relative">
-          <img src="pic/nyc-analysis.png" class="w-full h-48 object-cover rounded shadow-lg">
-          <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center opacity-0 hover:opacity-100 transition">
-            <h3 class="text-xl text-white font-bold">NYC Violation Tickets</h3>
-            <a href="https://github.com/drejcpesjak/nyc-violation-tickets-analysis" class="mt-4 bg-accent py-2 px-4 rounded hover:bg-gray-600">View on GitHub</a>
-          </div>
-        </div>
-        <!-- Unbalanced Media -->
-        <div class="relative">
-          <img src="pic/unbalanced-media.png" class="w-full h-48 object-cover rounded shadow-lg">
-          <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center opacity-0 hover:opacity-100 transition">
-            <h3 class="text-xl text-white font-bold">Unbalanced Media</h3>
-            <a href="https://github.com/drejcpesjak/unbalanced-media" class="mt-4 bg-accent py-2 px-4 rounded hover:bg-gray-600">View on GitHub</a>
-          </div>
-        </div>
-        <!-- Weather Prediction MLOps -->
-        <div class="relative">
-          <img src="pic/mlops.png" class="w-full h-48 object-cover rounded shadow-lg">
-          <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center opacity-0 hover:opacity-100 transition">
-            <h3 class="text-xl text-white font-bold">Weather Prediction MLOps</h3>
-            <a href="https://github.com/drejcpesjak/weather-prediction-mlops" class="mt-4 bg-accent py-2 px-4 rounded hover:bg-gray-600">View on GitHub</a>
-          </div>
-        </div>
-        <!-- Compare Color Detectors -->
-        <div class="relative">
-          <img src="pic/compare-color.png" class="w-full h-48 object-cover rounded shadow-lg">
-          <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center opacity-0 hover:opacity-100 transition">
-            <h3 class="text-xl text-white font-bold">Compare Color Detectors</h3>
-            <a href="https://github.com/drejcpesjak/compare_color-detectors" class="mt-4 bg-accent py-2 px-4 rounded hover:bg-gray-600">View on GitHub</a>
-          </div>
-        </div>
-        <!-- Face Detection Study -->
-        <div class="relative">
-          <img src="pic/face-detection-study.jpg" class="w-full h-48 object-cover rounded shadow-lg">
-          <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center opacity-0 hover:opacity-100 transition">
-            <h3 class="text-xl text-white font-bold">Face Detection Study</h3>
-            <a href="https://github.com/drejcpesjak/face-detection_study" class="mt-4 bg-accent py-2 px-4 rounded hover:bg-gray-600">View on GitHub</a>
-          </div>
-        </div>
-        <!-- DPhate - Double Paraphrasing -->
-        <div class="relative">
-          <img src="pic/dphate.png" class="w-full h-48 object-cover rounded shadow-lg">
-          <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center opacity-0 hover:opacity-100 transition">
-            <h3 class="text-xl text-white font-bold">DPhate</h3>
-            <a href="https://github.com/drejcpesjak/DPhate-double-paraphrasing-hate-speech" class="mt-4 bg-accent py-2 px-4 rounded hover:bg-gray-600">View on GitHub</a>
-          </div>
-        </div>
-        <!-- Herz Bot -->
-        <div class="relative">
-          <img src="pic/hertz-bot.jpg" class="w-full h-48 object-cover rounded shadow-lg">
-          <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center opacity-0 hover:opacity-100 transition">
-            <h3 class="text-xl text-white font-bold">Herz Bot</h3>
-            <a href="https://github.com/drejcpesjak/Herz-bot" class="mt-4 bg-accent py-2 px-4 rounded hover:bg-gray-600">View on GitHub</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Research Notes Section -->
-  <section id="notes" class="py-12 bg-primary text-white">
-    <div class="container mx-auto px-6 text-center">
-      <h2 class="text-4xl font-bold mb-3">Research Notes</h2>
-      <p class="text-soft max-w-3xl mx-auto mb-8">
-        Short write-ups that document lessons learned and experiments behind my projects.
-      </p>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
-        <a href="posts/future-mi.html"
-          class="block bg-secondary rounded-lg overflow-hidden shadow-lg hover:opacity-95 transition">
-          <img src="pic/mind-map-preview.png"
-              alt="The Future of Mech Interp"
-              class="w-full h-48 object-cover">
-
-          <div class="p-5">
-            <h3 class="text-xl font-bold text-white">The Future of Mech Interp</h3>
-            <p class="text-soft mt-2">
-              Seven underexplored areas that feel especially important right now, pulled from a giant research mind map.
+  <main id="top">
+    <section class="hero-section bg-primary text-white">
+      <div class="site-container">
+        <div class="hero-layout">
+          <div class="hero-copy">
+            <p class="eyebrow mb-4">PhD student · LLM internals · AI systems</p>
+            <h1 class="hero-title mb-5">I study how language models think and understand the world.</h1>
+            <p class="text-xl text-soft leading-relaxed max-w-3xl mb-5">
+              I’m Drejc Pesjak, a PhD student at the Jožef Stefan Institute working on mechanistic interpretability for transformer language models.
             </p>
-
-            <div class="mt-4 flex flex-wrap gap-2">
-              <span class="px-3 py-1 rounded bg-primary text-soft text-sm">Interp Agents</span>
-              <span class="px-3 py-1 rounded bg-primary text-soft text-sm">Reasoning Models</span>
-              <span class="px-3 py-1 rounded bg-primary text-soft text-sm">Causality</span>
+            <p class="text-soft leading-relaxed max-w-3xl mb-8">
+              My current work focuses on sparse autoencoders, probing, causal interventions, and practical tools for understanding LLM internals. I also build concrete AI systems when an idea is interesting enough to test.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-3 mb-6">
+              <a href="#notes" class="btn-primary">Read Notes</a>
+              <a href="#projects" class="btn-secondary">View Projects</a>
+              <a href="pic/Gemini_Generated_404.png" download class="btn-link">Download CV</a>
+            </div>
+            <div class="flex flex-wrap gap-3 text-sm">
+              <a href="https://github.com/DrejcPesjak" class="profile-link" target="_blank" rel="noopener noreferrer">GitHub</a>
+              <a href="mailto:drejc.pesjak.pesjak@gmail.com" class="profile-link">Email</a>
+              <a href="https://scholar.google.com/citations?user=kUYwtxgAAAAJ&hl=sl" class="profile-link" target="_blank" rel="noopener noreferrer">Google Scholar</a>
+              <a href="https://www.linkedin.com/in/drejc-pesjak-46974727a/" class="profile-link" target="_blank" rel="noopener noreferrer">LinkedIn</a>
             </div>
           </div>
-        </a>
 
-        <!-- Note card -->
-        <a href="posts/sae-llama.html"
-          class="block bg-secondary rounded-lg overflow-hidden shadow-lg hover:opacity-95 transition">
-          <img src="pic/scaling-monosemanticity.png"
-              alt="Scaling Monosemanticity on LLaMA"
-              class="w-full h-48 object-cover">
+          <div class="hero-avatar-wrap">
+            <img
+              src="pic/me_transparent_circle.png"
+              alt="Stylized portrait of Drejc Pesjak"
+              class="avatar-portrait"
+            >
+          </div>
+        </div>
+      </div>
+    </section>
 
-          <div class="p-5">
-            <h3 class="text-xl font-bold text-white">Scaling Monosemanticity on LLaMA</h3>
-            <p class="text-soft mt-2">
-              Practical lessons from training SAEs, debugging failures, and what actually mattered in replication.
-            </p>
-
-            <div class="mt-4 flex flex-wrap gap-2">
-              <span class="px-3 py-1 rounded bg-primary text-soft text-sm">SAE</span>
-              <span class="px-3 py-1 rounded bg-primary text-soft text-sm">LLaMA</span>
-              <span class="px-3 py-1 rounded bg-primary text-soft text-sm">HPC</span>
+    <section id="about" class="section-band bg-secondary">
+      <div class="site-container">
+        <div class="about-layout">
+          <div>
+            <p class="eyebrow mb-3">About</p>
+            <h2 class="section-title mb-5">Researcher-builder, currently focused on LLM interpretability.</h2>
+            <div class="space-y-4 text-soft leading-relaxed text-lg">
+              <p>
+                I’m a PhD student and AI researcher at the Jožef Stefan Institute in Ljubljana. My current research is focused on mechanistic interpretability for transformer language models, especially sparse autoencoders, probing approaches, and intervention-style analyses.
+              </p>
+              <p>
+                Before moving deeper into LLM interpretability, I worked across applied machine learning, NLP, computer vision, MLOps, and large-scale data analysis. I like projects that start as strange ideas and end as working systems.
+              </p>
             </div>
           </div>
-        </a>
-      </div>
-    </div>
-  </section>
 
-  <!-- Events Section -->
-  <section id="events" class="py-12 bg-primary text-white">
-    <div class="container mx-auto">
-      <h2 class="text-4xl font-bold mb-8 text-center">Events & Conferences</h2>
-      <div class="space-y-6">
-        <!-- 2026 Events -->
-        <div>
-          <h3 class="text-2xl font-bold bg-secondary py-2 px-4 rounded">2026</h3>
-          <ul class="space-y-2 pl-4">
-            <li>
-              AI for Materials Science Tuning Laser-Induced Graphene Production : Lars Kotthoff
-              <span class="block text-sm text-gray-400">(23. 4. 2026, IJS LJ)</span>
-            </li>
-            <li>
-              From Understanding People to Securing AI - A Human-Centered Research Journey Through Large Language Models : Erik Derner
-              <span class="block text-sm text-gray-400">(16. 3. 2026, IJS LJ)</span>
-            </li>
-            <li>
-              Slo AI Meetup - From Pixels to Probabilities: AI for Sports Understanding
-              <span class="block text-sm text-gray-400">(12. 3. 2026, Sportsradar LJ)</span>
-            </li>
-            <li>
-              Deep Learning in the Search for Dark Matter: Dr. Roberto Ruiz de Austri Bazan
-              <span class="block text-sm text-gray-400">(4. 3. 2026, IJS LJ)</span>
-            </li>
-            <li>
-              DATA_FAIR 2026 - Data Engineering and Data Science conference
-              <span class="block text-sm text-gray-400">(12. 2. 2026, LJ)</span>
-            </li>
-          </ul>
-        </div>
-
-        <!-- 2025 Events -->
-        <div>
-          <h3 class="text-2xl font-bold bg-secondary py-2 px-4 rounded">2025</h3>
-          <ul class="space-y-2 pl-4">
-            <li>
-              AutoLearn-SI Two-Day Exploratory Workshop
-              <span class="block text-sm text-gray-400">(24. - 25. 11. 2025, IJS LJ)</span>
-            </li>
-            <li>
-              Spark Sessions 005: Data Science@UL-FRI
-              <span class="block text-sm text-gray-400">(18. 11. 2025, UL FRI)</span>
-            </li>
-            <li>
-              Cognitive Science conference
-              <span class="block text-sm text-gray-400">(9. 10. 2025, IJS LJ)</span>
-            </li>
-            <li>
-              Slovenian Conference on Artificial Intelligence
-              <span class="block text-sm text-gray-400">(8. 10. 2025, IJS LJ)</span>
-            </li>
-            <li>
-              Data Mining and Data wearhouses: SiKDD conference
-              <span class="block text-sm text-gray-400">(6. 10. 2025, IJS LJ)</span>
-            </li>
-            <li>
-              Predicting Traffic Intensity on Motorway Sections: Matic Kladnik
-              <span class="block text-sm text-gray-400">(22. 9. 2025, IPS LJ)</span>
-            </li>
-            <li>
-              Umetna inteligenca za znanost: Na poti k ustvarjalnim, odprtim agentom umetne inteligence: dr. Nenad Tomašev
-              <span class="block text-sm text-gray-400">(1. 7. 2025, IJS LJ)</span>
-            </li>
-            <li>
-              Dan umetne inteligence NVIDIA & FRI AI Day 2025
-              <span class="block text-sm text-gray-400">(25. 3. 2025, UL FRI)</span>
-            </li>
-            <li>
-              Spark Sessions 003: Data Science@UL-FRI 
-              <span class="block text-sm text-gray-400">(25. 2. 2025, UL FRI)</span>
-            </li>
-            <li>
-              AI x Pravo: Law Brainer
-              <span class="block text-sm text-gray-400">(20. - 21. 2. 2025, FMF UL, PF UL)</span>
-            </li>
-            <li>
-              Lessons from Building AI Coding Assistants: Slo AI Meetup
-              <span class="block text-sm text-gray-400">(11. 2. 2025, Outbrain LJ)</span>
-            </li>
-            <li>
-              AI/LLM monitoring and observability with New Relic and OpenTelemetry: Harry Kimpel
-              <span class="block text-sm text-gray-400">(15. 1. 2025, UL FRI)</span>
-            </li>
-          </ul>
-        </div>
-        
-        <!-- 2024 Events -->
-        <div>
-          <h3 class="text-2xl font-bold bg-secondary py-2 px-4 rounded">2024</h3>
-          <ul class="space-y-2 pl-4">
-            <li>
-              Spark Sessions 002: Data Science@UL-FRI 
-              <span class="block text-sm text-gray-400">(10. 12. 2024, UL FRI)</span>
-            </li>
-            <li>
-              Ali bo umetna inteligenca pisala kot Ivan Cankar?: Knjižni sejem, RTV Slo 
-              <span class="block text-sm text-gray-400">(27. 11. 2024, LJ)</span>
-            </li>
-            <li>
-              Ai4Gov Evaluation Workshop 
-              <span class="block text-sm text-gray-400">(27. 11. 2024, IJS LJ)</span>
-            </li>
-            <li>
-              Kompetentna in etična uporaba orodij generativne umetne inteligence: Karierni center UL 
-              <span class="block text-sm text-gray-400">(26. 11. 2024, online)</span>
-            </li>
-            <li>
-              LLM's and Audio Understanding: Slo AI Meetup 
-              <span class="block text-sm text-gray-400">(21. 11. 2024, Sportradar LJ)</span>
-            </li>
-            <li>
-              Spark Sessions 001: Data Science@UL-FRI 
-              <span class="block text-sm text-gray-400">(22. 10. 2024, UL FRI)</span>
-            </li>
-            <li>
-              Nič več znanstvena fantastika: AI in napredne tehnologije v znanosti: BEST 
-              <span class="block text-sm text-gray-400">(22. 10. 2024, UL FRI)</span>
-            </li>
-            <li>
-              LLM Dojo: Jan Rupnik 
-              <span class="block text-sm text-gray-400">(18. 10. 2024, IJS E3)</span>
-            </li>
-            <li>
-              Okrogla miza o vplivu umetne inteligence na znanost in družbo: SMASH 
-              <span class="block text-sm text-gray-400">(8. 10. 2024, Vipava)</span>
-            </li>
-            <li>
-              Snowflake beginner course by In516ht 
-              <span class="block text-sm text-gray-400">(15. 2. - 5. 6. 2024)</span>
-            </li>
-            <li>
-              Geometric Deep Learning, Categorical Deep Learning: Petar Veličković, DeepMind 
-              <span class="block text-sm text-gray-400">(21. 5. 2024, FRI)</span>
-            </li>
-            <li>
-              Data Streaming with Kafka - A Modernist Approach: Jure Ham and Matic Žgur, Outbrain 
-              <span class="block text-sm text-gray-400">(15. 5. 2024, FRI)</span>
-            </li>
-            <li>
-              Usage of AWS in data engineering: Anžej Curk and Denis Turšič, Result 
-              <span class="block text-sm text-gray-400">(8. 5. 2024, FRI)</span>
-            </li>
-            <li>
-              Reinforcement fundamentals and state of the art: Joshua B. Evans 
-              <span class="block text-sm text-gray-400">(10.-11. 1. 2024, FRI)</span>
-            </li>
-          </ul>
-        </div>
-  
-        <!-- 2023 Events -->
-        <div>
-          <h3 class="text-2xl font-bold bg-secondary py-2 px-4 rounded">2023</h3>
-          <ul class="space-y-2 pl-4">
-            <li>
-              Graph Deep Learning - Fundamentals and Applications of Graph Convolutional Layers: Florian Thamm 
-              <span class="block text-sm text-gray-400">(23. 11. 2023, FRI)</span>
-            </li>
-            <li>
-              Okrogla miza: UI - ustaviti ali pospešiti njen razvoj? 
-              <span class="block text-sm text-gray-400">(29. 9. 2023, FRI)</span>
-            </li>
-            <li>
-              Outbrain DataScience summer school 
-              <span class="block text-sm text-gray-400">(10.-14. 7. 2023)</span>
-            </li>
-            <li>
-              ŠO FRI: Sodobna umetna inteligenca: Tehnologije in dileme 
-              <span class="block text-sm text-gray-400">(29. 3. 2023, FRI)</span>
-            </li>
-            <li>
-              EESTEC JobFair: Svet Prihodnosti 
-              <span class="block text-sm text-gray-400">(16. 3. 2023, FRI)</span>
-            </li>
-            <li>
-              Data Science@UL-FRI: Recommender systems with TensorFlow workshop 
-              <span class="block text-sm text-gray-400">(22. 2. 2023, FRI)</span>
-            </li>
-          </ul>
-        </div>
-  
-        <!-- Older Events -->
-        <div>
-            <h3 class="text-2xl font-bold bg-secondary py-2 px-4 rounded">Older Events</h3>
-            <ul class="space-y-2 pl-4">
-            <li>
-                Data Science@UL-FRI: Introduction to state of the art NLP (BERT and GPT) 
-                <span class="block text-sm text-gray-400">(17.6.2021, online)</span>
-            </li>
-            <li>
-                Gašper Beguš, Ph.D.: Kako se umetna inteligenca uči govoriti? 
-                <span class="block text-sm text-gray-400">(11.11.2020, online)</span>
-            </li>
-            <li>
-                Umetna inteligenca in digitalni marketing - Kaj pa Watson? - OpenLab 
-                <span class="block text-sm text-gray-400">(21.10.2019, Kranj)</span>
-            </li>
-            <li>
-                Umetna inteligenca - malo zares in malo za hec 
-                <span class="block text-sm text-gray-400">(17.10.2019, Ljubljana)</span>
-            </li>
-            <li>
-                The subtle art of recommendation (algorithms) 
-                <span class="block text-sm text-gray-400">(14.10.2019, Ljubljana)</span>
-            </li>
-            <li>
-                MEi:CogSci Conference 
-                <span class="block text-sm text-gray-400">(13.-15.6.2019, Ljubljana)</span>
-            </li>
-            <li>
-                Deep Machine Vision - From Research to Market 
-                <span class="block text-sm text-gray-400">(25.4.2019)</span>
-            </li>
-            <li>
-                Artificial Intelligence at your fingertips with Microsoft Azure 
-                <span class="block text-sm text-gray-400">(18.4.2019)</span>
-            </li>
-            <li>
-                Ali ima umetna inteligenca zdravo pamet? : Vid Kocijan 
-                <span class="block text-sm text-gray-400">(16.4.2019, SAZU LJ)</span>
-            </li>
-            <li>
-                Debate KUI 
-                <span class="block text-sm text-gray-400">(četrtki 2019, FRI)</span>
-            </li>
-            <li>
-                Okrogla miza "Možnosti umetne inteligence" EESTEC JobFair 
-                <span class="block text-sm text-gray-400">(21.3.2019, FE LJ)</span>
-            </li>
-            <li>
-                Konferenca AI4GOOD - Huawei 
-                <span class="block text-sm text-gray-400">(FRI, 26.9.2018)</span>
-            </li>
-            <li>
-                FeelTheFuture sejem 
-                <span class="block text-sm text-gray-400">(19.-21. 10. 2017, Celje)</span>
-            </li>
+          <aside class="info-panel">
+            <h3 class="text-xl font-semibold text-white mb-4">Currently</h3>
+            <ul class="space-y-3 text-soft">
+              <li><span class="text-white">PhD:</span> mechanistic interpretability for LLMs</li>
+              <li><span class="text-white">Interests:</span> SAEs, probing, causal interventions, representation analysis</li>
+              <li><span class="text-white">Background:</span> MSc Data Science, broad applied ML work</li>
+              <li><span class="text-white">Location:</span> Ljubljana, Slovenia</li>
             </ul>
+          </aside>
         </div>
-  
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Contact Section -->
-  <section id="contact" class="py-12 bg-secondary text-white">
-    <div class="container mx-auto text-center">
-      <h2 class="text-4xl font-bold mb-8 text-white">Get in Touch</h2>
-      <form id="contact-form" class="max-w-lg mx-auto">
-        <div class="mb-4">
-          <input type="email" id="email" class="w-full py-2 px-4 rounded bg-primary border border-soft text-white" placeholder="Your Email" required>
+    <section id="research" class="section-band bg-primary">
+      <div class="site-container">
+        <div class="section-heading">
+          <p class="eyebrow mb-3">Research</p>
+          <h2 class="section-title">Current Focus</h2>
+          <p class="text-soft max-w-3xl mt-3">
+            Most of my current work is about opening up language models and checking what is actually going on inside, not just what seems to be going on from the outside.
+          </p>
         </div>
-        <div class="mb-4">
-          <input type="text" id="name" class="w-full py-2 px-4 rounded bg-primary border border-soft text-white" placeholder="Your Name" required>
-        </div>
-        <div class="mb-4">
-          <textarea id="message" class="w-full py-2 px-4 rounded bg-primary border border-soft text-white" placeholder="Your Message" required></textarea>
-        </div>
-        <button type="submit" class="bg-accent py-2 px-4 rounded hover:bg-gray-600">Send</button>
-      </form>
-    </div>
-  </section>
 
-  <!-- Footer -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mt-8">
+          <article class="focus-card">
+            <h3 class="text-xl font-semibold text-white mb-3">Mechanistic Interpretability</h3>
+            <p class="text-soft mb-5">Understanding how transformer models represent concepts, circuits, and features internally.</p>
+            <div class="tag-row">
+              <span>SAEs</span><span>probing</span><span>interventions</span><span>LLM internals</span>
+            </div>
+          </article>
+
+          <article class="focus-card">
+            <h3 class="text-xl font-semibold text-white mb-3">Research Prototypes</h3>
+            <p class="text-soft mb-5">Building small but complete systems to test ideas quickly, from analysis pipelines to interactive demos.</p>
+            <div class="tag-row">
+              <span>PyTorch</span><span>Hugging Face</span><span>Python</span><span>HPC</span>
+            </div>
+          </article>
+
+          <article class="focus-card">
+            <h3 class="text-xl font-semibold text-white mb-3">AI Side Projects</h3>
+            <p class="text-soft mb-5">Exploring concrete AI applications outside my PhD when they reveal interesting technical or social behavior.</p>
+            <div class="tag-row">
+              <span>NLP</span><span>agents</span><span>simulations</span><span>computer vision</span>
+            </div>
+          </article>
+        </div>
+
+        <div class="tooling-strip mt-8">
+          <span class="text-white font-semibold">Tools I regularly use:</span>
+          <span>Python</span>
+          <span>PyTorch</span>
+          <span>Hugging Face</span>
+          <span>TransformerLens</span>
+          <span>SAE Lens</span>
+          <span>pandas</span>
+          <span>Jupyter</span>
+          <span>Docker</span>
+          <span>Git</span>
+          <span>HPC/SLURM</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="featured" class="section-band bg-secondary">
+      <div class="site-container">
+        <div class="section-heading">
+          <p class="eyebrow mb-3">Proof of work</p>
+          <h2 class="section-title">Featured Work</h2>
+          <!-- <p class="text-soft max-w-3xl mt-3">
+            These are the projects I would point to first. Some are polished, some are rougher, but they show the kind of problems I like to chase.
+          </p> -->
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-8">
+          <article class="work-card">
+            <img src="pic/scaling-monosemanticity.png" alt="Scaling Monosemanticity on LLaMA" class="work-card-img">
+            <div class="work-card-body">
+              <h3 class="text-xl font-bold text-white">Scaling Monosemanticity on LLaMA</h3>
+              <p class="text-soft mt-2">Reproducing and adapting sparse-autoencoder interpretability experiments for LLaMA-style models, including SAE training, feature inspection, and steering.</p>
+              <div class="tag-row mt-4"><span>SAE</span><span>LLaMA</span><span>replication</span></div>
+              <div class="work-links">
+                <a href="posts/sae-llama.html">Note</a>
+                <a href="https://github.com/drejcpesjak/scaling-monosemanticity-llama" target="_blank" rel="noopener noreferrer">Code</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="work-card">
+            <img src="pic/actstorm-scifi-w.webp" alt="LLM Activation Storm interface concept" class="work-card-img">
+            <div class="work-card-body">
+              <h3 class="text-xl font-bold text-white">LLM Activation Storm</h3>
+              <p class="text-soft mt-2">A local browser app for visualizing LLM activations layer by layer from a single prompt forward pass, built to make transformer internals easier to inspect.</p>
+              <div class="tag-row mt-4"><span>activations</span><span>Gemma</span><span>visualization</span></div>
+              <div class="work-links">
+                <a href="https://github.com/DrejcPesjak/llm-activation-storm" target="_blank" rel="noopener noreferrer">Code</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="work-card">
+            <img src="pic/autogema-cat.webp" alt="Auto-GemmaScope visual concept" class="work-card-img">
+            <div class="work-card-body">
+              <h3 class="text-xl font-bold text-white">Auto-GemmaScope</h3>
+              <p class="text-soft mt-2">Exploring SAE features in Gemma 3 vision-language models, comparing autonomous feature discovery with human-guided interpretability workflows.</p>
+              <div class="tag-row mt-4"><span>Gemma</span><span>VLMs</span><span>Neuronpedia</span></div>
+              <div class="work-links">
+                <a href="https://github.com/DrejcPesjak/auto-gemmascope" target="_blank" rel="noopener noreferrer">Code</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="work-card">
+            <img src="pic/dphate.png" alt="DPhate hate speech paraphrasing project" class="work-card-img">
+            <div class="work-card-body">
+              <h3 class="text-xl font-bold text-white">DPhate: Hate Speech Paraphrasing</h3>
+              <p class="text-soft mt-2">Bachelor thesis project on reducing hateful content through paraphrasing while preserving meaning, using an evaluated NLP rewriting pipeline.</p>
+              <div class="tag-row mt-4"><span>NLP</span><span>transformers</span><span>thesis</span></div>
+              <div class="work-links">
+                <a href="https://github.com/DrejcPesjak/DPhate-double-paraphrasing-hate-speech" target="_blank" rel="noopener noreferrer">Code</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="work-card">
+            <img src="pic/spca-cartoon.webp" alt="Sense Plan Code Act robotics prototype" class="work-card-img">
+            <div class="work-card-body">
+              <h3 class="text-xl font-bold text-white">SPCA: Sense-Plan-Code-Act</h3>
+              <p class="text-soft mt-2">A research prototype combining LLMs, PDDL planning, code generation, and ROS2/UR5 simulation for embodied robotic manipulation.</p>
+              <div class="tag-row mt-4"><span>agents</span><span>planning</span><span>robotics</span></div>
+              <div class="work-links">
+                <a href="https://github.com/DrejcPesjak/minigrid-crewai" target="_blank" rel="noopener noreferrer">Code</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="notes" class="section-band bg-primary">
+      <div class="site-container">
+        <div class="section-heading">
+          <p class="eyebrow mb-3">Public notebook</p>
+          <h2 class="section-title">Research Notes & Ideas</h2>
+          <p class="text-soft max-w-3xl mt-3">
+            A place for longer notes, partial conclusions, and the parts of projects that do not fit nicely into a GitHub README.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mt-8">
+          <a href="posts/future-mi.html" class="note-card">
+            <img src="pic/mind-map-preview.png" alt="The Future of Mech Interp" class="note-card-img">
+            <div class="note-card-body">
+              <div class="note-meta">Research agenda · 2026</div>
+              <h3 class="text-2xl font-bold text-white mt-2">The Future of Mech Interp</h3>
+              <p class="text-soft mt-2">
+                Seven underexplored areas that feel especially important right now, pulled from a giant research mind map.
+              </p>
+              <div class="tag-row mt-4"><span>Interp Agents</span><span>Reasoning Models</span><span>Causality</span></div>
+            </div>
+          </a>
+
+          <a href="posts/sae-llama.html" class="note-card">
+            <img src="pic/scaling-monosemanticity.png" alt="Scaling Monosemanticity on LLaMA" class="note-card-img">
+            <div class="note-card-body">
+              <div class="note-meta">SAE replication · 2025</div>
+              <h3 class="text-2xl font-bold text-white mt-2">Scaling Monosemanticity on LLaMA</h3>
+              <p class="text-soft mt-2">
+                Notes from replicating sparse-autoencoder-style interpretability experiments on LLaMA models: what broke, what mattered, and what I would try differently next.
+              </p>
+              <div class="tag-row mt-4"><span>SAE</span><span>LLaMA</span><span>HPC</span></div>
+            </div>
+          </a>
+
+          <article class="note-card">
+            <img src="pic/agentMI_schema.webp" alt="Agentic mechanistic interpretability schema" class="note-card-img">
+            <div class="note-card-body">
+              <div class="note-meta">Agentic interpretability · TBA</div>
+              <h3 class="text-2xl font-bold text-white mt-2">The Agent Detective: Investigating Gender Bias</h3>
+              <p class="text-soft mt-2">
+                A small agentic interpretability experiment around gender-bias circuitry in language models. Write-up coming soon.
+              </p>
+              <div class="tag-row mt-4"><span>SAE agents</span><span>bias</span><span>Gemma</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="section-band bg-secondary">
+      <div class="site-container">
+        <div class="section-heading">
+          <p class="eyebrow mb-3">Execution</p>
+          <h2 class="section-title">Project Archive / Experiments</h2>
+          <p class="text-soft max-w-3xl mt-3">
+            Older experiments, small tools, and applied ML projects. Not all of them are central now, but they are part of the trail.
+          </p>
+        </div>
+
+        <div class="project-group mt-8">
+          <h3 class="project-group-title">Research Tools and Simulations</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <article class="project-card">
+              <img src="pic/agentbelief.webp" alt="Agentic belief propagation" class="project-card-img">
+              <div>
+                <div class="note-meta">Multi-agent simulation</div>
+                <h4 class="text-xl font-bold text-white mt-1">Agentic Belief Propagation</h4>
+                <p class="text-soft mt-2">LLM-powered agent simulation where beliefs evolve through structured debate, inspired by Axelrod-style models.</p>
+                <a href="https://github.com/DrejcPesjak/agentic-belief-propagation" class="inline-link" target="_blank" rel="noopener noreferrer">View code</a>
+              </div>
+            </article>
+
+            <article class="project-card">
+              <div class="project-card-img project-card-placeholder">arXiv</div>
+              <div>
+                <div class="note-meta">Research tooling</div>
+                <h4 class="text-xl font-bold text-white mt-1">arXiv News Filter</h4>
+                <p class="text-soft mt-2">Daily cs.AI paper fetcher that filters for LLM and mechanistic interpretability papers using local Ollama.</p>
+                <a href="https://github.com/DrejcPesjak/arxiv-news" class="inline-link" target="_blank" rel="noopener noreferrer">View code</a>
+              </div>
+            </article>
+
+            <article class="project-card">
+              <img src="pic/unbalanced-media.png" alt="Unbalanced Media" class="project-card-img">
+              <div>
+                <div class="note-meta">Applied NLP</div>
+                <h4 class="text-xl font-bold text-white mt-1">Unbalanced Media</h4>
+                <p class="text-soft mt-2">Technical analysis of Slovenian media framing using scraping, sentiment analysis, and zero-shot classification.</p>
+                <a href="https://github.com/DrejcPesjak/unbalanced-media" class="inline-link" target="_blank" rel="noopener noreferrer">View code</a>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="project-group">
+          <h3 class="project-group-title">Applied ML, Data Systems, and Older Experiments</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            <article class="mini-project-card">
+              <h4 class="text-lg font-bold text-white">Weather Prediction MLOps</h4>
+              <p class="text-soft mt-2">University cloud project with model serving, Streamlit frontend, FastAPI/Ray Serve, Docker, and Google Cloud deployment.</p>
+              <a href="https://github.com/drejcpesjak/weather-prediction-mlops" class="inline-link" target="_blank" rel="noopener noreferrer">Code</a>
+            </article>
+            <article class="mini-project-card">
+              <h4 class="text-lg font-bold text-white">TimescaleDB Stock Forecasting</h4>
+              <p class="text-soft mt-2">Real-time stock data streaming into TimescaleDB with XGBoost models and a Flask prediction API.</p>
+              <a href="https://github.com/DrejcPesjak/timescaledb-xgboost-flask" class="inline-link" target="_blank" rel="noopener noreferrer">Code</a>
+            </article>
+            <article class="mini-project-card">
+              <h4 class="text-lg font-bold text-white">NYC Violation Tickets</h4>
+              <p class="text-soft mt-2">Large-scale public data analysis and prediction project using big-data tooling and ML workflows.</p>
+              <a href="https://github.com/drejcpesjak/nyc-violation-tickets-analysis" class="inline-link" target="_blank" rel="noopener noreferrer">Code</a>
+            </article>
+            <article class="mini-project-card">
+              <h4 class="text-lg font-bold text-white">Compare Color Detectors</h4>
+              <p class="text-soft mt-2">A computer vision comparison project for color detection methods.</p>
+              <a href="https://github.com/drejcpesjak/compare_color-detectors" class="inline-link" target="_blank" rel="noopener noreferrer">Code</a>
+            </article>
+            <article class="mini-project-card">
+              <h4 class="text-lg font-bold text-white">Face Detection Study</h4>
+              <p class="text-soft mt-2">Older computer vision comparison of face-detection algorithms on real-world video-style inputs.</p>
+              <a href="https://github.com/DrejcPesjak/face-detection_study" class="inline-link" target="_blank" rel="noopener noreferrer">Code</a>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="timeline" class="section-band bg-primary">
+      <div class="site-container">
+        <div class="section-heading">
+          <p class="eyebrow mb-3">Path</p>
+          <h2 class="section-title">Timeline</h2>
+          <p class="text-soft max-w-3xl mt-3">
+            I have been circling around AI for a while. This is the compressed version, from early events and side projects to current interpretability work.
+          </p>
+        </div>
+
+        <div class="timeline-list mt-8">
+          <article class="timeline-item">
+            <span class="timeline-year">2017</span>
+            <div>
+              <span class="timeline-label">Attended</span>
+              <h3 class="text-xl font-bold text-white mt-2">FeelTheFuture fair, Celje</h3>
+              <p class="text-soft mt-2">Early exposure to applied AI, robotics, and emerging technology before the current LLM wave.</p>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <span class="timeline-year">2019</span>
+            <div>
+              <span class="timeline-label">Attended</span>
+              <h3 class="text-xl font-bold text-white mt-2">AI4GOOD and Slovenian AI events</h3>
+              <p class="text-soft mt-2">A stretch of pre-ChatGPT AI events that shaped my interest in practical AI systems and research culture.</p>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <span class="timeline-year">2023</span>
+            <div>
+              <span class="timeline-label">Project</span>
+              <h3 class="text-xl font-bold text-white mt-2">LLM-based hate speech paraphrasing</h3>
+              <p class="text-soft mt-2">Bachelor thesis work around rewriting toxic text while preserving meaning.</p>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <span class="timeline-year">2024</span>
+            <div>
+              <span class="timeline-label">Education</span>
+              <h3 class="text-xl font-bold text-white mt-2">Master’s in Data Science and applied ML work</h3>
+              <p class="text-soft mt-2">Built breadth across NLP, computer vision, MLOps, large-scale analysis, and concrete AI systems.</p>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <span class="timeline-year">2025</span>
+            <div>
+              <span class="timeline-label">Research</span>
+              <h3 class="text-xl font-bold text-white mt-2">Sparse autoencoders on LLaMA</h3>
+              <p class="text-soft mt-2">Moved deeper into mechanistic interpretability, training SAEs, debugging feature pipelines, and testing interventions.</p>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <span class="timeline-year">2026</span>
+            <div>
+              <span class="timeline-label">Research notes</span>
+              <h3 class="text-xl font-bold text-white mt-2">Research agenda for the future of mech interp</h3>
+              <p class="text-soft mt-2">Mapping underexplored areas around agents, reasoning models, evaluation, representation engineering, and causality.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section-band bg-secondary">
+      <div class="site-container">
+        <div class="contact-layout">
+          <div>
+            <p class="eyebrow mb-3">Contact</p>
+            <h2 class="section-title mb-5">Research conversations are the best reason to reach out.</h2>
+            <div class="space-y-4 text-soft leading-relaxed">
+              <p>
+                If you have a strange idea or a question, shoot me a message.
+              </p>
+            </div>
+          </div>
+
+          <form id="contact-form" class="contact-form">
+            <div>
+              <label for="email" class="form-label">Your Email</label>
+              <input type="email" id="email" class="form-field" placeholder="you@example.com" required>
+            </div>
+            <div>
+              <label for="name" class="form-label">Your Name</label>
+              <input type="text" id="name" class="form-field" placeholder="Your name" required>
+            </div>
+            <div>
+              <label for="message" class="form-label">Your Message</label>
+              <textarea id="message" class="form-field min-h-32" placeholder="What are you working on?" required></textarea>
+            </div>
+            <button type="submit" class="btn-primary w-full sm:w-auto">Open Email Draft</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
   <footer class="bg-primary text-center py-6 text-soft">
     <p>© 2024 Drejc Pesjak. All Rights Reserved.</p>
   </footer>
