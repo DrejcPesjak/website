@@ -19,21 +19,20 @@
   <meta name="description" content="A practical write-up on training sparse autoencoders on LLaMA activations, finding interpretable features, steering them, and debugging the systems problems that showed up along the way." />
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../style.css">
   <script src="../script.js" defer></script>
 </head>
 
-<body class="bg-primary text-white">
+<body class="bg-gray-900 text-white">
 
-  <!-- Simple header -->
-  <header class="bg-primary">
-    <div class="container mx-auto px-6 py-6 flex items-center justify-between">
+  <header class="bg-gray-900 border-b border-gray-800">
+    <div class="mx-auto max-w-6xl px-4 py-5 flex items-center justify-between">
       <a href="../index.html" class="flex items-center gap-3">
-        <img src="../pic/logo.svg" alt="Drejc Pesjak Logo" class="w-48">
+        <img src="../pic/logo_cropped.svg" alt="Drejc Pesjak Logo" class="w-48">
       </a>
-      <nav class="text-soft">
-        <a href="../index.html" class="hover:underline mr-4">Home</a>
+      <nav class="text-gray-300 flex gap-4">
+        <a href="../index.html" class="hover:underline">Home</a>
         <a href="https://github.com/drejcpesjak/scaling-monosemanticity-llama"
            class="hover:underline"
            target="_blank" rel="noopener noreferrer">
@@ -44,10 +43,10 @@
   </header>
 
   <!-- Article -->
-  <main class="container mx-auto px-6 pb-16">
+  <main class="mx-auto max-w-6xl px-4 pb-16">
     <article class="max-w-3xl mx-auto">
 
-      <div class="bg-secondary rounded-lg overflow-hidden shadow-lg">
+      <div class="bg-gray-800 rounded-lg overflow-hidden shadow-lg">
         <img
           src="../pic/scaling-monosemanticity.png"
           alt="Scaling Monosemanticity"
@@ -59,22 +58,23 @@
         <h1 class="text-4xl font-bold text-white leading-tight">
           Scaling Monosemanticity on a Small LLaMA (and What Broke Along the Way)
         </h1>
-        <p class="text-soft mt-3">
+        <p class="mt-3 text-sm font-semibold uppercase tracking-wide text-red-400">
+          Published <time datetime="2026-03-18">March 18, 2026</time>
+        </p>     
+        <p class="text-gray-300 mt-3">
           I wanted to see if I could reproduce the <em>shape</em> of Anthropic’s Scaling Monosemanticity result on a much smaller, open model. Not the exact scale, not the same guarantees. Just: can I train a sparse autoencoder on LLaMA activations, find meaningful features, and then actually <em>do something</em> with them?
         </p>
 
-        <div class="mt-5 flex flex-wrap gap-2">
-          <span class="px-3 py-1 rounded border border-gray-500 text-soft text-sm">Sparse Autoencoders</span>
-          <span class="px-3 py-1 rounded border border-gray-500 text-soft text-sm">LLaMA</span>
-          <span class="px-3 py-1 rounded border border-gray-500 text-soft text-sm">Interpretability</span>
-          <span class="px-3 py-1 rounded border border-gray-500 text-soft text-sm">HPC</span>
-          <span class="px-3 py-1 rounded border border-gray-500 text-soft text-sm">Mechanistic Interpretability</span>
+        <div class="flex flex-wrap gap-2 mt-5">
+          <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-900 px-3 py-1 text-sm text-gray-300">Sparse Autoencoders</span>
+          <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-900 px-3 py-1 text-sm text-gray-300">LLaMA</span>
+          <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-900 px-3 py-1 text-sm text-gray-300">Interpretability</span>
+          <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-900 px-3 py-1 text-sm text-gray-300">HPC</span>
+          <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-900 px-3 py-1 text-sm text-gray-300">Mechanistic Interpretability</span>
         </div>
-
-        
       </header>
 
-      <section class="mt-10 space-y-6 text-soft">
+      <section class="mt-10 space-y-6 text-gray-300">
         <h2 class="text-2xl font-semibold text-white">What I Was Trying To Do</h2>
         <p>
           The high-level idea was simple:
@@ -109,7 +109,7 @@
             <img src="https://github.com/DrejcPesjak/scaling-monosemanticity-llama/blob/main/pictures/methods.png?raw=true"
                  alt="Overview of the sparse autoencoder pipeline"
                  class="w-full sm:w-1/2 mx-auto rounded-lg shadow-lg" />
-            <figcaption class="text-soft text-sm mt-2">
+            <figcaption class="text-gray-300 text-sm mt-2">
               Overview of the pipeline: collect token-level activations, train the sparse autoencoder, then inspect and intervene on learned features.
             </figcaption>
         </figure>
@@ -145,7 +145,7 @@
             <img src="https://github.com/DrejcPesjak/scaling-monosemanticity-llama/blob/main/pictures/feat_expl.png?raw=true"
                  alt="Example of an interpretable feature explanation"
                  class="w-full sm:w-4/5 mx-auto rounded-lg shadow-lg" />
-            <figcaption class="text-soft text-sm mt-2">
+            <figcaption class="text-gray-300 text-sm mt-2">
               Top SAE features with the highest mean activation on clinical-study prompts, including patterns like scientific study purpose, academic references, and clinical study patients.
             </figcaption>
         </figure>
@@ -165,7 +165,7 @@
             <img src="https://github.com/DrejcPesjak/scaling-monosemanticity-llama/blob/main/pictures/influence_image2.png?raw=true"
                  alt="Example of steering a learned feature during inference"
                  class="w-full sm:w-4/5 mx-auto rounded-lg shadow-lg" />
-            <figcaption class="text-soft text-sm mt-2">
+            <figcaption class="text-gray-300 text-sm mt-2">
               Two steering examples: boosting gender bias shifts the completion toward stereotyped roles, while boosting factual manipulation pushes the model toward a false capital-city answer.
             </figcaption>
         </figure>
@@ -252,7 +252,7 @@
             <img src="https://github.com/DrejcPesjak/scaling-monosemanticity-llama/blob/main/pictures/grafana-cpu-screenshot.png?raw=true"
                  alt="Grafana CPU monitoring dashboard"
                  class="w-full sm:w-4/5 mx-auto rounded-lg shadow-lg" />
-            <figcaption class="text-soft text-sm mt-2">
+            <figcaption class="text-gray-300 text-sm mt-2">
               General Grafana dashboard tracking CPU, RAM, disk, and network activity during training of a SAE.
             </figcaption>
         </figure>
@@ -261,7 +261,7 @@
             <img src="https://github.com/DrejcPesjak/scaling-monosemanticity-llama/blob/main/pictures/grafana-gpu-screenshot.png?raw=true"
                  alt="Grafana GPU monitoring dashboard"
                  class="w-full sm:w-4/5 mx-auto rounded-lg shadow-lg" />
-            <figcaption class="text-soft text-sm mt-2">
+            <figcaption class="text-gray-300 text-sm mt-2">
               Grafana GPU dashboard showing temperature and power usage, with per-GPU time series that make device-level behavior easy to inspect.
             </figcaption>
         </figure>
@@ -270,7 +270,7 @@
             <img src="https://github.com/DrejcPesjak/scaling-monosemanticity-llama/blob/main/pictures/prometheus-cpu-sec-screenshot.png?raw=true"
                  alt="Prometheus monitoring snapshot"
                  class="w-full sm:w-4/5 mx-auto rounded-lg shadow-lg" />
-            <figcaption class="text-soft text-sm mt-2">
+            <figcaption class="text-gray-300 text-sm mt-2">
               Prometheus live view of one of many metrics, useful as a quick sanity check that the monitoring stack is working.
             </figcaption>
         </figure>
@@ -310,25 +310,22 @@
 
       </section>
 
-      <footer>
-        <div class="mt-6 rounded-lg p-4 rounded border border-gray-500">
-            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-              <p class="text-soft text-sm">
-                  Code: <a href="https://github.com/drejcpesjak/scaling-monosemanticity-llama"
-                           class="text-white hover:underline"
-                           target="_blank" rel="noopener noreferrer">
-                    github.com/drejcpesjak/scaling-monosemanticity-llama
-                  </a>
-                </p>
-              <p class="text-soft text-sm">Last updated: 2025-04-22</p>
-            </div>
-          </div>
+      <footer class="mt-10 pt-4">
+        <p class="text-sm text-gray-400">
+          Code:
+          <a href="https://github.com/drejcpesjak/scaling-monosemanticity-llama"
+             class="text-white hover:underline"
+             target="_blank" rel="noopener noreferrer">
+            github.com/drejcpesjak/scaling-monosemanticity-llama
+          </a>
+        </p>
       </footer>
+    
     </article>
   </main>
 
-  <footer class="bg-primary text-center py-6 text-soft">
-    <p>© 2024 Drejc Pesjak. All Rights Reserved.</p>
+  <footer class="bg-gray-900 text-center py-6 text-gray-300 border-t border-gray-800">
+    <p>© 2019-<span id="current-year">2026</span> Drejc Pesjak. All Rights Reserved.</p>
   </footer>
 
 </body>

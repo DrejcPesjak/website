@@ -1,139 +1,66 @@
 body {
-    font-family: 'Inter', sans-serif;
-    background-color: #1D1E2C; /* Main background color */
-    color: #FFFFFF; /* Text color */
-}
-h1, h2, h3 {
-    font-family: 'Orbitron', sans-serif;
-}
-h1 {
-    color: #D94344; /* Accent color for headings */
-}
-a:hover {
-    color: #FFFFFF;
-}
-.bg-primary {
-    background-color: #1D1E2C; /* Dark background */
-}
-.bg-secondary {
-    background-color: #59656F; /* Alternating lighter dark */
-}
-.text-accent {
-    color: #D94344; /* Accent color */
-}
-.bg-accent {
-    background-color: #D94344; /* Accent color for buttons */
-}
-.text-soft {
-    color: #D7CDCC; /* Soft text color */
-}
-button:hover {
-    background-color: #D94344;
-}
-.timeline::before {
-    content: '';
-    position: absolute;
-    width: 4px;
-    background: #D94344;
-    top: 0;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-}
-.timeline-card {
-    background: #59656F;
-    border: 1px solid #D7CDCC;
-    border-radius: 8px;
-    padding: 16px;
-    position: relative;
-    color: #FFFFFF;
-}
-.timeline-dot {
-    width: 12px;
-    height: 12px;
-    background: #D94344;
-    border-radius: 50%;
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-article figure img.lightbox-trigger {
-    cursor: zoom-in;
+  font-family: Inter, system-ui, sans-serif;
 }
 
 .lightbox-open {
-    overflow: hidden;
-}
-
-.lightbox-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(10, 10, 16, 0.92);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-    padding: 0;
+  overflow: hidden;
 }
 
 .lightbox-overlay.hidden {
-    display: none;
+  display: none;
 }
 
-.lightbox-shell {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-}
-
-.lightbox-toolbar {
-    position: absolute;
-    top: 18px;
-    right: 18px;
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    z-index: 1001;
-}
-
-.lightbox-btn {
-    background: #59656F;
-    color: #FFFFFF;
-    border: 1px solid #D7CDCC;
-    border-radius: 8px;
-    padding: 8px 14px;
-    line-height: 1;
-}
-
-.lightbox-btn-icon {
-    min-width: 42px;
-    font-size: 22px;
-    padding: 8px 10px;
+.lightbox-trigger {
+  cursor: zoom-in;
 }
 
 .lightbox-stage {
-    flex: 1;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: grab;
-    user-select: none;
+  cursor: grab;
+  user-select: none;
 }
 
 .lightbox-stage.is-dragging {
-    cursor: grabbing;
+  cursor: grabbing;
 }
 
 .lightbox-image {
-    transform-origin: center center;
-    max-width: min(96vw, 96vw);
-    max-height: min(92vh, 92vh);
-    width: auto;
-    height: auto;
-    object-fit: contain;
-    will-change: transform;
+  transform: translate(
+      calc(var(--lightbox-x, 0) * 1vw),
+      calc(var(--lightbox-y, 0) * 1vh)
+    )
+    scale(var(--lightbox-scale, 1));
+  transform-origin: center;
+  will-change: transform;
+}
+
+.timeline-year > summary {
+  list-style: none;
+}
+
+.timeline-year > summary::-webkit-details-marker {
+  display: none;
+}
+
+.timeline-year > summary::after {
+  content: "+";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  flex: 0 0 auto;
+  border: 1px solid #374151;
+  border-radius: 9999px;
+  color: #f87171;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.timeline-year > summary::after {
+  padding-left: 1px;
+  padding-bottom: 1px;
+}
+
+.timeline-year[open] > summary::after {
+  content: "-";
 }

@@ -15,634 +15,720 @@
   <meta name="google-site-verification" content="dt7wyyo9S0ee3g5QwsJ37Gfbn5AKXAKkB07ul0s2mmM" />
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Drejc Pesjak - PhD Student</title>
-  <meta name="description" content="AI researcher and PhD student at Jožef Stefan Institute (Ljubljana). Working on mechanistic interpretability of LLMs, sparse autoencoders, and probing methods. Projects and research notes.">
+  <title>Drejc Pesjak - LLM Interpretability Researcher</title>
+  <meta name="description" content="PhD student at Jožef Stefan Institute working on mechanistic interpretability for transformer language models, sparse autoencoders, probing, interventions, and research prototypes.">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/devicon@2.16.0/devicon.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="pic/favicon.png" type="image/png">
   <script src="script.js" defer></script>
 </head>
-<body>
+<body class="bg-gray-900 text-white">
 
-  <!-- Header -->
-  <header class="bg-primary">
-    <div class="container mx-auto px-6 py-6 flex justify-between items-center">
-      <img src="pic/logo.svg" alt="Drejc Pesjak Logo" class="w-64">
-      <nav class="hidden md:block">
-        <ul class="flex space-x-6 text-lg">
-          <li><a href="#about" class="hover:underline text-soft">About</a></li>
-          <li><a href="#skills" class="hover:underline text-soft">Skills</a></li>
-          <li><a href="#projects" class="hover:underline text-soft">Projects</a></li>
-          <li><a href="#notes" class="hover:underline text-soft">Notes</a></li>
-          <li><a href="https://docs.google.com/presentation/d/1gxqpNWv6xB8cvFh9NjGwcAtcWf3-ohrWVr2azOIOo4A/edit?usp=sharing" class="hover:underline text-soft">Presentations</a></li>
-          <li><a href="#events" class="hover:underline text-soft">Events</a></li>
-          <li><a href="#contact" class="hover:underline text-soft">Contact</a></li>
+  <header class="bg-gray-900 border-b border-gray-800">
+    <div class="mx-auto max-w-6xl px-4 py-5 flex justify-between items-center">
+      <a href="#top" class="block">
+        <img src="pic/logo_cropped.svg" alt="Drejc Pesjak Logo" class="w-48 md:w-56">
+      </a>
+      <nav class="hidden lg:block">
+        <ul class="flex space-x-6 text-base">
+          <li><a href="#about" class="hover:underline text-gray-300">About</a></li>
+          <li><a href="#work" class="hover:underline text-gray-300">Work</a></li>
+          <li><a href="#notes" class="hover:underline text-gray-300">Notes</a></li>
+          <li><a href="#projects" class="hover:underline text-gray-300">Projects</a></li>
+          <li><a href="#timeline" class="hover:underline text-gray-300">Timeline</a></li>
+          <li><a href="#contact" class="hover:underline text-gray-300">Contact</a></li>
         </ul>
       </nav>
-      <button id="nav-toggle" class="block md:hidden text-white">☰</button>
+      <button id="nav-toggle" class="block lg:hidden text-white" type="button" aria-label="Toggle navigation">☰</button>
     </div>
-    <nav id="mobile-nav" class="hidden bg-secondary text-white p-4">
+    <nav id="mobile-nav" class="hidden bg-gray-800 text-white p-4">
       <ul class="space-y-4">
         <li><a href="#about" class="block hover:underline">About</a></li>
-        <li><a href="#skills" class="block hover:underline">Skills</a></li>
-        <li><a href="#projects" class="block hover:underline">Projects</a></li>
+        <li><a href="#work" class="block hover:underline">Work</a></li>
         <li><a href="#notes" class="block hover:underline">Notes</a></li>
-        <li><a href="https://docs.google.com/presentation/d/1gxqpNWv6xB8cvFh9NjGwcAtcWf3-ohrWVr2azOIOo4A/edit?usp=sharing" class="block hover:underline">Presentations</a></li>
-        <li><a href="#events" class="block hover:underline">Events</a></li>
+        <li><a href="#projects" class="block hover:underline">Projects</a></li>
+        <li><a href="#timeline" class="block hover:underline">Timeline</a></li>
         <li><a href="#contact" class="block hover:underline">Contact</a></li>
       </ul>
     </nav>
   </header>
 
-  <!-- Hero Section -->
-  <section class="text-white py-8 md:py-10 bg-primary overflow-hidden">
-    <div class="container mx-auto px-6">
-      <div class="flex flex-col md:flex-row md:items-center">
-        <div class="w-full md:w-1/2 flex justify-center md:justify-end md:shrink-0">
-          <img
-            src="pic/me_transparent.png"
-            alt="Stylized portrait of Drejc Pesjak"
-            class="w-full max-w-sm mb-4 md:mb-0 md:max-w-md lg:max-w-lg object-contain"
-          >
-        </div>
+  <main id="top">
+    <section class="py-12 bg-gray-900 text-white">
+      <div class="mx-auto max-w-6xl px-4">
+        <div class="grid grid-cols-1 gap-8 items-center md:grid-cols-5">
+          <div class="md:col-span-3">
+            <p class="text-sm font-bold uppercase tracking-wider text-red-400 mb-4">PhD student · LLM internals · AI systems</p>
+            <h1 class="max-w-4xl text-4xl font-extrabold leading-tight text-white sm:text-5xl lg:text-6xl mb-5">I study how language models think and understand the world.</h1>
+            <p class="text-xl text-gray-300 leading-relaxed max-w-3xl mb-5">
+              I’m Drejc Pesjak, a PhD student at the Jožef Stefan Institute working on mechanistic interpretability for transformer language models.
+            </p>
+            <p class="text-gray-300 leading-relaxed max-w-3xl mb-8">
+              My current work focuses on sparse autoencoders, probing, causal interventions, and practical tools for understanding LLM internals. I also build concrete AI systems when an idea is interesting enough to test.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-3 mb-6">
+              <a href="#notes" class="inline-flex items-center justify-center rounded-lg bg-red-500 px-5 py-3 font-bold text-white hover:bg-red-600">Read Notes</a>
+              <a href="#work" class="inline-flex items-center justify-center rounded-lg border border-gray-700 bg-gray-800 px-5 py-3 font-bold text-white hover:bg-gray-700">View Projects</a>
+              <a href="pic/Gemini_Generated_404.png" download class="inline-flex items-center justify-center rounded-lg px-5 py-3 font-bold text-gray-300 hover:text-white">Download CV</a>
+            </div>
+            <div class="flex flex-wrap gap-3 text-sm">
+              <a href="https://github.com/DrejcPesjak" class="inline-flex items-center rounded-full border border-gray-700 bg-gray-800 px-3 py-2 text-white hover:border-red-400" target="_blank" rel="noopener noreferrer">GitHub</a>
+              <a href="mailto:drejc.pesjak.pesjak@gmail.com" class="inline-flex items-center rounded-full border border-gray-700 bg-gray-800 px-3 py-2 text-white hover:border-red-400">Email</a>
+              <a href="https://scholar.google.com/citations?user=kUYwtxgAAAAJ&hl=sl" class="inline-flex items-center rounded-full border border-gray-700 bg-gray-800 px-3 py-2 text-white hover:border-red-400" target="_blank" rel="noopener noreferrer">Google Scholar</a>
+              <a href="https://www.linkedin.com/in/drejc-pesjak-46974727a/" class="inline-flex items-center rounded-full border border-gray-700 bg-gray-800 px-3 py-2 text-white hover:border-red-400" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            </div>
+          </div>
 
-        <div class="w-full md:w-1/2 text-center md:text-left md:-ml-10 lg:-ml-16">
-          <h2 class="text-5xl font-bold mb-4 text-accent">Hi, I'm Drejc Pesjak</h2>
-          <p class="text-lg mb-8">AI Researcher | PhD Student | ML Engineer</p>
-          <div class="flex flex-col sm:flex-row sm:justify-center md:justify-start gap-4">
-            <a href="#projects" class="bg-secondary py-2 px-6 rounded shadow-lg hover:bg-gray-600 transition">
-              View Projects
-            </a>
-            <a href="pic/Gemini_Generated_404.png" download class="bg-secondary py-2 px-6 rounded shadow-lg hover:bg-gray-600 transition">
-              Download CV
-            </a>
+          <div class="flex justify-center min-w-0 md:col-span-2">
+            <img
+              src="pic/me_transparent_circle.png"
+              alt="Stylized portrait of Drejc Pesjak"
+              class="w-full max-w-md rounded-full border-2 border-red-400 object-cover shadow-2xl"
+            >
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- About Section -->
-  <section id="about" class="py-12 bg-secondary">
-    <div class="container mx-auto px-6 text-center">
-      <h2 class="text-4xl font-bold mb-8 text-white">About Me</h2>
-      <p class="text-lg leading-relaxed">
-        I’m a PhD student and AI researcher at the Jožef Stefan Institute in Ljubljana. I’m currently working on mechanistic interpretability for transformer models, including probing approaches, sparse autoencoders, and intervention-style analyses.
-        <br>
-        <br>
-        I completed a Master’s degree in Data Science and have ten years of programming experience, with prior work in applied machine learning systems including MLOps, large-scale data analysis, and computer vision on the edge.
-      </p>
-    </div>
-  </section>
+    <section id="about" class="py-12 bg-gray-800">
+      <div class="mx-auto max-w-6xl px-4">
+        <div class="grid grid-cols-1 gap-8 items-start lg:grid-cols-5">
+          <div class="lg:col-span-3">
+            <p class="text-sm font-bold uppercase tracking-wider text-red-400 mb-3">About</p>
+            <h2 class="text-3xl font-extrabold leading-tight text-white lg:text-5xl mb-5">Researcher-builder, currently focused on LLM interpretability.</h2>
+            <div class="space-y-4 text-gray-300 leading-relaxed text-lg">
+              <p>
+                My route into AI started at an IT-focused secondary school, where I learned to program and first found out about machine learning. I then continued at the Faculty of Computer and Information Science in Ljubljana, where I did my bachelor’s in computer science and began specializing in AI.
+              </p>
+              <p>
+                After that I moved into data science, went deeper into building working AI models, and picked up industry experience from deploying computer vision models to embedded devices at Luxonis and doing big-data analysis at Outbrain. Now I’m a PhD researcher at the International Postgraduate School Jožef Stefan and Jožef Stefan Institute, focused on mechanistic interpretability for language models.
+              </p>
+            </div>
+          </div>
 
-  <!-- Skills / Stack Section -->
-  <section id="skills" class="py-12 bg-primary">
-    <div class="container mx-auto px-6">
-      <h2 class="text-4xl font-bold text-white mb-3 text-center">Research Stack</h2>
-      <p class="text-soft text-center max-w-3xl mx-auto mb-10">
-        Tools and libraries I actively use for research, experimentation, and analysis.
-      </p>
+          <aside class="lg:col-span-2 rounded-lg border border-gray-700 bg-gray-900 p-6">
+            <h3 class="text-xl font-semibold text-white mb-4">TL;DR</h3>
+            <ul class="space-y-3 text-gray-300">
+              <li><span class="text-white">Now:</span> PhD researcher in mechanistic interpretability</li>
+              <li><span class="text-white">Education:</span> IT secondary school, BSc Computer Science, MSc Data Science</li>
+              <li><span class="text-white">Industry:</span> Luxonis and Outbrain</li>
+              <li><span class="text-white">Location:</span> Ljubljana, Slovenia</li>
+            </ul>
+          </aside>
+        </div>
 
-      <!-- Current focus and tooling -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
-        <div class="bg-secondary rounded-lg p-6">
-          <h3 class="text-xl font-semibold text-white mb-2">Recent work</h3>
-            <ul class="text-soft space-y-1">
+        <div class="mt-8 grid grid-cols-1 gap-5 lg:grid-cols-5">
+          <div class="lg:col-span-3 rounded-lg border border-gray-700 bg-gray-900 p-6">
+            <h3 class="text-xl font-semibold text-white mb-4">Recent Work</h3>
+            <ul class="space-y-3 text-gray-300">
               <li>Trained sparse autoencoders on large models on an HPC cluster.</li>
               <li>Identified and suppressed deceptive features in LLaMA models.</li>
               <li>Beat prior NER results using MI-based analysis.</li>
               <li>Built agentic social simulations with LLMs.</li>
               <li>Connected LLMs to a robotic arm for planning and control.</li>
             </ul>
-        </div>
-
-        <div class="bg-secondary rounded-lg p-6">
-          <h3 class="text-xl font-semibold text-white mb-4">Mech Interp libraries</h3>
-        
-          <!-- Each row: fixed-size icon box + name text -->
-          <ul class="space-y-3">
-            <li class="flex items-center gap-3">
-              <span class="w-11 h-11 flex items-center justify-center rounded shrink-0">
-                <img src="pic/huggingface-icon.svg" alt="Hugging Face" class="w-11 h-11 object-contain" />
-              </span>
-              <span class="text-soft">Hugging Face</span>
-            </li>
-        
-            <li class="flex items-center gap-3">
-              <span class="w-11 h-11 flex items-center justify-center rounded shrink-0">
-                <img src="pic/translens.svg" alt="TransformerLens" class="w-11 h-11 object-contain" />
-              </span>
-              <span class="text-soft">TransformerLens</span>
-            </li>
-        
-            <li class="flex items-center gap-3">
-              <span class="w-11 h-11 flex items-center justify-center rounded shrink-0">
-                <img src="pic/saelens-icon3.svg" alt="SAE Lens" class="w-11 h-11 object-contain" />
-              </span>
-              <span class="text-soft">SAE Lens</span>
-            </li>
-        
-            <li class="flex items-center gap-3">
-              <span class="w-11 h-11 flex items-center justify-center rounded shrink-0">
-                <img src="pic/logitlens-icon2.svg" alt="Logit Lens" class="w-11 h-11 object-contain" />
-              </span>
-              <span class="text-soft">Logit Lens</span>
-            </li>
-        
-            <li class="flex items-center gap-3">
-              <span class="w-11 h-11 flex items-center justify-center rounded shrink-0">
-                <img src="pic/gemma-icon3.svg" alt="GemmaScope" class="w-11 h-11 object-contain" />
-              </span>
-              <span class="text-soft">GemmaScope 2</span>
-            </li>
-          </ul>
-        
-        </div>
-      </div>
-
-      <!-- Current tools (curated icons) -->
-      <div class="bg-secondary rounded-lg p-6 mb-6">
-        <h3 class="text-xl font-semibold text-white mb-4">Current tools</h3>
-        <div class="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-4 items-center justify-items-center">
-          <!-- ML / Python -->
-          <i class="devicon-python-plain-wordmark text-5xl" title="Python"></i>
-          <i class="devicon-pytorch-plain-wordmark text-5xl" title="PyTorch"></i>
-          <i class="devicon-scikitlearn-plain text-5xl" title="scikit-learn"></i>
-          <i class="devicon-numpy-plain-wordmark text-5xl" title="NumPy"></i>
-          <i class="devicon-pandas-plain-wordmark text-5xl" title="pandas"></i>
-          <i class="devicon-jupyter-plain-wordmark text-5xl" title="Jupyter"></i>
-          <i class="devicon-tensorflow-original-wordmark text-5xl" title="TensorFlow"></i>
-          <i class="devicon-keras-plain-wordmark text-5xl" title="Keras"></i>
-          <i class="devicon-matplotlib-plain text-5xl" title="Matplotlib"></i>
-
-          <!-- System / Dev -->
-          <i class="devicon-linux-plain text-5xl" title="Linux"></i>
-          <i class="devicon-git-plain-wordmark text-5xl" title="Git"></i>
-          <i class="devicon-github-original-wordmark text-5xl" title="GitHub"></i>
-          <i class="devicon-docker-plain-wordmark text-5xl" title="Docker"></i>
-          <i class="devicon-googlecloud-plain-wordmark text-5xl" title="GCP"></i>
-          <i class="devicon-apacheairflow-plain-wordmark text-5xl" title="Airflow"></i>
-
-          <!-- Writing / figures -->
-          <i class="devicon-latex-original text-5xl" title="LaTeX"></i>
-        </div>
-      </div>
-
-      <!-- Optional: other tools (collapsed) -->
-      <div class="text-center">
-        <button
-          id="other-tools-toggle"
-          class="bg-secondary text-white py-2 px-4 rounded hover:bg-gray-600 transition"
-          type="button"
-        >
-          Show other tools
-        </button>
-      </div>
-
-      <!-- ALL original icons -->
-      <div id="other-tools" class="hidden mt-6 bg-secondary rounded-lg p-6">
-        <h3 class="text-xl font-semibold text-white mb-4">Other tools from my past</h3>
-
-        <div class="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-10 gap-4 items-center justify-items-center opacity-90">
-          <!-- Programming Languages -->
-          <i class="devicon-r-plain text-5xl" title="R"></i>
-          <i class="devicon-cplusplus-plain text-5xl" title="C++"></i>
-          <i class="devicon-c-plain text-5xl" title="C"></i>
-          <i class="devicon-java-plain-wordmark text-5xl" title="Java"></i>
-          <i class="devicon-csharp-plain text-5xl" title="C#"></i>
-          <i class="devicon-javascript-plain text-5xl" title="JavaScript"></i>
-          <i class="devicon-kotlin-plain-wordmark text-5xl" title="Kotlin"></i>
-          <i class="devicon-bash-plain text-5xl" title="Bash"></i>
-
-          <!-- Data Tools & Databases -->
-          <i class="devicon-mysql-plain-wordmark text-5xl" title="MySQL"></i>
-          <i class="devicon-postgresql-plain-wordmark text-5xl" title="PostgreSQL"></i>
-          <i class="devicon-mongodb-plain-wordmark text-5xl" title="MongoDB"></i>
-          <i class="devicon-kaggle-original-wordmark text-5xl" title="Kaggle"></i>
-          <i class="devicon-matlab-plain text-5xl" title="MATLAB"></i>
-          <i class="devicon-opencv-plain-wordmark text-5xl" title="OpenCV"></i>
-
-          <!-- Cloud & DevOps -->
-          <i class="devicon-kubernetes-plain-wordmark text-5xl" title="Kubernetes"></i>
-          <i class="devicon-amazonwebservices-plain-wordmark text-5xl" title="AWS"></i>
-          <i class="devicon-heroku-original-wordmark text-5xl" title="Heroku"></i>
-          <i class="devicon-apachekafka-original-wordmark text-5xl" title="Kafka"></i>
-          <i class="devicon-bitbucket-original-wordmark text-5xl" title="Bitbucket"></i>
-          <i class="devicon-vscode-plain-wordmark text-5xl" title="VS Code"></i>
-
-          <!-- Robotics & Automation -->
-          <i class="devicon-arduino-plain-wordmark text-5xl" title="Arduino"></i>
-          <i class="devicon-gazebo-plain-wordmark text-5xl" title="Gazebo"></i>
-          <i class="devicon-selenium-original text-5xl" title="Selenium"></i>
-
-          <!-- Web Technologies -->
-          <i class="devicon-html5-plain-wordmark text-5xl" title="HTML5"></i>
-          <i class="devicon-css3-plain-wordmark text-5xl" title="CSS3"></i>
-          <i class="devicon-bootstrap-plain text-5xl" title="Bootstrap"></i>
-          <i class="devicon-nodejs-plain-wordmark text-5xl" title="Node.js"></i>
-          <i class="devicon-jquery-plain-wordmark text-5xl" title="jQuery"></i>
-          <i class="devicon-angular-plain-wordmark text-5xl" title="Angular"></i>
-          <i class="devicon-streamlit-plain-wordmark text-5xl" title="Streamlit"></i>
-          <i class="devicon-typescript-plain text-5xl" title="TypeScript"></i>
-          <i class="devicon-androidstudio-plain-wordmark text-5xl" title="Android Studio"></i>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Projects Section -->
-  <section id="projects" class="py-12 bg-secondary">
-    <div class="container mx-auto text-center">
-      <h2 class="text-4xl font-bold text-white mb-8">Projects</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- Scaling Monosemanticity -->
-        <div class="relative">
-          <img src="pic/scaling-monosemanticity.png" class="w-full h-48 object-cover rounded shadow-lg">
-          <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center opacity-0 hover:opacity-100 transition">
-            <h3 class="text-xl text-white font-bold">Scaling Monosemanticity</h3>
-            <a href="https://github.com/drejcpesjak/scaling-monosemanticity-llama" class="mt-4 bg-accent py-2 px-4 rounded hover:bg-gray-600">View on GitHub</a>
           </div>
-        </div>
-        <!-- NYC Violation Tickets Analysis -->
-        <div class="relative">
-          <img src="pic/nyc-analysis.png" class="w-full h-48 object-cover rounded shadow-lg">
-          <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center opacity-0 hover:opacity-100 transition">
-            <h3 class="text-xl text-white font-bold">NYC Violation Tickets</h3>
-            <a href="https://github.com/drejcpesjak/nyc-violation-tickets-analysis" class="mt-4 bg-accent py-2 px-4 rounded hover:bg-gray-600">View on GitHub</a>
-          </div>
-        </div>
-        <!-- Unbalanced Media -->
-        <div class="relative">
-          <img src="pic/unbalanced-media.png" class="w-full h-48 object-cover rounded shadow-lg">
-          <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center opacity-0 hover:opacity-100 transition">
-            <h3 class="text-xl text-white font-bold">Unbalanced Media</h3>
-            <a href="https://github.com/drejcpesjak/unbalanced-media" class="mt-4 bg-accent py-2 px-4 rounded hover:bg-gray-600">View on GitHub</a>
-          </div>
-        </div>
-        <!-- Weather Prediction MLOps -->
-        <div class="relative">
-          <img src="pic/mlops.png" class="w-full h-48 object-cover rounded shadow-lg">
-          <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center opacity-0 hover:opacity-100 transition">
-            <h3 class="text-xl text-white font-bold">Weather Prediction MLOps</h3>
-            <a href="https://github.com/drejcpesjak/weather-prediction-mlops" class="mt-4 bg-accent py-2 px-4 rounded hover:bg-gray-600">View on GitHub</a>
-          </div>
-        </div>
-        <!-- Compare Color Detectors -->
-        <div class="relative">
-          <img src="pic/compare-color.png" class="w-full h-48 object-cover rounded shadow-lg">
-          <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center opacity-0 hover:opacity-100 transition">
-            <h3 class="text-xl text-white font-bold">Compare Color Detectors</h3>
-            <a href="https://github.com/drejcpesjak/compare_color-detectors" class="mt-4 bg-accent py-2 px-4 rounded hover:bg-gray-600">View on GitHub</a>
-          </div>
-        </div>
-        <!-- Face Detection Study -->
-        <div class="relative">
-          <img src="pic/face-detection-study.jpg" class="w-full h-48 object-cover rounded shadow-lg">
-          <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center opacity-0 hover:opacity-100 transition">
-            <h3 class="text-xl text-white font-bold">Face Detection Study</h3>
-            <a href="https://github.com/drejcpesjak/face-detection_study" class="mt-4 bg-accent py-2 px-4 rounded hover:bg-gray-600">View on GitHub</a>
-          </div>
-        </div>
-        <!-- DPhate - Double Paraphrasing -->
-        <div class="relative">
-          <img src="pic/dphate.png" class="w-full h-48 object-cover rounded shadow-lg">
-          <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center opacity-0 hover:opacity-100 transition">
-            <h3 class="text-xl text-white font-bold">DPhate</h3>
-            <a href="https://github.com/drejcpesjak/DPhate-double-paraphrasing-hate-speech" class="mt-4 bg-accent py-2 px-4 rounded hover:bg-gray-600">View on GitHub</a>
-          </div>
-        </div>
-        <!-- Herz Bot -->
-        <div class="relative">
-          <img src="pic/hertz-bot.jpg" class="w-full h-48 object-cover rounded shadow-lg">
-          <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center opacity-0 hover:opacity-100 transition">
-            <h3 class="text-xl text-white font-bold">Herz Bot</h3>
-            <a href="https://github.com/drejcpesjak/Herz-bot" class="mt-4 bg-accent py-2 px-4 rounded hover:bg-gray-600">View on GitHub</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- Research Notes Section -->
-  <section id="notes" class="py-12 bg-primary text-white">
-    <div class="container mx-auto px-6 text-center">
-      <h2 class="text-4xl font-bold mb-3">Research Notes</h2>
-      <p class="text-soft max-w-3xl mx-auto mb-8">
-        Short write-ups that document lessons learned and experiments behind my projects.
-      </p>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
-        <a href="posts/future-mi.html"
-          class="block bg-secondary rounded-lg overflow-hidden shadow-lg hover:opacity-95 transition">
-          <img src="pic/mind-map-preview.png"
-              alt="The Future of Mech Interp"
-              class="w-full h-48 object-cover">
-
-          <div class="p-5">
-            <h3 class="text-xl font-bold text-white">The Future of Mech Interp</h3>
-            <p class="text-soft mt-2">
-              Seven underexplored areas that feel especially important right now, pulled from a giant research mind map.
-            </p>
-
-            <div class="mt-4 flex flex-wrap gap-2">
-              <span class="px-3 py-1 rounded bg-primary text-soft text-sm">Interp Agents</span>
-              <span class="px-3 py-1 rounded bg-primary text-soft text-sm">Reasoning Models</span>
-              <span class="px-3 py-1 rounded bg-primary text-soft text-sm">Causality</span>
+          <div class="lg:col-span-2 rounded-lg border border-gray-700 bg-gray-900 p-6">
+            <h3 class="text-xl font-semibold text-white mb-4">Technical Libraries</h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-800 px-3 py-1 text-sm text-gray-300">TransformerLens</span>
+              <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-800 px-3 py-1 text-sm text-gray-300">SAE Lens</span>
+              <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-800 px-3 py-1 text-sm text-gray-300">Logit Lens</span>
+              <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-800 px-3 py-1 text-sm text-gray-300">GemmaScope 2</span>
+              <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-800 px-3 py-1 text-sm text-gray-300">Neuronpedia</span>
+              <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-800 px-3 py-1 text-sm text-gray-300">PyTorch</span>
+              <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-800 px-3 py-1 text-sm text-gray-300">Hugging Face</span>
+              <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-800 px-3 py-1 text-sm text-gray-300">HPC/SLURM</span>
             </div>
           </div>
-        </a>
+        </div>
+      </div>
+    </section>
 
-        <!-- Note card -->
-        <a href="posts/sae-llama.html"
-          class="block bg-secondary rounded-lg overflow-hidden shadow-lg hover:opacity-95 transition">
-          <img src="pic/scaling-monosemanticity.png"
-              alt="Scaling Monosemanticity on LLaMA"
-              class="w-full h-48 object-cover">
+    <section id="work" class="py-12 bg-gray-900">
+      <div class="mx-auto max-w-6xl px-4">
+        <div class="max-w-3xl">
+          <p class="text-sm font-bold uppercase tracking-wider text-red-400 mb-3">Selected Work</p>
+          <h2 class="text-3xl font-extrabold leading-tight text-white lg:text-5xl">Featured Projects and Notes</h2>
+        </div>
 
-          <div class="p-5">
-            <h3 class="text-xl font-bold text-white">Scaling Monosemanticity on LLaMA</h3>
-            <p class="text-soft mt-2">
-              Practical lessons from training SAEs, debugging failures, and what actually mattered in replication.
-            </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-8">
+          <article class="flex flex-col overflow-hidden rounded-lg border border-gray-700 bg-gray-800">
+            <img src="pic/scaling-monosemanticity.png" alt="Scaling Monosemanticity on LLaMA" class="h-44 w-full bg-gray-900 object-cover">
+            <div class="flex flex-1 flex-col p-5">
+              <h3 class="text-xl font-bold text-white">Scaling Monosemanticity on LLaMA</h3>
+              <p class="text-gray-300 mt-2">Reproducing and adapting sparse-autoencoder interpretability experiments for LLaMA-style models, including SAE training, feature inspection, and steering.</p>
+              <div class="flex flex-wrap gap-2 mt-4"><span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-900 px-3 py-1 text-sm text-gray-300">SAE</span><span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-900 px-3 py-1 text-sm text-gray-300">LLaMA</span><span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-900 px-3 py-1 text-sm text-gray-300">replication</span></div>
+              <div class="mt-auto flex gap-4 pt-5">
+                <a href="posts/sae-llama.html" class="font-bold text-white underline hover:text-red-300">Note</a>
+                <a href="https://github.com/drejcpesjak/scaling-monosemanticity-llama" class="font-bold text-white underline hover:text-red-300" target="_blank" rel="noopener noreferrer">Code</a>
+              </div>
+            </div>
+          </article>
 
-            <div class="mt-4 flex flex-wrap gap-2">
-              <span class="px-3 py-1 rounded bg-primary text-soft text-sm">SAE</span>
-              <span class="px-3 py-1 rounded bg-primary text-soft text-sm">LLaMA</span>
-              <span class="px-3 py-1 rounded bg-primary text-soft text-sm">HPC</span>
+          <article class="flex flex-col overflow-hidden rounded-lg border border-gray-700 bg-gray-800">
+            <img src="pic/actstorm-scifi-w.webp" alt="LLM Activation Storm interface concept" class="h-44 w-full bg-gray-900 object-cover">
+            <div class="flex flex-1 flex-col p-5">
+              <h3 class="text-xl font-bold text-white">LLM Activation Storm</h3>
+              <p class="text-gray-300 mt-2">A local browser app for visualizing LLM activations layer by layer from a single prompt forward pass, built to make transformer internals easier to inspect.</p>
+              <div class="flex flex-wrap gap-2 mt-4"><span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-900 px-3 py-1 text-sm text-gray-300">activations</span><span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-900 px-3 py-1 text-sm text-gray-300">Gemma</span><span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-900 px-3 py-1 text-sm text-gray-300">visualization</span></div>
+              <div class="mt-auto flex gap-4 pt-5">
+                <a href="https://github.com/DrejcPesjak/llm-activation-storm" class="font-bold text-white underline hover:text-red-300" target="_blank" rel="noopener noreferrer">Code</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="flex flex-col overflow-hidden rounded-lg border border-gray-700 bg-gray-800">
+            <img src="pic/autogema-cat.webp" alt="Auto-GemmaScope visual concept" class="h-44 w-full bg-gray-900 object-cover">
+            <div class="flex flex-1 flex-col p-5">
+              <h3 class="text-xl font-bold text-white">Auto-GemmaScope</h3>
+              <p class="text-gray-300 mt-2">Exploring SAE features in Gemma 3 vision-language models, comparing autonomous feature discovery with human-guided interpretability workflows.</p>
+              <div class="flex flex-wrap gap-2 mt-4"><span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-900 px-3 py-1 text-sm text-gray-300">Gemma</span><span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-900 px-3 py-1 text-sm text-gray-300">VLMs</span><span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-900 px-3 py-1 text-sm text-gray-300">Neuronpedia</span></div>
+              <div class="mt-auto flex gap-4 pt-5">
+                <a href="https://github.com/DrejcPesjak/auto-gemmascope" class="font-bold text-white underline hover:text-red-300" target="_blank" rel="noopener noreferrer">Code</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="flex flex-col overflow-hidden rounded-lg border border-gray-700 bg-gray-800">
+            <img src="pic/dphate.png" alt="DPhate hate speech paraphrasing project" class="h-44 w-full bg-gray-900 object-cover">
+            <div class="flex flex-1 flex-col p-5">
+              <h3 class="text-xl font-bold text-white">DPhate: Hate Speech Paraphrasing</h3>
+              <p class="text-gray-300 mt-2">Bachelor thesis project on reducing hateful content through paraphrasing while preserving meaning, using an evaluated NLP rewriting pipeline.</p>
+              <div class="flex flex-wrap gap-2 mt-4"><span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-900 px-3 py-1 text-sm text-gray-300">NLP</span><span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-900 px-3 py-1 text-sm text-gray-300">transformers</span><span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-900 px-3 py-1 text-sm text-gray-300">thesis</span></div>
+              <div class="mt-auto flex gap-4 pt-5">
+                <a href="https://github.com/DrejcPesjak/DPhate-double-paraphrasing-hate-speech" class="font-bold text-white underline hover:text-red-300" target="_blank" rel="noopener noreferrer">Code</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="flex flex-col overflow-hidden rounded-lg border border-gray-700 bg-gray-800">
+            <img src="pic/spca-cartoon.webp" alt="Sense Plan Code Act robotics prototype" class="h-44 w-full bg-gray-900 object-cover">
+            <div class="flex flex-1 flex-col p-5">
+              <h3 class="text-xl font-bold text-white">SPCA: Sense-Plan-Code-Act</h3>
+              <p class="text-gray-300 mt-2">A research prototype combining LLMs, PDDL planning, code generation, and ROS2/UR5 simulation for embodied robotic manipulation.</p>
+              <div class="flex flex-wrap gap-2 mt-4"><span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-900 px-3 py-1 text-sm text-gray-300">agents</span><span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-900 px-3 py-1 text-sm text-gray-300">planning</span><span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-900 px-3 py-1 text-sm text-gray-300">robotics</span></div>
+              <div class="mt-auto flex gap-4 pt-5">
+                <a href="https://github.com/DrejcPesjak/minigrid-crewai" class="font-bold text-white underline hover:text-red-300" target="_blank" rel="noopener noreferrer">Code</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="notes" class="py-12 bg-gray-800">
+      <div class="mx-auto max-w-6xl px-4">
+        <div class="max-w-3xl">
+          <p class="text-sm font-bold uppercase tracking-wider text-red-400 mb-3">Public notebook</p>
+          <h2 class="text-3xl font-extrabold leading-tight text-white lg:text-5xl">Research Notes & Ideas</h2>
+          <p class="text-gray-300 max-w-3xl mt-3">
+            A place for longer notes, partial conclusions, and the parts of projects that do not fit nicely into a GitHub README.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mt-8">
+          <a href="posts/future-mi.html" class="flex flex-col overflow-hidden rounded-lg border border-gray-700 bg-gray-900">
+            <img src="pic/mind-map-preview.png" alt="The Future of Mech Interp" class="h-44 w-full bg-gray-900 object-cover">
+            <div class="flex flex-1 flex-col p-5">
+              <div class="text-sm font-bold uppercase tracking-wide text-gray-400">Research agenda · 2026</div>
+              <h3 class="text-2xl font-bold text-white mt-2">The Future of Mech Interp</h3>
+              <p class="text-gray-300 mt-2">
+                Seven underexplored areas that feel especially important right now, pulled from a giant research mind map.
+              </p>
+              <div class="flex flex-wrap gap-2 mt-4"><span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-900 px-3 py-1 text-sm text-gray-300">Interp Agents</span><span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-900 px-3 py-1 text-sm text-gray-300">Reasoning Models</span><span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-900 px-3 py-1 text-sm text-gray-300">Causality</span></div>
+            </div>
+          </a>
+
+          <a href="posts/sae-llama.html" class="flex flex-col overflow-hidden rounded-lg border border-gray-700 bg-gray-900">
+            <img src="pic/scaling-monosemanticity.png" alt="Scaling Monosemanticity on LLaMA" class="h-44 w-full bg-gray-900 object-cover">
+            <div class="flex flex-1 flex-col p-5">
+              <div class="text-sm font-bold uppercase tracking-wide text-gray-400">SAE replication · 2025</div>
+              <h3 class="text-2xl font-bold text-white mt-2">Scaling Monosemanticity on LLaMA</h3>
+              <p class="text-gray-300 mt-2">
+                Notes from replicating sparse-autoencoder-style interpretability experiments on LLaMA models: what broke, what mattered, and what I would try differently next.
+              </p>
+              <div class="flex flex-wrap gap-2 mt-4"><span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-900 px-3 py-1 text-sm text-gray-300">SAE</span><span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-900 px-3 py-1 text-sm text-gray-300">LLaMA</span><span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-900 px-3 py-1 text-sm text-gray-300">HPC</span></div>
+            </div>
+          </a>
+
+          <article class="flex flex-col overflow-hidden rounded-lg border border-gray-700 bg-gray-900">
+            <img src="pic/agentMI_schema.webp" alt="Agentic mechanistic interpretability schema" class="h-44 w-full bg-gray-900 object-cover">
+            <div class="flex flex-1 flex-col p-5">
+              <div class="text-sm font-bold uppercase tracking-wide text-gray-400">Agentic interpretability · TBA</div>
+              <h3 class="text-2xl font-bold text-white mt-2">The Agent Detective: Investigating Gender Bias</h3>
+              <p class="text-gray-300 mt-2">
+                A small agentic interpretability experiment around gender-bias circuitry in language models. Write-up coming soon.
+              </p>
+              <div class="flex flex-wrap gap-2 mt-4"><span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-900 px-3 py-1 text-sm text-gray-300">SAE agents</span><span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-900 px-3 py-1 text-sm text-gray-300">bias</span><span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-900 px-3 py-1 text-sm text-gray-300">Gemma</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="py-12 bg-gray-900">
+      <div class="mx-auto max-w-6xl px-4">
+        <div class="max-w-3xl">
+          <p class="text-sm font-bold uppercase tracking-wider text-red-400 mb-3">Project Archive</p>
+          <h2 class="text-3xl font-extrabold leading-tight text-white lg:text-5xl">Projects and Experiments</h2>
+          <p class="text-gray-300 max-w-3xl mt-3">
+            Older experiments, small tools, and applied ML projects.
+          </p>
+        </div>
+
+        <div class="mt-8">
+          <h3 class="mb-4 text-xl font-extrabold text-white">Research Tools and Simulations</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <article class="grid grid-cols-1 gap-4 rounded-lg border border-gray-700 bg-gray-800 p-4 sm:grid-cols-3">
+              <img src="pic/agentbelief.webp" alt="Agentic belief propagation" class="h-44 w-full rounded bg-gray-800 object-cover sm:h-28">
+              <div class="sm:col-span-2">
+                <div class="text-sm font-bold uppercase tracking-wide text-gray-400">Multi-agent simulation</div>
+                <h4 class="text-xl font-bold text-white mt-1">Agentic Belief Propagation</h4>
+                <p class="text-gray-300 mt-2">LLM-powered agent simulation where beliefs evolve through structured debate, inspired by Axelrod-style models.</p>
+                <a href="https://github.com/DrejcPesjak/agentic-belief-propagation" class="font-bold text-white underline hover:text-red-300" target="_blank" rel="noopener noreferrer">View code</a>
+              </div>
+            </article>
+
+            <article class="grid grid-cols-1 gap-4 rounded-lg border border-gray-700 bg-gray-800 p-4 sm:grid-cols-3">
+              <div class="flex h-44 w-full items-center justify-center rounded border border-red-400 bg-gray-800 font-extrabold uppercase tracking-wider text-white sm:h-28">arXiv</div>
+              <div class="sm:col-span-2">
+                <div class="text-sm font-bold uppercase tracking-wide text-gray-400">Research tooling</div>
+                <h4 class="text-xl font-bold text-white mt-1">arXiv News Filter</h4>
+                <p class="text-gray-300 mt-2">Daily cs.AI paper fetcher that filters for LLM and mechanistic interpretability papers using local Ollama.</p>
+                <a href="https://github.com/DrejcPesjak/arxiv-news" class="font-bold text-white underline hover:text-red-300" target="_blank" rel="noopener noreferrer">View code</a>
+              </div>
+            </article>
+
+            <article class="grid grid-cols-1 gap-4 rounded-lg border border-gray-700 bg-gray-800 p-4 sm:grid-cols-3">
+              <img src="pic/unbalanced-media.png" alt="Unbalanced Media" class="h-44 w-full rounded bg-gray-800 object-cover sm:h-28">
+              <div class="sm:col-span-2">
+                <div class="text-sm font-bold uppercase tracking-wide text-gray-400">Applied NLP</div>
+                <h4 class="text-xl font-bold text-white mt-1">Unbalanced Media</h4>
+                <p class="text-gray-300 mt-2">Technical analysis of Slovenian media framing using scraping, sentiment analysis, and zero-shot classification.</p>
+                <a href="https://github.com/DrejcPesjak/unbalanced-media" class="font-bold text-white underline hover:text-red-300" target="_blank" rel="noopener noreferrer">View code</a>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="mt-8">
+          <h3 class="mb-4 text-xl font-extrabold text-white">Applied ML, Data Systems, and Older Experiments</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            <article class="rounded-lg border border-gray-700 bg-gray-800 p-5">
+              <h4 class="text-lg font-bold text-white">Weather Prediction MLOps</h4>
+              <p class="text-gray-300 mt-2">University cloud project with model serving, Streamlit frontend, FastAPI/Ray Serve, Docker, and Google Cloud deployment.</p>
+              <a href="https://github.com/drejcpesjak/weather-prediction-mlops" class="font-bold text-white underline hover:text-red-300" target="_blank" rel="noopener noreferrer">Code</a>
+            </article>
+            <article class="rounded-lg border border-gray-700 bg-gray-800 p-5">
+              <h4 class="text-lg font-bold text-white">TimescaleDB Stock Forecasting</h4>
+              <p class="text-gray-300 mt-2">Real-time stock data streaming into TimescaleDB with XGBoost models and a Flask prediction API.</p>
+              <a href="https://github.com/DrejcPesjak/timescaledb-xgboost-flask" class="font-bold text-white underline hover:text-red-300" target="_blank" rel="noopener noreferrer">Code</a>
+            </article>
+            <article class="rounded-lg border border-gray-700 bg-gray-800 p-5">
+              <h4 class="text-lg font-bold text-white">NYC Violation Tickets</h4>
+              <p class="text-gray-300 mt-2">Large-scale public data analysis and prediction project using big-data tooling and ML workflows.</p>
+              <a href="https://github.com/drejcpesjak/nyc-violation-tickets-analysis" class="font-bold text-white underline hover:text-red-300" target="_blank" rel="noopener noreferrer">Code</a>
+            </article>
+            <article class="rounded-lg border border-gray-700 bg-gray-800 p-5">
+              <h4 class="text-lg font-bold text-white">Compare Color Detectors</h4>
+              <p class="text-gray-300 mt-2">A computer vision comparison project for color detection methods.</p>
+              <a href="https://github.com/drejcpesjak/compare_color-detectors" class="font-bold text-white underline hover:text-red-300" target="_blank" rel="noopener noreferrer">Code</a>
+            </article>
+            <article class="rounded-lg border border-gray-700 bg-gray-800 p-5">
+              <h4 class="text-lg font-bold text-white">Face Detection Study</h4>
+              <p class="text-gray-300 mt-2">Older computer vision comparison of face-detection algorithms on real-world video-style inputs.</p>
+              <a href="https://github.com/DrejcPesjak/face-detection_study" class="font-bold text-white underline hover:text-red-300" target="_blank" rel="noopener noreferrer">Code</a>
+            </article>
+          </div>
+        </div>
+
+        <div class="mt-8">
+          <h3 class="mb-4 text-xl font-extrabold text-white">Tools, Frameworks, and Languages</h3>
+          <div class="rounded-lg border border-gray-700 bg-gray-800 p-6">
+            <div class="flex flex-wrap gap-2">
+            <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-800 px-3 py-1 text-sm text-gray-300">Python</span>
+            <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-800 px-3 py-1 text-sm text-gray-300">JavaScript</span>
+            <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-800 px-3 py-1 text-sm text-gray-300">HTML/CSS</span>
+            <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-800 px-3 py-1 text-sm text-gray-300">HTML5</span>
+            <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-800 px-3 py-1 text-sm text-gray-300">CSS3</span>
+            <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-800 px-3 py-1 text-sm text-gray-300">SQL</span>
+            <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-800 px-3 py-1 text-sm text-gray-300">R</span>
+            <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-800 px-3 py-1 text-sm text-gray-300">C++</span>
+            <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-800 px-3 py-1 text-sm text-gray-300">C</span>
+            <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-800 px-3 py-1 text-sm text-gray-300">Java</span>
+            <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-800 px-3 py-1 text-sm text-gray-300">C#</span>
+            <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-800 px-3 py-1 text-sm text-gray-300">Kotlin</span>
+            <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-800 px-3 py-1 text-sm text-gray-300">Bash</span>
+            <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-800 px-3 py-1 text-sm text-gray-300">TypeScript</span>
+            <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-800 px-3 py-1 text-sm text-gray-300">PyTorch</span>
+            <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-800 px-3 py-1 text-sm text-gray-300">TensorFlow</span>
+            <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-800 px-3 py-1 text-sm text-gray-300">Keras</span>
+            <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-800 px-3 py-1 text-sm text-gray-300">Hugging Face</span>
+            <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-800 px-3 py-1 text-sm text-gray-300">TransformerLens</span>
+            <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-800 px-3 py-1 text-sm text-gray-300">SAE Lens</span>
+            <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-800 px-3 py-1 text-sm text-gray-300">Logit Lens</span>
+            <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-800 px-3 py-1 text-sm text-gray-300">GemmaScope 2</span>
+            <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-800 px-3 py-1 text-sm text-gray-300">Neuronpedia</span>
+            <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-800 px-3 py-1 text-sm text-gray-300">pandas</span>
+            <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-800 px-3 py-1 text-sm text-gray-300">NumPy</span>
+            <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-800 px-3 py-1 text-sm text-gray-300">scikit-learn</span>
+            <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-800 px-3 py-1 text-sm text-gray-300">Matplotlib</span>
+            <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-800 px-3 py-1 text-sm text-gray-300">XGBoost</span>
+            <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-800 px-3 py-1 text-sm text-gray-300">Jupyter</span>
+            <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-800 px-3 py-1 text-sm text-gray-300">Linux</span>
+            <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-800 px-3 py-1 text-sm text-gray-300">Docker</span>
+            <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-800 px-3 py-1 text-sm text-gray-300">Git</span>
+            <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-800 px-3 py-1 text-sm text-gray-300">GitHub</span>
+            <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-800 px-3 py-1 text-sm text-gray-300">Bitbucket</span>
+            <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-800 px-3 py-1 text-sm text-gray-300">VS Code</span>
+            <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-800 px-3 py-1 text-sm text-gray-300">LaTeX</span>
+            <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-800 px-3 py-1 text-sm text-gray-300">HPC/SLURM</span>
+            <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-800 px-3 py-1 text-sm text-gray-300">FastAPI</span>
+            <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-800 px-3 py-1 text-sm text-gray-300">Ray Serve</span>
+            <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-800 px-3 py-1 text-sm text-gray-300">Streamlit</span>
+            <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-800 px-3 py-1 text-sm text-gray-300">Flask</span>
+            <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-800 px-3 py-1 text-sm text-gray-300">Bootstrap</span>
+            <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-800 px-3 py-1 text-sm text-gray-300">Node.js</span>
+            <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-800 px-3 py-1 text-sm text-gray-300">jQuery</span>
+            <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-800 px-3 py-1 text-sm text-gray-300">Angular</span>
+            <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-800 px-3 py-1 text-sm text-gray-300">TimescaleDB</span>
+            <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-800 px-3 py-1 text-sm text-gray-300">MySQL</span>
+            <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-800 px-3 py-1 text-sm text-gray-300">PostgreSQL</span>
+            <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-800 px-3 py-1 text-sm text-gray-300">MongoDB</span>
+            <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-800 px-3 py-1 text-sm text-gray-300">Kafka</span>
+            <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-800 px-3 py-1 text-sm text-gray-300">HDF5</span>
+            <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-800 px-3 py-1 text-sm text-gray-300">Ollama</span>
+            <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-800 px-3 py-1 text-sm text-gray-300">Kaggle</span>
+            <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-800 px-3 py-1 text-sm text-gray-300">MATLAB</span>
+            <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-800 px-3 py-1 text-sm text-gray-300">OpenCV</span>
+            <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-800 px-3 py-1 text-sm text-gray-300">Google Cloud</span>
+            <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-800 px-3 py-1 text-sm text-gray-300">GCP</span>
+            <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-800 px-3 py-1 text-sm text-gray-300">BigQuery</span>
+            <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-800 px-3 py-1 text-sm text-gray-300">Airflow</span>
+            <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-800 px-3 py-1 text-sm text-gray-300">AWS</span>
+            <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-800 px-3 py-1 text-sm text-gray-300">Heroku</span>
+            <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-800 px-3 py-1 text-sm text-gray-300">Kubernetes</span>
+            <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-800 px-3 py-1 text-sm text-gray-300">Helm</span>
+            <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-800 px-3 py-1 text-sm text-gray-300">ROS2</span>
+            <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-800 px-3 py-1 text-sm text-gray-300">Arduino</span>
+            <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-800 px-3 py-1 text-sm text-gray-300">Gazebo</span>
+            <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-800 px-3 py-1 text-sm text-gray-300">Selenium</span>
+            <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-800 px-3 py-1 text-sm text-gray-300">PDDL</span>
+            <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-800 px-3 py-1 text-sm text-gray-300">Android Studio</span>
             </div>
           </div>
-        </a>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Events Section -->
-  <section id="events" class="py-12 bg-primary text-white">
-    <div class="container mx-auto">
-      <h2 class="text-4xl font-bold mb-8 text-center">Events & Conferences</h2>
-      <div class="space-y-6">
-        <!-- 2026 Events -->
-        <div>
-          <h3 class="text-2xl font-bold bg-secondary py-2 px-4 rounded">2026</h3>
-          <ul class="space-y-2 pl-4">
-            <li>
-              AI for Materials Science Tuning Laser-Induced Graphene Production : Lars Kotthoff
-              <span class="block text-sm text-gray-400">(23. 4. 2026, IJS LJ)</span>
-            </li>
-            <li>
-              From Understanding People to Securing AI - A Human-Centered Research Journey Through Large Language Models : Erik Derner
-              <span class="block text-sm text-gray-400">(16. 3. 2026, IJS LJ)</span>
-            </li>
-            <li>
-              Slo AI Meetup - From Pixels to Probabilities: AI for Sports Understanding
-              <span class="block text-sm text-gray-400">(12. 3. 2026, Sportsradar LJ)</span>
-            </li>
-            <li>
-              Deep Learning in the Search for Dark Matter: Dr. Roberto Ruiz de Austri Bazan
-              <span class="block text-sm text-gray-400">(4. 3. 2026, IJS LJ)</span>
-            </li>
-            <li>
-              DATA_FAIR 2026 - Data Engineering and Data Science conference
-              <span class="block text-sm text-gray-400">(12. 2. 2026, LJ)</span>
-            </li>
-          </ul>
+    <section id="timeline" class="py-12 bg-gray-800">
+      <div class="mx-auto max-w-6xl px-4">
+        <div class="max-w-3xl">
+          <p class="text-sm font-bold uppercase tracking-wider text-red-400 mb-3">Timeline</p>
+          <h2 class="text-3xl font-extrabold leading-tight text-white lg:text-5xl">Events and Conferences</h2>
+          <p class="text-gray-300 max-w-3xl mt-3">
+            I have been around AI for a while. I like going to events, hearing about new ideas, and discussing where the field might go next.
+          </p>
         </div>
 
-        <!-- 2025 Events -->
-        <div>
-          <h3 class="text-2xl font-bold bg-secondary py-2 px-4 rounded">2025</h3>
-          <ul class="space-y-2 pl-4">
-            <li>
-              AutoLearn-SI Two-Day Exploratory Workshop
-              <span class="block text-sm text-gray-400">(24. - 25. 11. 2025, IJS LJ)</span>
-            </li>
-            <li>
-              Spark Sessions 005: Data Science@UL-FRI
-              <span class="block text-sm text-gray-400">(18. 11. 2025, UL FRI)</span>
-            </li>
-            <li>
-              Cognitive Science conference
-              <span class="block text-sm text-gray-400">(9. 10. 2025, IJS LJ)</span>
-            </li>
-            <li>
-              Slovenian Conference on Artificial Intelligence
-              <span class="block text-sm text-gray-400">(8. 10. 2025, IJS LJ)</span>
-            </li>
-            <li>
-              Data Mining and Data wearhouses: SiKDD conference
-              <span class="block text-sm text-gray-400">(6. 10. 2025, IJS LJ)</span>
-            </li>
-            <li>
-              Predicting Traffic Intensity on Motorway Sections: Matic Kladnik
-              <span class="block text-sm text-gray-400">(22. 9. 2025, IPS LJ)</span>
-            </li>
-            <li>
-              Umetna inteligenca za znanost: Na poti k ustvarjalnim, odprtim agentom umetne inteligence: dr. Nenad Tomašev
-              <span class="block text-sm text-gray-400">(1. 7. 2025, IJS LJ)</span>
-            </li>
-            <li>
-              Dan umetne inteligence NVIDIA & FRI AI Day 2025
-              <span class="block text-sm text-gray-400">(25. 3. 2025, UL FRI)</span>
-            </li>
-            <li>
-              Spark Sessions 003: Data Science@UL-FRI 
-              <span class="block text-sm text-gray-400">(25. 2. 2025, UL FRI)</span>
-            </li>
-            <li>
-              AI x Pravo: Law Brainer
-              <span class="block text-sm text-gray-400">(20. - 21. 2. 2025, FMF UL, PF UL)</span>
-            </li>
-            <li>
-              Lessons from Building AI Coding Assistants: Slo AI Meetup
-              <span class="block text-sm text-gray-400">(11. 2. 2025, Outbrain LJ)</span>
-            </li>
-            <li>
-              AI/LLM monitoring and observability with New Relic and OpenTelemetry: Harry Kimpel
-              <span class="block text-sm text-gray-400">(15. 1. 2025, UL FRI)</span>
-            </li>
-          </ul>
-        </div>
-        
-        <!-- 2024 Events -->
-        <div>
-          <h3 class="text-2xl font-bold bg-secondary py-2 px-4 rounded">2024</h3>
-          <ul class="space-y-2 pl-4">
-            <li>
-              Spark Sessions 002: Data Science@UL-FRI 
-              <span class="block text-sm text-gray-400">(10. 12. 2024, UL FRI)</span>
-            </li>
-            <li>
-              Ali bo umetna inteligenca pisala kot Ivan Cankar?: Knjižni sejem, RTV Slo 
-              <span class="block text-sm text-gray-400">(27. 11. 2024, LJ)</span>
-            </li>
-            <li>
-              Ai4Gov Evaluation Workshop 
-              <span class="block text-sm text-gray-400">(27. 11. 2024, IJS LJ)</span>
-            </li>
-            <li>
-              Kompetentna in etična uporaba orodij generativne umetne inteligence: Karierni center UL 
-              <span class="block text-sm text-gray-400">(26. 11. 2024, online)</span>
-            </li>
-            <li>
-              LLM's and Audio Understanding: Slo AI Meetup 
-              <span class="block text-sm text-gray-400">(21. 11. 2024, Sportradar LJ)</span>
-            </li>
-            <li>
-              Spark Sessions 001: Data Science@UL-FRI 
-              <span class="block text-sm text-gray-400">(22. 10. 2024, UL FRI)</span>
-            </li>
-            <li>
-              Nič več znanstvena fantastika: AI in napredne tehnologije v znanosti: BEST 
-              <span class="block text-sm text-gray-400">(22. 10. 2024, UL FRI)</span>
-            </li>
-            <li>
-              LLM Dojo: Jan Rupnik 
-              <span class="block text-sm text-gray-400">(18. 10. 2024, IJS E3)</span>
-            </li>
-            <li>
-              Okrogla miza o vplivu umetne inteligence na znanost in družbo: SMASH 
-              <span class="block text-sm text-gray-400">(8. 10. 2024, Vipava)</span>
-            </li>
-            <li>
-              Snowflake beginner course by In516ht 
-              <span class="block text-sm text-gray-400">(15. 2. - 5. 6. 2024)</span>
-            </li>
-            <li>
-              Geometric Deep Learning, Categorical Deep Learning: Petar Veličković, DeepMind 
-              <span class="block text-sm text-gray-400">(21. 5. 2024, FRI)</span>
-            </li>
-            <li>
-              Data Streaming with Kafka - A Modernist Approach: Jure Ham and Matic Žgur, Outbrain 
-              <span class="block text-sm text-gray-400">(15. 5. 2024, FRI)</span>
-            </li>
-            <li>
-              Usage of AWS in data engineering: Anžej Curk and Denis Turšič, Result 
-              <span class="block text-sm text-gray-400">(8. 5. 2024, FRI)</span>
-            </li>
-            <li>
-              Reinforcement fundamentals and state of the art: Joshua B. Evans 
-              <span class="block text-sm text-gray-400">(10.-11. 1. 2024, FRI)</span>
-            </li>
-          </ul>
-        </div>
-  
-        <!-- 2023 Events -->
-        <div>
-          <h3 class="text-2xl font-bold bg-secondary py-2 px-4 rounded">2023</h3>
-          <ul class="space-y-2 pl-4">
-            <li>
-              Graph Deep Learning - Fundamentals and Applications of Graph Convolutional Layers: Florian Thamm 
-              <span class="block text-sm text-gray-400">(23. 11. 2023, FRI)</span>
-            </li>
-            <li>
-              Okrogla miza: UI - ustaviti ali pospešiti njen razvoj? 
-              <span class="block text-sm text-gray-400">(29. 9. 2023, FRI)</span>
-            </li>
-            <li>
-              Outbrain DataScience summer school 
-              <span class="block text-sm text-gray-400">(10.-14. 7. 2023)</span>
-            </li>
-            <li>
-              ŠO FRI: Sodobna umetna inteligenca: Tehnologije in dileme 
-              <span class="block text-sm text-gray-400">(29. 3. 2023, FRI)</span>
-            </li>
-            <li>
-              EESTEC JobFair: Svet Prihodnosti 
-              <span class="block text-sm text-gray-400">(16. 3. 2023, FRI)</span>
-            </li>
-            <li>
-              Data Science@UL-FRI: Recommender systems with TensorFlow workshop 
-              <span class="block text-sm text-gray-400">(22. 2. 2023, FRI)</span>
-            </li>
-          </ul>
-        </div>
-  
-        <!-- Older Events -->
-        <div>
-            <h3 class="text-2xl font-bold bg-secondary py-2 px-4 rounded">Older Events</h3>
-            <ul class="space-y-2 pl-4">
-            <li>
-                Data Science@UL-FRI: Introduction to state of the art NLP (BERT and GPT) 
-                <span class="block text-sm text-gray-400">(17.6.2021, online)</span>
-            </li>
-            <li>
-                Gašper Beguš, Ph.D.: Kako se umetna inteligenca uči govoriti? 
-                <span class="block text-sm text-gray-400">(11.11.2020, online)</span>
-            </li>
-            <li>
-                Umetna inteligenca in digitalni marketing - Kaj pa Watson? - OpenLab 
-                <span class="block text-sm text-gray-400">(21.10.2019, Kranj)</span>
-            </li>
-            <li>
-                Umetna inteligenca - malo zares in malo za hec 
-                <span class="block text-sm text-gray-400">(17.10.2019, Ljubljana)</span>
-            </li>
-            <li>
-                The subtle art of recommendation (algorithms) 
-                <span class="block text-sm text-gray-400">(14.10.2019, Ljubljana)</span>
-            </li>
-            <li>
-                MEi:CogSci Conference 
-                <span class="block text-sm text-gray-400">(13.-15.6.2019, Ljubljana)</span>
-            </li>
-            <li>
-                Deep Machine Vision - From Research to Market 
-                <span class="block text-sm text-gray-400">(25.4.2019)</span>
-            </li>
-            <li>
-                Artificial Intelligence at your fingertips with Microsoft Azure 
-                <span class="block text-sm text-gray-400">(18.4.2019)</span>
-            </li>
-            <li>
-                Ali ima umetna inteligenca zdravo pamet? : Vid Kocijan 
-                <span class="block text-sm text-gray-400">(16.4.2019, SAZU LJ)</span>
-            </li>
-            <li>
-                Debate KUI 
-                <span class="block text-sm text-gray-400">(četrtki 2019, FRI)</span>
-            </li>
-            <li>
-                Okrogla miza "Možnosti umetne inteligence" EESTEC JobFair 
-                <span class="block text-sm text-gray-400">(21.3.2019, FE LJ)</span>
-            </li>
-            <li>
-                Konferenca AI4GOOD - Huawei 
-                <span class="block text-sm text-gray-400">(FRI, 26.9.2018)</span>
-            </li>
-            <li>
-                FeelTheFuture sejem 
-                <span class="block text-sm text-gray-400">(19.-21. 10. 2017, Celje)</span>
-            </li>
+        <div class="mt-8 space-y-3">
+          <details class="timeline-year rounded-lg border border-gray-700 bg-gray-900" open>
+            <summary class="flex cursor-pointer items-center gap-4 p-4">
+              <span class="text-2xl font-extrabold text-red-400">2026</span>
+              <span class="ml-auto text-sm font-semibold text-gray-400">7 events</span>
+            </summary>
+            <ul class="divide-y divide-gray-800 border-t border-gray-800">
+              <li class="grid gap-1 px-4 py-3 sm:grid-cols-5 sm:gap-4">
+                <span class="font-semibold text-white sm:col-span-3">Brave Conversations Event on AI and Society</span>
+                <span class="text-sm text-gray-400 sm:col-span-2">6. 5. 2026, IJS LJ</span>
+              </li>
+              <li class="grid gap-1 px-4 py-3 sm:grid-cols-5 sm:gap-4">
+                <span class="font-semibold text-white sm:col-span-3">AI and Data Privacy and Security Training: Oshani Seneviratne</span>
+                <span class="text-sm text-gray-400 sm:col-span-2">5. 5. 2026, IJS LJ</span>
+              </li>
+              <li class="grid gap-1 px-4 py-3 sm:grid-cols-5 sm:gap-4">
+                <span class="font-semibold text-white sm:col-span-3">AI for Materials Science Tuning Laser-Induced Graphene Production: Lars Kotthoff</span>
+                <span class="text-sm text-gray-400 sm:col-span-2">23. 4. 2026, IJS LJ</span>
+              </li>
+              <li class="grid gap-1 px-4 py-3 sm:grid-cols-5 sm:gap-4">
+                <span class="font-semibold text-white sm:col-span-3">From Understanding People to Securing AI - A Human-Centered Research Journey Through Large Language Models: Erik Derner</span>
+                <span class="text-sm text-gray-400 sm:col-span-2">16. 3. 2026, IJS LJ</span>
+              </li>
+              <li class="grid gap-1 px-4 py-3 sm:grid-cols-5 sm:gap-4">
+                <span class="font-semibold text-white sm:col-span-3">Slo AI Meetup - From Pixels to Probabilities: AI for Sports Understanding</span>
+                <span class="text-sm text-gray-400 sm:col-span-2">12. 3. 2026, Sportsradar LJ</span>
+              </li>
+              <li class="grid gap-1 px-4 py-3 sm:grid-cols-5 sm:gap-4">
+                <span class="font-semibold text-white sm:col-span-3">Deep Learning in the Search for Dark Matter: Dr. Roberto Ruiz de Austri Bazan</span>
+                <span class="text-sm text-gray-400 sm:col-span-2">4. 3. 2026, IJS LJ</span>
+              </li>
+              <li class="grid gap-1 px-4 py-3 sm:grid-cols-5 sm:gap-4">
+                <span class="font-semibold text-white sm:col-span-3">DATA_FAIR 2026 - Data Engineering and Data Science conference</span>
+                <span class="text-sm text-gray-400 sm:col-span-2">12. 2. 2026, LJ</span>
+              </li>
             </ul>
+          </details>
+
+          <details class="timeline-year rounded-lg border border-gray-700 bg-gray-900">
+            <summary class="flex cursor-pointer items-center gap-4 p-4">
+              <span class="text-2xl font-extrabold text-red-400">2025</span>
+              <span class="ml-auto text-sm font-semibold text-gray-400">12 events</span>
+            </summary>
+            <ul class="divide-y divide-gray-800 border-t border-gray-800">
+              <li class="grid gap-1 px-4 py-3 sm:grid-cols-5 sm:gap-4">
+                <span class="font-semibold text-white sm:col-span-3">AutoLearn-SI Two-Day Exploratory Workshop</span>
+                <span class="text-sm text-gray-400 sm:col-span-2">24. - 25. 11. 2025, IJS LJ</span>
+              </li>
+              <li class="grid gap-1 px-4 py-3 sm:grid-cols-5 sm:gap-4">
+                <span class="font-semibold text-white sm:col-span-3">Spark Sessions 005: Data Science@UL-FRI</span>
+                <span class="text-sm text-gray-400 sm:col-span-2">18. 11. 2025, UL FRI</span>
+              </li>
+              <li class="grid gap-1 px-4 py-3 sm:grid-cols-5 sm:gap-4">
+                <span class="font-semibold text-white sm:col-span-3">Cognitive Science conference</span>
+                <span class="text-sm text-gray-400 sm:col-span-2">9. 10. 2025, IJS LJ</span>
+              </li>
+              <li class="grid gap-1 px-4 py-3 sm:grid-cols-5 sm:gap-4">
+                <span class="font-semibold text-white sm:col-span-3">Slovenian Conference on Artificial Intelligence</span>
+                <span class="text-sm text-gray-400 sm:col-span-2">8. 10. 2025, IJS LJ</span>
+              </li>
+              <li class="grid gap-1 px-4 py-3 sm:grid-cols-5 sm:gap-4">
+                <span class="font-semibold text-white sm:col-span-3">Data Mining and Data wearhouses: SiKDD conference</span>
+                <span class="text-sm text-gray-400 sm:col-span-2">6. 10. 2025, IJS LJ</span>
+              </li>
+              <li class="grid gap-1 px-4 py-3 sm:grid-cols-5 sm:gap-4">
+                <span class="font-semibold text-white sm:col-span-3">Predicting Traffic Intensity on Motorway Sections: Matic Kladnik</span>
+                <span class="text-sm text-gray-400 sm:col-span-2">22. 9. 2025, IPS LJ</span>
+              </li>
+              <li class="grid gap-1 px-4 py-3 sm:grid-cols-5 sm:gap-4">
+                <span class="font-semibold text-white sm:col-span-3">Umetna inteligenca za znanost: Na poti k ustvarjalnim, odprtim agentom umetne inteligence: dr. Nenad Tomašev</span>
+                <span class="text-sm text-gray-400 sm:col-span-2">1. 7. 2025, IJS LJ</span>
+              </li>
+              <li class="grid gap-1 px-4 py-3 sm:grid-cols-5 sm:gap-4">
+                <span class="font-semibold text-white sm:col-span-3">Dan umetne inteligence NVIDIA &amp; FRI AI Day</span>
+                <span class="text-sm text-gray-400 sm:col-span-2">25. 3. 2025, UL FRI</span>
+              </li>
+              <li class="grid gap-1 px-4 py-3 sm:grid-cols-5 sm:gap-4">
+                <span class="font-semibold text-white sm:col-span-3">Spark Sessions 003: Data Science@UL-FRI</span>
+                <span class="text-sm text-gray-400 sm:col-span-2">25. 2. 2025, UL FRI</span>
+              </li>
+              <li class="grid gap-1 px-4 py-3 sm:grid-cols-5 sm:gap-4">
+                <span class="font-semibold text-white sm:col-span-3">AI x Pravo - Umetna inteligenca za pravo: Law Brainer</span>
+                <span class="text-sm text-gray-400 sm:col-span-2">20. - 21. 2. 2025, FMF UL, PF UL</span>
+              </li>
+              <li class="grid gap-1 px-4 py-3 sm:grid-cols-5 sm:gap-4">
+                <span class="font-semibold text-white sm:col-span-3">Lessons from Building AI Coding Assistants - Context and Evaluation: Slovenian AI Meetup</span>
+                <span class="text-sm text-gray-400 sm:col-span-2">11. 2. 2025, Outbrain LJ</span>
+              </li>
+              <li class="grid gap-1 px-4 py-3 sm:grid-cols-5 sm:gap-4">
+                <span class="font-semibold text-white sm:col-span-3">AI/LLM monitoring and observability with New Relic and OpenTelemetry: Harry Kimpel</span>
+                <span class="text-sm text-gray-400 sm:col-span-2">15. 1. 2025, UL FRI</span>
+              </li>
+            </ul>
+          </details>
+
+          <details class="timeline-year rounded-lg border border-gray-700 bg-gray-900">
+            <summary class="flex cursor-pointer items-center gap-4 p-4">
+              <span class="text-2xl font-extrabold text-red-400">2024</span>
+              <span class="ml-auto text-sm font-semibold text-gray-400">14 events</span>
+            </summary>
+            <ul class="divide-y divide-gray-800 border-t border-gray-800">
+              <li class="grid gap-1 px-4 py-3 sm:grid-cols-5 sm:gap-4">
+                <span class="font-semibold text-white sm:col-span-3">Spark Sessions 002: Data Science@UL-FRI</span>
+                <span class="text-sm text-gray-400 sm:col-span-2">10. 12. 2024, UL FRI</span>
+              </li>
+              <li class="grid gap-1 px-4 py-3 sm:grid-cols-5 sm:gap-4">
+                <span class="font-semibold text-white sm:col-span-3">Ali bo umetna inteligenca pisala kot Ivan Cankar?: Knjižni sejem, RTV Slo</span>
+                <span class="text-sm text-gray-400 sm:col-span-2">27. 11. 2024, LJ</span>
+              </li>
+              <li class="grid gap-1 px-4 py-3 sm:grid-cols-5 sm:gap-4">
+                <span class="font-semibold text-white sm:col-span-3">Ai4Gov Evaluation Workshop</span>
+                <span class="text-sm text-gray-400 sm:col-span-2">27. 11. 2024, IJS LJ</span>
+              </li>
+              <li class="grid gap-1 px-4 py-3 sm:grid-cols-5 sm:gap-4">
+                <span class="font-semibold text-white sm:col-span-3">Kompetentna in etična uporaba orodij generativne umetne inteligence: Karierni center UL</span>
+                <span class="text-sm text-gray-400 sm:col-span-2">26. 11. 2024, online</span>
+              </li>
+              <li class="grid gap-1 px-4 py-3 sm:grid-cols-5 sm:gap-4">
+                <span class="font-semibold text-white sm:col-span-3">LLM's and Audio Understanding: Slo AI Meetup</span>
+                <span class="text-sm text-gray-400 sm:col-span-2">21. 11. 2024, Sportradar LJ</span>
+              </li>
+              <li class="grid gap-1 px-4 py-3 sm:grid-cols-5 sm:gap-4">
+                <span class="font-semibold text-white sm:col-span-3">Spark Sessions 001: Data Science@UL-FRI</span>
+                <span class="text-sm text-gray-400 sm:col-span-2">22. 10. 2024, UL FRI</span>
+              </li>
+              <li class="grid gap-1 px-4 py-3 sm:grid-cols-5 sm:gap-4">
+                <span class="font-semibold text-white sm:col-span-3">Nič več znanstvena fantastika: AI in napredne tehnologije v znanosti: BEST</span>
+                <span class="text-sm text-gray-400 sm:col-span-2">22. 10. 2024, UL FRI</span>
+              </li>
+              <li class="grid gap-1 px-4 py-3 sm:grid-cols-5 sm:gap-4">
+                <span class="font-semibold text-white sm:col-span-3">LLM Dojo: Jan Rupnik</span>
+                <span class="text-sm text-gray-400 sm:col-span-2">18. 10. 2024, IJS E3</span>
+              </li>
+              <li class="grid gap-1 px-4 py-3 sm:grid-cols-5 sm:gap-4">
+                <span class="font-semibold text-white sm:col-span-3">Okrogla miza o vplivu umetne inteligence na znanost in družbo: SMASH</span>
+                <span class="text-sm text-gray-400 sm:col-span-2">8. 10. 2024, Vipava</span>
+              </li>
+              <li class="grid gap-1 px-4 py-3 sm:grid-cols-5 sm:gap-4">
+                <span class="font-semibold text-white sm:col-span-3">Snowflake beginner course by In516ht</span>
+                <span class="text-sm text-gray-400 sm:col-span-2">15. 2. - 5. 6. 2024</span>
+              </li>
+              <li class="grid gap-1 px-4 py-3 sm:grid-cols-5 sm:gap-4">
+                <span class="font-semibold text-white sm:col-span-3">Geometric Deep Learning, Categorical Deep Learning: Petar Veličković, DeepMind</span>
+                <span class="text-sm text-gray-400 sm:col-span-2">21. 5. 2024, FRI</span>
+              </li>
+              <li class="grid gap-1 px-4 py-3 sm:grid-cols-5 sm:gap-4">
+                <span class="font-semibold text-white sm:col-span-3">Data Streaming with Kafka - A Modernist Approach: Jure Ham and Matic Žgur, Outbrain</span>
+                <span class="text-sm text-gray-400 sm:col-span-2">15. 5. 2024, FRI</span>
+              </li>
+              <li class="grid gap-1 px-4 py-3 sm:grid-cols-5 sm:gap-4">
+                <span class="font-semibold text-white sm:col-span-3">Usage of AWS in data engineering: Anžej Curk and Denis Turšič, Result</span>
+                <span class="text-sm text-gray-400 sm:col-span-2">8. 5. 2024, FRI</span>
+              </li>
+              <li class="grid gap-1 px-4 py-3 sm:grid-cols-5 sm:gap-4">
+                <span class="font-semibold text-white sm:col-span-3">Reinforcement fundamentals and state of the art: Joshua B. Evans</span>
+                <span class="text-sm text-gray-400 sm:col-span-2">10.-11. 1. 2024, FRI</span>
+              </li>
+            </ul>
+          </details>
+
+          <details class="timeline-year rounded-lg border border-gray-700 bg-gray-900">
+            <summary class="flex cursor-pointer items-center gap-4 p-4">
+              <span class="text-2xl font-extrabold text-red-400">2023</span>
+              <span class="ml-auto text-sm font-semibold text-gray-400">6 events</span>
+            </summary>
+            <ul class="divide-y divide-gray-800 border-t border-gray-800">
+              <li class="grid gap-1 px-4 py-3 sm:grid-cols-5 sm:gap-4">
+                <span class="font-semibold text-white sm:col-span-3">Graph Deep Learning - Fundamentals and Applications of Graph Convolutional Layers: Florian Thamm</span>
+                <span class="text-sm text-gray-400 sm:col-span-2">23. 11. 2023, FRI</span>
+              </li>
+              <li class="grid gap-1 px-4 py-3 sm:grid-cols-5 sm:gap-4">
+                <span class="font-semibold text-white sm:col-span-3">Okrogla miza: UI - ustaviti ali pospešiti njen razvoj?</span>
+                <span class="text-sm text-gray-400 sm:col-span-2">29. 9. 2023, FRI</span>
+              </li>
+              <li class="grid gap-1 px-4 py-3 sm:grid-cols-5 sm:gap-4">
+                <span class="font-semibold text-white sm:col-span-3">Outbrain DataScience summer school</span>
+                <span class="text-sm text-gray-400 sm:col-span-2">10.-14. 7. 2023</span>
+              </li>
+              <li class="grid gap-1 px-4 py-3 sm:grid-cols-5 sm:gap-4">
+                <span class="font-semibold text-white sm:col-span-3">ŠO FRI: Sodobna umetna inteligenca: Tehnologije in dileme</span>
+                <span class="text-sm text-gray-400 sm:col-span-2">29. 3. 2023, FRI</span>
+              </li>
+              <li class="grid gap-1 px-4 py-3 sm:grid-cols-5 sm:gap-4">
+                <span class="font-semibold text-white sm:col-span-3">EESTEC JobFair: Svet Prihodnosti; Odkrivanje moči procesiranja naravnega jezika in umetne inteligence</span>
+                <span class="text-sm text-gray-400 sm:col-span-2">16. 3. 2023, FRI</span>
+              </li>
+              <li class="grid gap-1 px-4 py-3 sm:grid-cols-5 sm:gap-4">
+                <span class="font-semibold text-white sm:col-span-3">Data Science@UL-FRI: Recommender systems with TensorFlow workshop</span>
+                <span class="text-sm text-gray-400 sm:col-span-2">22. 2. 2023, FRI</span>
+              </li>
+            </ul>
+          </details>
+
+          <details class="timeline-year rounded-lg border border-gray-700 bg-gray-900">
+            <summary class="flex cursor-pointer items-center gap-4 p-4">
+              <span class="text-2xl font-extrabold text-red-400">
+                Older
+                <span class="text-sm font-semibold text-gray-400">2017-2022</span>
+              </span>
+              <span class="ml-auto text-sm font-semibold text-gray-400">13 events</span>
+            </summary>
+            <ul class="divide-y divide-gray-800 border-t border-gray-800">
+              <li class="grid gap-1 px-4 py-3 sm:grid-cols-5 sm:gap-4">
+                <span class="font-semibold text-white sm:col-span-3">Data Science@UL-FRI: Introduction to state of the art NLP (BERT and GPT)</span>
+                <span class="text-sm text-gray-400 sm:col-span-2">17.6.2021, online</span>
+              </li>
+              <li class="grid gap-1 px-4 py-3 sm:grid-cols-5 sm:gap-4">
+                <span class="font-semibold text-white sm:col-span-3">Gašper Beguš, Ph.D.: Kako se umetna inteligenca uči govoriti?</span>
+                <span class="text-sm text-gray-400 sm:col-span-2">11.11.2020, online</span>
+              </li>
+              <li class="grid gap-1 px-4 py-3 sm:grid-cols-5 sm:gap-4">
+                <span class="font-semibold text-white sm:col-span-3">Umetna inteligenca in digitalni marketing - Kaj pa Watson? - OpenLab</span>
+                <span class="text-sm text-gray-400 sm:col-span-2">21.10.2019, Kranj</span>
+              </li>
+              <li class="grid gap-1 px-4 py-3 sm:grid-cols-5 sm:gap-4">
+                <span class="font-semibold text-white sm:col-span-3">Umetna inteligenca - malo zares in malo za hec</span>
+                <span class="text-sm text-gray-400 sm:col-span-2">17.10.2019, Ljubljana</span>
+              </li>
+              <li class="grid gap-1 px-4 py-3 sm:grid-cols-5 sm:gap-4">
+                <span class="font-semibold text-white sm:col-span-3">The subtle art of recommendation (algorithms)</span>
+                <span class="text-sm text-gray-400 sm:col-span-2">14.10.2019, Ljubljana</span>
+              </li>
+              <li class="grid gap-1 px-4 py-3 sm:grid-cols-5 sm:gap-4">
+                <span class="font-semibold text-white sm:col-span-3">MEi:CogSci Conference</span>
+                <span class="text-sm text-gray-400 sm:col-span-2">13.-15.6.2019, Ljubljana</span>
+              </li>
+              <li class="grid gap-1 px-4 py-3 sm:grid-cols-5 sm:gap-4">
+                <span class="font-semibold text-white sm:col-span-3">Deep Machine Vision - From Research to Market</span>
+                <span class="text-sm text-gray-400 sm:col-span-2">25.4.2019</span>
+              </li>
+              <li class="grid gap-1 px-4 py-3 sm:grid-cols-5 sm:gap-4">
+                <span class="font-semibold text-white sm:col-span-3">Artificial Intelligence at your fingertips with Microsoft Azure</span>
+                <span class="text-sm text-gray-400 sm:col-span-2">18.4.2019</span>
+              </li>
+              <li class="grid gap-1 px-4 py-3 sm:grid-cols-5 sm:gap-4">
+                <span class="font-semibold text-white sm:col-span-3">Predavanje Vid Kocijan: Ali ima umetna inteligenca zdravo pamet?</span>
+                <span class="text-sm text-gray-400 sm:col-span-2">16.4.2019, SAZU LJ</span>
+              </li>
+              <li class="grid gap-1 px-4 py-3 sm:grid-cols-5 sm:gap-4">
+                <span class="font-semibold text-white sm:col-span-3">Tedensko udeležujem Debate KUI</span>
+                <span class="text-sm text-gray-400 sm:col-span-2">četrtki 2019, FRI</span>
+              </li>
+              <li class="grid gap-1 px-4 py-3 sm:grid-cols-5 sm:gap-4">
+                <span class="font-semibold text-white sm:col-span-3">Okrogla miza "Možnosti umetne inteligence" EESTEC JobFair</span>
+                <span class="text-sm text-gray-400 sm:col-span-2">21.3.2019, FE LJ</span>
+              </li>
+              <li class="grid gap-1 px-4 py-3 sm:grid-cols-5 sm:gap-4">
+                <span class="font-semibold text-white sm:col-span-3">Konferenca AI4GOOD - Huawei</span>
+                <span class="text-sm text-gray-400 sm:col-span-2">FRI, 26.9.2018</span>
+              </li>
+              <li class="grid gap-1 px-4 py-3 sm:grid-cols-5 sm:gap-4">
+                <span class="font-semibold text-white sm:col-span-3">FeelTheFuture sejem, Celje</span>
+                <span class="text-sm text-gray-400 sm:col-span-2">19.-21. 10. 2017</span>
+              </li>
+            </ul>
+          </details>
         </div>
-  
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Contact Section -->
-  <section id="contact" class="py-12 bg-secondary text-white">
-    <div class="container mx-auto text-center">
-      <h2 class="text-4xl font-bold mb-8 text-white">Get in Touch</h2>
-      <form id="contact-form" class="max-w-lg mx-auto">
-        <div class="mb-4">
-          <input type="email" id="email" class="w-full py-2 px-4 rounded bg-primary border border-soft text-white" placeholder="Your Email" required>
-        </div>
-        <div class="mb-4">
-          <input type="text" id="name" class="w-full py-2 px-4 rounded bg-primary border border-soft text-white" placeholder="Your Name" required>
-        </div>
-        <div class="mb-4">
-          <textarea id="message" class="w-full py-2 px-4 rounded bg-primary border border-soft text-white" placeholder="Your Message" required></textarea>
-        </div>
-        <button type="submit" class="bg-accent py-2 px-4 rounded hover:bg-gray-600">Send</button>
-      </form>
-    </div>
-  </section>
+    <section id="contact" class="py-12 bg-gray-900">
+      <div class="mx-auto max-w-6xl px-4">
+        <div class="grid grid-cols-1 gap-8 items-start lg:grid-cols-2">
+          <div>
+            <p class="text-sm font-bold uppercase tracking-wider text-red-400 mb-3">Contact</p>
+            <h2 class="text-3xl font-extrabold leading-tight text-white lg:text-5xl mb-5">Research conversations are the best reason to reach out.</h2>
+            <div class="space-y-4 text-gray-300 leading-relaxed">
+              <p>
+                If you have a strange idea or a question, shoot me a message.
+              </p>
+            </div>
+          </div>
 
-  <!-- Footer -->
-  <footer class="bg-primary text-center py-6 text-soft">
-    <p>© 2024 Drejc Pesjak. All Rights Reserved.</p>
+          <form id="contact-form" class="grid gap-4 rounded-lg border border-gray-700 bg-gray-800 p-6">
+            <div>
+              <label for="email" class="mb-2 block font-bold text-white">Your Email</label>
+              <input type="email" id="email" class="w-full rounded-lg border border-gray-700 bg-gray-900 p-3 text-white" placeholder="you@example.com" required>
+            </div>
+            <div>
+              <label for="name" class="mb-2 block font-bold text-white">Your Name</label>
+              <input type="text" id="name" class="w-full rounded-lg border border-gray-700 bg-gray-900 p-3 text-white" placeholder="Your name" required>
+            </div>
+            <div>
+              <label for="message" class="mb-2 block font-bold text-white">Your Message</label>
+              <textarea id="message" class="h-32 w-full rounded-lg border border-gray-700 bg-gray-900 p-3 text-white" placeholder="What are you working on?" required></textarea>
+            </div>
+            <button type="submit" class="inline-flex items-center justify-center rounded-lg bg-red-500 px-5 py-3 font-bold text-white hover:bg-red-600 w-full sm:w-auto">Open Email Draft</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-gray-900 text-center py-6 text-gray-300 border-t border-gray-800">
+    <p>© 2019-<span id="current-year">2026</span> Drejc Pesjak. All Rights Reserved.</p>
   </footer>
 
 </body>
