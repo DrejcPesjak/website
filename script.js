@@ -6,18 +6,7 @@ if (navToggle && mobileNav) {
   });
 }
 
-// simple toggle for other tools
 document.addEventListener("DOMContentLoaded", () => {
-  const btn = document.getElementById("other-tools-toggle");
-  const panel = document.getElementById("other-tools");
-  if (btn && panel) {
-    btn.addEventListener("click", () => {
-      const isHidden = panel.classList.contains("hidden");
-      panel.classList.toggle("hidden");
-      btn.textContent = isHidden ? "Hide other tools" : "Show other tools";
-    });
-  }
-
   const contactForm = document.getElementById("contact-form");
   if (contactForm) {
     contactForm.addEventListener("submit", (event) => {
@@ -40,21 +29,23 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  document.getElementById("current-year").textContent = new Date().getFullYear();
+
   const figureImages = document.querySelectorAll("article figure img");
   if (!figureImages.length) return;
 
   const overlay = document.createElement("div");
-  overlay.className = "lightbox-overlay hidden";
+  overlay.className = "lightbox-overlay hidden fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-90";
   overlay.innerHTML = `
-    <div class="lightbox-shell">
-      <div class="lightbox-toolbar">
-        <button type="button" class="lightbox-btn" data-action="zoom-out" aria-label="Zoom out">-</button>
-        <button type="button" class="lightbox-btn" data-action="zoom-in" aria-label="Zoom in">+</button>
-        <button type="button" class="lightbox-btn lightbox-btn-icon" data-action="reset" aria-label="Reset zoom">&#8634;</button>
-        <button type="button" class="lightbox-btn lightbox-btn-icon" data-action="close" aria-label="Close image">&times;</button>
+    <div class="relative flex h-screen w-screen flex-col">
+      <div class="absolute right-4 top-4 z-50 flex flex-wrap gap-2">
+        <button type="button" class="rounded bg-gray-700 px-4 py-2 font-bold text-white hover:bg-gray-600" data-action="zoom-out" aria-label="Zoom out">-</button>
+        <button type="button" class="rounded bg-gray-700 px-4 py-2 font-bold text-white hover:bg-gray-600" data-action="zoom-in" aria-label="Zoom in">+</button>
+        <button type="button" class="rounded bg-gray-700 px-4 py-2 font-bold text-white hover:bg-gray-600" data-action="reset" aria-label="Reset zoom">↺</button>
+        <button type="button" class="rounded bg-gray-700 px-4 py-2 font-bold text-white hover:bg-gray-600" data-action="close" aria-label="Close image">&times;</button>
       </div>
-      <div class="lightbox-stage">
-        <img class="lightbox-image" alt="" />
+      <div class="lightbox-stage flex flex-1 items-center justify-center overflow-hidden">
+        <img class="lightbox-image h-auto max-h-screen w-auto max-w-full object-contain" alt="" />
       </div>
     </div>
   `;
@@ -73,7 +64,9 @@ document.addEventListener("DOMContentLoaded", () => {
   let dragOriginY = 0;
 
   const applyScale = () => {
-    overlayImage.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+    overlayImage.style.setProperty("--lightbox-x", (translateX / Math.max(window.innerWidth, 1)) * 100);
+    overlayImage.style.setProperty("--lightbox-y", (translateY / Math.max(window.innerHeight, 1)) * 100);
+    overlayImage.style.setProperty("--lightbox-scale", scale);
   };
 
   const clampScale = (value) => Math.min(6, Math.max(0.15, value));
