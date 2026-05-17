@@ -1,0 +1,53 @@
+Mechanistic Interpretability of Large Language Models
+https://docs.google.com/presentation/d/1TobcgDTXhx082luVgRUv5PsI5ArGzCY9FK17De8JEtY/edit?usp=sharing
+date: 2026-05-12
+tags: mech interp, overview
+note: Field overview and 7 gaps.
+
+---
+
+Agentic Discovery and Causal Evaluation of Gender-Bias Features
+https://docs.google.com/presentation/d/1wolz62J9qRSCjMWkruoLh-BNU5c6KTFqC_zWCnFpD9w/edit?usp=sharing
+date: 2026-05-08
+tags: SAE, gender bias
+note: ALT course / ICML MI workshop talk.
+
+---
+
+Explaining Headline A/B Test Outcomes with SAE Features
+https://docs.google.com/presentation/d/12G2GGBY9KIHfh9GSppfpt5vCNjrMFhnk_Zy-mIzORVI/edit?usp=sharing
+date: 2026-02-26
+tags: XAI, SAE
+note: Machine Learning PhD course project.
+
+---
+
+Probing Named Entity Recognition in GPT-2 Large
+https://docs.google.com/presentation/d/1xW-_LsLbGZnf-NzdQwWGq9cQ8jSHuWjHA9DSD61CLR4/edit?usp=sharing
+date: 2026-02-04
+tags: probing, NER
+note: Text/Multimedia Mining and Semantic Technologies course.
+
+---
+
+Mechanistic Interpretability
+https://docs.google.com/presentation/d/1_d5lF4Njm17T5Q55E7NRNfZX0_uJU3VP15ghGn3yXQc/edit?usp=sharing
+date: 2026-01-28
+tags: mech interp, internal
+note: Internal E3 field overview. Similar shorter demo version at LLMDojo on 2026-02-20.
+
+---
+
+Robot Planning via LLM Proposals and Symbolic Verification
+https://docs.google.com/presentation/d/10Owf5XsxAZ7RTRTDtXV0mS7YgattBZ6DdVozq82MTAU/edit?usp=sharing
+date: 2025-11-14
+tags: robotics, planning
+note: LLMDojo talk based on master thesis and MAKE paper.
+
+---
+
+LLM Interpretability
+https://docs.google.com/presentation/d/19APjlC1e77CtWRl0qzN_Z5R_UTGOFiVW/edit?usp=sharing&ouid=104883870861057949264&rtpof=true&sd=true
+date: 2025-01-24
+tags: SAE, LLMDojo
+note: Reproducing and extending Scaling Monosemanticity.

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-C40SJWN8QX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-C40SJWN8QX');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Deck Vault</title>
+  <meta name="description" content="Private presentation index.">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="pic/favicon.png" type="image/png">
+  <style>
+    .deck-list {
+      list-style: disc;
+      padding-left: 1.25rem;
+    }
+
+    .deck-list li {
+      margin: 1.15rem 0;
+    }
+
+    .meta,
+    .note {
+      margin: 0.2rem 0 0;
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+<body class="bg-gray-900 text-white">
+
+  <header class="bg-gray-900 border-b border-gray-800">
+    <div class="mx-auto max-w-4xl px-4 py-5 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3">
+        <img src="pic/logo_cropped.svg" alt="Drejc Pesjak Logo" class="w-48">
+      </a>
+      <nav class="text-gray-300">
+        <a href="index.html" class="hover:underline">Home</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="mx-auto max-w-4xl px-4 py-10">
+    <header class="mb-8">
+      <h1 class="text-3xl font-bold text-white">Deck Vault</h1>
+      <p class="mt-2 text-gray-400">Presentation launchpad.</p>
+    </header>
+
+    <section id="deck-list" class="text-gray-300" aria-live="polite">
+      <p class="text-gray-400">Loading...</p>
+    </section>
+  </main>
+
+  <footer class="bg-gray-900 text-center py-6 text-gray-300 border-t border-gray-800">
+    <p>© 2019-<span id="current-year">2026</span> Drejc Pesjak. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    const deckList = document.getElementById("deck-list");
+
+    const escapeHtml = (value) => value.replace(/[&<>"']/g, (char) => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    })[char]);
+
+    const formatDate = (value) => {
+      if (!value) return "";
+      const date = new Date(`${value}T00:00:00`);
+      if (Number.isNaN(date.getTime())) return value;
+      return date.toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "short",
+        day: "numeric"
+      });
+    };
+
+    const parseDecks = (text) => text
+      .split(/\n---+\n/g)
+      .map((block) => block.split("\n").map((line) => line.trim()).filter(Boolean))
+      .filter((lines) => lines.length >= 2)
+      .map((lines, index) => {
+        const deck = {
+          title: lines[0],
+          url: lines[1],
+          index
+        };
+
+        lines.slice(2).forEach((line) => {
+          const match = line.match(/^([a-zA-Z][\w-]*):\s*(.*)$/);
+          if (match) deck[match[1].toLowerCase()] = match[2];
+        });
+
+        return deck;
+      });
+
+    const renderDecks = (decks) => {
+      deckList.innerHTML = decks.map((deck) => {
+        const meta = [formatDate(deck.date), deck.tags].filter(Boolean).join(" · ");
+        const metaHtml = meta ? `<p class="meta">${escapeHtml(meta)}</p>` : "";
+        const note = deck.note || deck.context;
+        const noteHtml = note ? `<p class="note">${escapeHtml(note)}</p>` : "";
+
+        return `
+          <li>
+            <a href="${escapeHtml(deck.url)}" class="font-semibold text-white underline hover:text-red-300" target="_blank" rel="noopener noreferrer">${escapeHtml(deck.title)}</a>
+            ${metaHtml}
+            ${noteHtml}
+          </li>
+        `;
+      }).join("");
+
+      deckList.innerHTML = `<ul class="deck-list">${deckList.innerHTML}</ul>`;
+    };
+
+    fetch("_presentations.txt", { cache: "no-store" })
+      .then((response) => {
+        if (!response.ok) throw new Error("Could not load presentations.");
+        return response.text();
+      })
+      .then((text) => renderDecks(parseDecks(text)))
+      .catch(() => {
+        deckList.innerHTML = '<p class="text-red-300">Could not load presentations.</p>';
+      });
+  </script>
+</body>
+</html>
