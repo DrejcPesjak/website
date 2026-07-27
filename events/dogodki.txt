@@ -1,3 +1,10 @@
+European Summer School on Artificial Intelligence : EurAI (6. - 10. 7. 2026, Vienna)
+LLM in agenti brez iluzij : KCUI (2. 7. 2026, online)
+AI at Google - Search & Reasoning : SLOAI Meetup #8 (18. 6. 2026, LJ)
+Claude Meetup Ljubljana #1 : SLOAI (10. 6. 2026, Teads LJ)
+Technical AI Safety course : BlueDot Impact (1. - 6. 6. 2026, online) https://bluedot.org/certification?id=recC2XbVaIJDaASdb
+AiLab Strategic Meeting (25. - 26. 5. 2026, Kamnik Snovik)
+Spark Sessions 008 : Data Science@UL-FRI (19. 5. 2026, UL FRI)
 Brave Conversations Event on AI and Society (6. 5. 2026, IJS LJ)
 AI and Data Privacy and Security Training : Oshani Seneviratne (5. 5. 2026, IJS LJ)
 AI for Materials Science Tuning Laser-Induced Graphene Production : Lars Kotthoff (23. 4. 2026, IJS LJ)
