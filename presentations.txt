@@ -1,3 +1,11 @@
+Mechanistic Interpretability of Large Language Models, part2
+https://docs.google.com/presentation/d/1mJr-MjrfQso2SH503f1gmCN-w2zcjgcOGYiaAunm9vY/edit?usp=sharing
+date: 2026-05-25
+tags: mech interp, all projects
+note: strategic days 
+
+---
+
 Mechanistic Interpretability of Large Language Models
 https://docs.google.com/presentation/d/1TobcgDTXhx082luVgRUv5PsI5ArGzCY9FK17De8JEtY/edit?usp=sharing
 date: 2026-05-12
