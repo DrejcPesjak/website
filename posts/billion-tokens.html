@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-C40SJWN8QX"></script>
+  <script src="../analytics.js"></script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>I Used 2.5 Billion AI Tokens in 7 Months. We Are Barely Using These Systems.</title>
+  <meta name="description" content="What 2.5 billion tokens taught me that 2.5 million could not: the frontier is moving from chat toward long-running agents, cheap cognition, and new ways of working." />
+  <link rel="canonical" href="https://drejcpesjak.github.io/website/posts/billion-tokens.html">
+
+  <meta property="og:title" content="I Used 2.5 Billion AI Tokens in 7 Months. We Are Barely Using These Systems.">
+  <meta property="og:description" content="What 2.5 billion tokens taught me that 2.5 million could not: the frontier is moving from chat toward long-running agents, cheap cognition, and new ways of working.">
+  <meta property="og:image" content="https://drejcpesjak.github.io/website/pic/100books-4page.webp">
+  <meta property="og:url" content="https://drejcpesjak.github.io/website/posts/billion-tokens.html">
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2026-08-25">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <script src="../script.js" defer></script>
+</head>
+
+<body class="bg-gray-900 text-white">
+  <header class="bg-gray-900 border-b border-gray-800">
+    <div class="mx-auto max-w-6xl px-4 py-5 flex items-center justify-between">
+      <a href="../index.html" class="flex items-center gap-3">
+        <img src="../pic/logo_cropped.svg" alt="Drejc Pesjak Logo" class="w-48">
+      </a>
+      <nav class="text-gray-300">
+        <a href="../index.html" class="hover:underline mr-4">Home</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="mx-auto max-w-6xl px-4 pb-16">
+    <article class="max-w-3xl mx-auto">
+      <header class="mt-8">
+        <h1 class="text-4xl font-bold text-white leading-tight">I Used 2.5 Billion AI Tokens in 7 Months. We Are Barely Using These Systems.</h1>
+        <p class="mt-3 text-sm font-semibold uppercase tracking-wide text-red-400">
+          Published <time datetime="2026-08-25">August 25, 2026</time>
+        </p>
+        <p class="text-gray-300 mt-3">
+          What 2.5 billion tokens taught me that 2.5 million could not: the frontier is moving from chat toward long-running agents, cheap cognition, and entirely new ways of working.
+        </p>
+        <div class="flex flex-wrap gap-2 mt-5">
+          <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-900 px-3 py-1 text-sm text-gray-300">AI Agents</span>
+          <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-900 px-3 py-1 text-sm text-gray-300">LLMs</span>
+          <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-900 px-3 py-1 text-sm text-gray-300">AI Engineering</span>
+          <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-900 px-3 py-1 text-sm text-gray-300">Future of Work</span>
+        </div>
+      </header>
+
+      <section class="mt-10 space-y-6 text-gray-300">
+        <p>People sometimes tell me I am overly optimistic about AI.</p>
+        <p>That I have fallen for the hype. That LLMs still hallucinate. That agents are unreliable. That the big AI companies have convinced everyone that chatbots are more capable than they really are.</p>
+        <p>This is always slightly funny to me.</p>
+        <p>I work on LLM interpretability for my PhD. I am very familiar with how strange, brittle, and unreliable these systems can be.</p>
+        <p>And after using roughly <strong class="text-white">2.5 billion tokens in the last seven months</strong>, with my current usage often around <strong class="text-white">10 million tokens per day</strong>, my conclusion is almost the opposite:</p>
+        <p class="text-xl font-semibold text-white">Most people have barely seen what current AI systems can do.</p>
+        <p>And I'm not talking about some future AGI models, but the systems we have right now.</p>
+
+        <h2 class="text-2xl font-semibold text-white">Chat Is a Terrible Way to See the Frontier</h2>
+        <p>Imagine asking an AI:</p>
+        <blockquote class="border-l-4 border-red-400 bg-gray-800 px-5 py-4 text-white">Who was the fifth US president?</blockquote>
+        <p>A decent model answers James Monroe.</p>
+        <p>Make the model twice as capable.</p>
+        <p>James Monroe.</p>
+        <p>Ten times as capable.</p>
+        <p>Still James Monroe.</p>
+        <p>You have built a test with essentially zero remaining dynamic range.</p>
+        <p>I think something similar has happened with how most people experience AI.</p>
+        <p>They open a browser, ask ChatGPT a question, read the answer, perhaps notice a hallucination, and form an opinion about the technology.</p>
+        <p>But chat is increasingly just one tiny interface to these models.</p>
+        <p>The interesting systems now look more like OpenClaw, coding agents, or a Hermes-based system I am working on: give an agent a computer, terminal, browser, files, tools, memory, and an objective, then let it work.</p>
+        <p>OpenClaw itself is explicitly built around this idea: an always-running agent on your own computer that can interact with email, GitHub, browsers, messaging, and other software.</p>
+        <p>That is a very different experiment from asking ChatGPT twenty questions.</p>
+        <p>And you do not even need some enormous swarm of 500 agents.</p>
+        <p>Often one competent agent, occasionally spawning a few subagents or making a hundred parallel API calls, is enough for the experience to become qualitatively different.</p>
+
+        <h2 class="text-2xl font-semibold text-white">The 100-Metre Problem</h2>
+        <p>Benchmarks have the same problem.</p>
+        <p>Imagine we measured human athletic ability only with a 100-metre sprint.</p>
+        <p>At first, improvements would look huge. Eventually, progress would appear to flatten: each new athlete beats the previous record by fractions of a second.</p>
+        <p>If you extrapolated from that metric alone, you might conclude that humans are approaching their fundamental limit.</p>
+        <p>But the metric would completely fail to reveal that a human can run <strong class="text-white">42 kilometres</strong>.</p>
+        <p>A marathon is not a 100-metre sprint with a score above 100%.</p>
+        <p>It is a capability that becomes visible only when you change the task.</p>
+        <p>This is increasingly how I think about AI benchmarks. Most are bounded at 100%. Once models become good at them, enormous improvements elsewhere can become almost invisible.</p>
+        <p>A model going from 97% to 99% looks incremental.</p>
+        <p>But perhaps the meaningful change is that it can now work autonomously for two hours instead of ten minutes, recover from failures, navigate unfamiliar software, write and test its own tools, or complete a research workflow containing hundreds of dependent steps.</p>
+        <p>We keep asking:</p>
+        <blockquote class="border-l-4 border-gray-600 bg-gray-800 px-5 py-4 text-white">How much faster can it run 100 metres?</blockquote>
+        <p>When the interesting question is becoming:</p>
+        <blockquote class="border-l-4 border-red-400 bg-gray-800 px-5 py-4 font-semibold text-white">How far can it run?</blockquote>
+        <p>This is also why autonomous-agent evaluations are much more interesting to me than another saturated QA benchmark. The capability axis itself is changing.</p>
+        <p>Once you start looking along that axis, some of the things already happening in 2026 look much less like “ChatGPT got 3% better” and much more like discovering that the runner can suddenly do a marathon.</p>
+
+        <h2 class="text-2xl font-semibold text-white">Things I Have Seen This Year</h2>
+        <p>Some public examples already sound slightly absurd.</p>
+        <p>Anthropic recently let Claude attack a mathematical research problem. The model used <strong class="text-white">31 million output tokens</strong>, coordinated roughly 60 subagents, generated hundreds of scripts, and ran thousands of numerical checks. The human contribution was largely messages like <em>“keep going”</em> and <em>“believe in yourself.”</em> The system produced a new mathematical result.</p>
+        <p>Earlier this year, former Google PM Bilawal Sidhu built WorldView in three days with AI agents: a Palantir-like 3D interface combining live satellite tracking, aircraft data, CCTV feeds, traffic, and seismic information from public sources.</p>
+        <p>Then there is AdderBoard. The original challenge was simple: build the smallest transformer that can add two 10-digit numbers with at least 99% accuracy. Claude Code produced a 6,080-parameter model. Codex found 1,644 parameters. The resulting search then pushed the problem down into transformers with only dozens of parameters, including constructions where weights were set analytically rather than learned conventionally.</p>
+        <p>These are not chatbot tricks.</p>
+        <p>They are examples of models operating inside environments where they can search, test, fail, write code, inspect results, and keep going.</p>
+        <p>My personal examples are sometimes even more convincing to me because I know exactly how little I did.</p>
+        <p>I have watched an AI scientist carry out competent research and arrive at genuinely novel ideas.</p>
+        <p>I once asked an agent to collect vouchers associated with scientific papers. It opened the website, figured out a bizarre interface, wrote a scraper, tested it, manually checked whether its own scraper was correct, and finished the collection. When the website later changed, it noticed the scraper had broken and fixed it without my telling it to.</p>
+        <p>For another project, an agentic system created a self-reflective technical diagram, turned the material into a roughly 40-slide presentation, and then produced a 30-minute recorded presentation with generated narration.</p>
+        <p>I have had agents recreate research papers and reproduce their experimental results within hours.</p>
+        <p>For quick research prototypes, my interaction sometimes approaches:</p>
+        <blockquote class="border-l-4 border-red-400 bg-gray-800 px-5 py-4 text-white">Here is the hypothesis. Here is roughly how I would test it. Go investigate.</blockquote>
+        <p>Then I come back and inspect the plots.</p>
+        <p>That is a completely different relationship with computing.</p>
+
+        <h2 class="text-2xl font-semibold text-white">Ten Million Tokens a Day Changes How You Work</h2>
+        <p>Ten million tokens is roughly on the order of <strong class="text-white">a hundred books of text per day</strong>.</p>
+        <p>Obviously, I am not reading a hundred books every day.</p>
+        <p>That is exactly the point.</p>
+        <p>At this scale, the old interaction model breaks:</p>
+        <p class="rounded-lg border border-gray-700 bg-gray-800 px-5 py-4 font-mono text-sm text-white">AI produces text → human reads all of it</p>
+        <p>You instead need:</p>
+        <p class="rounded-lg border border-red-900 bg-gray-800 px-5 py-4 font-mono text-sm text-white">AI explores → AI filters and checks → human reviews the important parts</p>
+        <p>The scarce resource becomes <strong class="text-white">human attention</strong>.</p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li>What deserves my attention?</li>
+          <li>What could be wrong in a way that matters?</li>
+          <li>What should I inspect personally?</li>
+          <li>What can I test automatically?</li>
+          <li>What can I simply delegate and trust?</li>
+        </ul>
+        <p>This is a skill.</p>
+        <p>And I think this is partly why heavy AI users experience much less frustration than people who repeatedly complain that their coding agent did something stupid.</p>
+        <p>You learn when to hold its hand and when to let it rip.</p>
+
+        <h2 class="text-2xl font-semibold text-white">AI Engineering Is Becoming More About Architecture</h2>
+        <p>As implementation becomes cheaper, I find myself caring much more about things that used to feel one level above coding—and dusting off old books on software architecture:</p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li>Information flows.</li>
+          <li>Interfaces between components.</li>
+          <li>Design patterns.</li>
+          <li>File hierarchy.</li>
+          <li>Where state lives.</li>
+          <li>Which component is allowed to modify what.</li>
+          <li>How failures propagate.</li>
+          <li>What the agent needs to know at each stage.</li>
+        </ul>
+        <p>The actual software architecture.</p>
+        <p>If an agent can generate thousands of lines of competent code quickly, then specifying the wrong system extremely efficiently is not much of a victory.</p>
+        <p>This is why techniques like <strong class="text-white">spec-driven development</strong> and tools such as <strong class="text-white">grill-with-docs</strong> are interesting to me. Grill-with-docs essentially forces the agent to interrogate your design before implementation and records the important vocabulary and architectural decisions as it goes.</p>
+        <p>The human job increasingly moves upstream.</p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li>Think clearly about what should exist.</li>
+          <li>Design the environment.</li>
+          <li>Then let the machine instantiate it.</li>
+        </ul>
+
+        <h2 class="text-2xl font-semibold text-white">Learn How the AI Can Trick You</h2>
+        <p>The other important skill is verification.</p>
+        <p>Not every task deserves the same amount of supervision.</p>
+        <p>If I am generating a throwaway visualization, I may barely inspect the code. I care about the resulting figure.</p>
+        <p>If I am changing an important research pipeline, I might inspect the architecture, the tests, and the critical implementation.</p>
+        <p>For some tasks, I deliberately construct <strong class="text-white">hidden tests</strong>: questions the model cannot bluff past. </p>
+        <p>This is the point I would emphasise most. Ask “did you test this?” and you will get “yes.” Instead, keep checks where you already know the answer, cases you verified by hand, or questions whose correct response you can recognise instantly.</p>
+        <p>The goal is to frame the task so the agent cannot simply produce something that <em>looks</em> correct. Verify its work against those tests, never against the model’s own account of its work.</p>
+        <p>In practice, that means designing checks like these:</p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li>If it claims a scraper found every paper, can I independently know how many should exist?</li>
+          <li>If it implements an algorithm, can I test properties of the output that were never included in its prompt?</li>
+          <li>If it reproduces a paper, can I compare against known numbers?</li>
+        </ul>
+        <p>You start thinking less like somebody pair-programming with autocomplete and more like somebody designing an evaluation environment for another engineer.</p>
+        <p>This dramatically reduces frustration.</p>
+        <p>The goal is not to stare over the agent’s shoulder while it writes every line.</p>
+        <p>The goal is to know <strong class="text-white">where staring over its shoulder is actually worth your time</strong>.</p>
+
+        <h2 class="text-2xl font-semibold text-white">Cheap Cognition Changes the Questions</h2>
+        <p>There is one more ingredient: cost.</p>
+        <p>Some of the most capable Chinese models have made inference incredibly cheap. DeepSeek V4 Flash, for example, has recently been priced in the range of cents per <strong class="text-white">million</strong> tokens for some classes of input, with cached input dramatically cheaper still. Even after its August pricing changes, the economics remain radically different from only a short time ago.</p>
+        <p>A year ago I often thought:</p>
+        <blockquote class="border-l-4 border-gray-600 bg-gray-800 px-5 py-4 text-white">What is the best possible use of these tokens?</blockquote>
+        <p>Now I increasingly think:</p>
+        <blockquote class="border-l-4 border-red-400 bg-gray-800 px-5 py-4 font-semibold text-white">What problems become possible if computation is cheap enough that I can afford to waste most of it?</blockquote>
+        <ul class="list-disc pl-6 space-y-2">
+          <li>Generate 100 hypotheses.</li>
+          <li>Try all of them.</li>
+          <li>Throw away 95.</li>
+          <li>Have another agent attack the remaining five.</li>
+          <li>Run the experiment again from scratch.</li>
+          <li>Explore several implementations in parallel.</li>
+        </ul>
+        <p>This is not just the old workflow becoming cheaper.</p>
+        <p>Once cognition becomes sufficiently inexpensive, <strong class="text-white">different algorithms for doing knowledge work become rational</strong>.</p>
+
+        <h2 class="text-2xl font-semibold text-white">The Wave</h2>
+        <p>This is why I find the pessimism around the current AI moment so strange.</p>
+        <p>I understand why someone can look at it and see uncertainty.</p>
+        <p>Jobs changing. Skills becoming obsolete. Models improving faster than institutions can adapt. Systems that are powerful but imperfect.</p>
+        <p>I see the same wave.</p>
+        <p>I just have a very different reaction to it.</p>
+        <p>A normal person looks at a huge wave and thinks:</p>
+        <blockquote class="border-l-4 border-gray-600 bg-gray-800 px-5 py-4 text-white">That looks dangerous.</blockquote>
+        <p>A surfer looks at exactly the same wave and thinks:</p>
+        <blockquote class="border-l-4 border-red-400 bg-gray-800 px-5 py-4 font-semibold text-white">Holy shit. Look at that.</blockquote>
+        <p>The surfer is not unaware that waves are dangerous.</p>
+        <p>They are excited because they learned how to ride them.</p>
+        <p>That is roughly how I feel right now.</p>
+        <p>Every few weeks I see another glimpse of something that makes me rearrange my mental model of what one person can build.</p>
+        <p>And after 2.5 billion tokens, I do not feel like I have mapped this territory.</p>
+        <p>I feel like I have barely started exploring it.</p>
+        <p>Years from now, some people may remember this period mainly as stressful and uncertain.</p>
+        <p>I suspect I will remember it as a <strong class="text-white">golden era of blooming flowers</strong>.</p>
+        <p>Not because every idea works.</p>
+        <p>Because suddenly there are possibilities everywhere.</p>
+      </section>
+    </article>
+  </main>
+
+  <footer class="bg-gray-900 text-center py-6 text-gray-300 border-t border-gray-800">
+    <p>© 2019-<span id="current-year">2026</span> Drejc Pesjak. All Rights Reserved.</p>
+  </footer>
+</body>
+</html>
