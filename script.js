@@ -7,6 +7,15 @@ if (navToggle && mobileNav) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  const techMarquee = document.querySelector(".tech-marquee-track");
+  if (techMarquee) {
+    [...techMarquee.children].forEach((item) => {
+      const clone = item.cloneNode(true);
+      clone.setAttribute("aria-hidden", "true");
+      techMarquee.appendChild(clone);
+    });
+  }
+
   const contactForm = document.getElementById("contact-form");
   if (contactForm) {
     contactForm.addEventListener("submit", (event) => {

@@ -2,6 +2,35 @@ body {
   font-family: Inter, system-ui, sans-serif;
 }
 
+.tech-marquee {
+  overflow: hidden;
+}
+
+.tech-marquee-track {
+  width: max-content;
+  flex-wrap: nowrap;
+  gap: 0;
+  animation: tech-marquee 110s linear infinite;
+  will-change: transform;
+}
+
+.tech-marquee-track > span {
+  flex: none;
+  margin-right: 0.5rem;
+}
+
+@keyframes tech-marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tech-marquee-track {
+    animation-play-state: paused;
+  }
+}
+
 .lightbox-open {
   overflow: hidden;
 }
