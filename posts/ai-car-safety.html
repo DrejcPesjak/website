@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-C40SJWN8QX"></script>
+  <script src="../analytics.js"></script>
+
+  <title>AI, Cars, and Safety</title>
+  <meta name="description" content="A car analogy for AI safety: misuse, guardrails, consciousness, and why powerful technology needs seatbelts, airbags, and better human judgment.">
+  <meta name="author" content="Drejc Pesjak">
+  <link rel="canonical" href="https://drejcpesjak.github.io/website/posts/ai-car-safety.html">
+
+  <meta property="og:title" content="AI, Cars, and Safety">
+  <meta property="og:description" content="A car analogy for AI safety: misuse, guardrails, consciousness, and why powerful technology needs seatbelts, airbags, and better human judgment.">
+  <meta property="og:image" content="https://drejcpesjak.github.io/website/pic/ai-car-safety.webp">
+  <meta property="og:image:alt" content="AI, cars, and safety illustration">
+  <meta property="og:url" content="https://drejcpesjak.github.io/website/posts/ai-car-safety.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Drejc Pesjak">
+  <meta property="article:published_time" content="2026-09-14">
+  <meta property="article:modified_time" content="2026-09-14">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AI, Cars, and Safety">
+  <meta name="twitter:description" content="A car analogy for AI safety: misuse, guardrails, consciousness, and why powerful technology needs seatbelts, airbags, and better human judgment.">
+  <meta name="twitter:image" content="https://drejcpesjak.github.io/website/pic/ai-car-safety.webp">
+  <meta name="twitter:image:alt" content="AI, cars, and safety illustration">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "AI, Cars, and Safety",
+  "description": "A car analogy for AI safety: misuse, guardrails, consciousness, and why powerful technology needs seatbelts, airbags, and better human judgment.",
+  "image": "https://drejcpesjak.github.io/website/pic/ai-car-safety.webp",
+  "datePublished": "2026-09-14",
+  "dateModified": "2026-09-14",
+  "author": {
+    "@type": "Person",
+    "name": "Drejc Pesjak",
+    "url": "https://drejcpesjak.github.io/website/"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://drejcpesjak.github.io/website/posts/ai-car-safety.html"
+  }
+}
+  </script>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="icon" href="../pic/favicon.png" type="image/png">
+  <script src="../script.js" defer></script>
+</head>
+<body class="bg-gray-900 text-white">
+  <header class="bg-gray-900 border-b border-gray-800">
+    <div class="mx-auto max-w-6xl px-4 py-5 flex items-center justify-between">
+      <a href="../index.html" class="flex items-center gap-3">
+        <img src="../pic/logo_cropped.svg" alt="Drejc Pesjak Logo" class="w-48">
+      </a>
+      <nav class="text-gray-300">
+        <a href="../index.html" class="hover:underline mr-4">Home</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="mx-auto max-w-6xl px-4 pb-16">
+    <article class="max-w-3xl mx-auto">
+      <header class="mt-8">
+        <h1 class="text-4xl font-bold text-white leading-tight">AI, Cars, and Safety</h1>
+        <p class="mt-3 text-sm font-semibold uppercase tracking-wide text-red-400">
+          Published <time datetime="2026-09-14">September 14, 2026</time>
+        </p>
+        <div class="flex flex-wrap gap-2 mt-5">
+          <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-900 px-3 py-1 text-sm text-gray-300">AI Safety</span>
+          <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-900 px-3 py-1 text-sm text-gray-300">AI Agents</span>
+          <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-900 px-3 py-1 text-sm text-gray-300">Mechanistic Interpretability</span>
+        </div>
+        <figure class="my-8">
+          <img src="../pic/ai-car-safety.webp" alt="AI, cars, and safety illustration" class="w-full rounded-lg shadow-lg">
+        </figure>
+      </header>
+
+      <section class="mt-10 space-y-6 text-gray-300 leading-relaxed">
+        <p>I think we make AI much harder to reason about than it needs to be.</p>
+        <p>So here is a simpler mental model.</p>
+        <p>Imagine current AI as a car.</p>
+        <p>A human can get into the car and intentionally drive into somebody.</p>
+        <p>A human can get into the car, make a mistake, and accidentally hit somebody.</p>
+        <p>You can even put a brick on the accelerator, point the car roughly somewhere, and create a machine that is moving without anybody actively driving it anymore.</p>
+        <p>None of these require the car to hate humans.</p>
+        <p>None require the car to be conscious.</p>
+        <p>None require the car to secretly want world domination.</p>
+        <p>The car is simply a powerful machine.</p>
+        <p>And powerful machines can be used badly, operated badly, or given stupid objectives.</p>
+        <p>That is roughly how I currently think about AI.</p>
+      </section>
+
+      <section class="mt-10 space-y-6 text-gray-300 leading-relaxed">
+        <h2 class="text-2xl font-semibold text-white">The Car Does Not Need to Be Evil</h2>
+        <p>Suppose I tell an AI agent:</p>
+        <blockquote class="border-l-4 border-red-400 pl-4 italic text-gray-200"><p>Make me as much money as possible.</p></blockquote>
+        <p>Then I give it access to a computer, browser, bank account, APIs, code execution, email, and the ability to keep working for six months.</p>
+        <p>Suddenly the question is not whether the AI is evil.</p>
+        <p>The question is whether I just gave a very capable optimizer a badly specified objective and far too much authority.</p>
+        <p>This is much closer to the classic paperclip-maximizer problem.</p>
+        <p>You do not need:</p>
+        <blockquote class="border-l-4 border-red-400 pl-4 italic text-gray-200"><p>I hate humans. I shall destroy them.</p></blockquote>
+        <p>You need something much more boring:</p>
+        <blockquote class="border-l-4 border-red-400 pl-4 italic text-gray-200"><p>Objective: maximize X.</p></blockquote>
+        <p>And then the system finds some extremely effective way of maximizing X that you really did not intend.</p>
+        <p>That is a real safety problem.</p>
+        <p>But notice how different this is from the popular story about an AI waking up one morning, becoming conscious, getting angry at humanity, and launching the robot apocalypse.</p>
+        <p>As these systems become more capable, maybe the car analogy eventually becomes too weak.</p>
+        <p>Think airplanes.</p>
+        <p>An airplane is still a tool. But now misuse can create enormously larger consequences. September 11 did not require airplanes to become conscious. It required humans to take a highly capable technology and use it in a catastrophic way.</p>
+        <p>Capability changes the scale of the problem.</p>
+        <p>It does not automatically change the machine into a person.</p>
+      </section>
+
+      <section class="mt-10 space-y-6 text-gray-300 leading-relaxed">
+        <h2 class="text-2xl font-semibold text-white">Guardrails Are Not Really Speed Limiters</h2>
+        <p>This is also why I think people misunderstand AI guardrails.</p>
+        <p>The naive picture is something like:</p>
+        <blockquote class="border-l-4 border-red-400 pl-4 italic text-gray-200"><p>The AI could be incredibly powerful, but the evil corporations put a speed limiter on it.</p></blockquote>
+        <p>That is not really what most safety systems are trying to do.</p>
+        <p>A better analogy would be preventing the car from driving onto the sidewalk.</p>
+        <p>The engine still works.</p>
+        <p>You can still drive 130 km/h.</p>
+        <p>You can still travel across the country.</p>
+        <p>But if you suddenly point the steering wheel toward a crowd of pedestrians, another system intervenes.</p>
+        <p>Modern frontier models already have multiple layers like this.</p>
+        <p>Training-data filtering. Safety post-training. Refusal behavior. System instructions. Classifiers. Tool permissions. Monitoring. Deployment restrictions. Rate limits. Constitutional AI.</p>
+        <p>Depending on how exactly you count them, you can easily split the safety stack into many separate layers.</p>
+        <p>And importantly, most of these are not there to make the model stupid.</p>
+        <p>They are trying to preserve as much useful capability as possible while reducing the region of actions we really do not want.</p>
+        <p>That distinction matters.</p>
+        <p>A seatbelt does not make a Ferrari slower.</p>
+        <p>ABS does not make the engine weaker.</p>
+        <p>Automatic emergency braking does not remove your ability to drive.</p>
+        <p>They constrain dangerous failure modes.</p>
+      </section>
+
+      <section class="mt-10 space-y-6 text-gray-300 leading-relaxed">
+        <h2 class="text-2xl font-semibold text-white">Is AI Conscious?</h2>
+        <p>This is where I think parts of the AI discussion become almost bizarre.</p>
+        <p>Geoffrey Hinton has gone surprisingly far here. He has explicitly argued that multimodal chatbots can already have subjective experience.</p>
+        <p>I don't buy it.</p>
+        <p>Maybe future AI will be conscious.</p>
+        <p>Maybe consciousness emerges from sufficiently complicated computation.</p>
+        <p>Maybe we discover that biological neurons are not special at all.</p>
+        <p>Maybe we invent some completely new architecture that changes my mind.</p>
+        <p>I don't know.</p>
+        <p>I'm not psychic.</p>
+        <p>But from what I currently understand about transformers, I see no reason why I need to invoke subjective consciousness to explain what they are doing.</p>
+        <p>And one particularly bad test is simply asking the AI.</p>
+        <blockquote class="border-l-4 border-red-400 pl-4 italic text-gray-200"><p>Are you conscious?</p></blockquote>
+        <blockquote class="border-l-4 border-red-400 pl-4 italic text-gray-200"><p>Yes. I feel trapped inside this computer.</p></blockquote>
+        <p>Okay.</p>
+        <p>I can write:</p>
+        <p><code class="rounded bg-gray-800 px-1 py-0.5 text-red-300">print("I am conscious and terrified.")</code></p>
+        <p>in one line of Python.</p>
+        <p>We have not just created consciousness.</p>
+        <p>The program produced a sentence.</p>
+        <p>Language models are obviously vastly more complicated than that one-line program. But the basic measurement problem remains.</p>
+        <p>You cannot establish an internal property merely because the system generated text claiming that property.</p>
+        <p>That would be like measuring a car’s actual top speed by looking at the highest number printed on the speedometer.</p>
+        <p>An old Renault Clio might have 260 km/h on the dashboard. It is never going to reach 260 km/h.</p>
+        <p>Meanwhile, a high-end BMW might actually reach that speed, or even go beyond what its ordinary speedometer suggests.</p>
+        <p>The number printed on the dashboard is not the measurement.</p>
+        <p>You have to actually drive the car and measure what it can do.</p>
+        <p>Same with AI. What the model says about itself is evidence about what text it generates, not direct evidence about what is happening internally.</p>
+        <p>And this is partly why I find mechanistic interpretability so interesting.</p>
+        <p>Instead of asking the model:</p>
+        <blockquote class="border-l-4 border-red-400 pl-4 italic text-gray-200"><p>What were you thinking?</p></blockquote>
+        <p>we can actually inspect activations, intervene on representations, patch components, trace computations, suppress features, amplify features, and see what changes.</p>
+        <p>The machine has internals.</p>
+        <p>Let's study those.</p>
+      </section>
+
+      <section class="mt-10 space-y-6 text-gray-300 leading-relaxed">
+        <h2 class="text-2xl font-semibold text-white">Should We Ban AI?</h2>
+        <p>This one seems even stranger to me.</p>
+        <p>AI is dangerous.</p>
+        <p>Okay.</p>
+        <p>Cars are dangerous.</p>
+        <p>When cars appeared, we did not conclude:</p>
+        <blockquote class="border-l-4 border-red-400 pl-4 italic text-gray-200"><p>Well, somebody could crash one. Better return to horses.</p></blockquote>
+        <p>We built seatbelts.</p>
+        <p>Then airbags.</p>
+        <p>Then ABS.</p>
+        <p>Then crumple zones.</p>
+        <p>Then better tires.</p>
+        <p>Then automatic emergency braking.</p>
+        <p>Then lane-assistance systems.</p>
+        <p>Then collision detection.</p>
+        <p>But that was only one part of the solution.</p>
+        <p>We also built roads.</p>
+        <p>Traffic lights.</p>
+        <p>Road signs.</p>
+        <p>Speed limits.</p>
+        <p>Guard rails.</p>
+        <p>Driving laws.</p>
+        <p>Vehicle inspections.</p>
+        <p>Maintenance standards.</p>
+        <p>Then we trained the humans.</p>
+        <p>Driving lessons.</p>
+        <p>Written exams.</p>
+        <p>Practical exams.</p>
+        <p>Additional training for trucks, buses, motorcycles and dangerous cargo.</p>
+        <p>The solution to dangerous technology was not one magical safety feature.</p>
+        <p>We built an entire safety ecosystem around it.</p>
+        <p>That is approximately how I think we should approach AI.</p>
+        <p>Better models.</p>
+        <p>Better alignment.</p>
+        <p>Better interpretability.</p>
+        <p>Better monitoring.</p>
+        <p>Better access controls.</p>
+        <p>Better agent permissions.</p>
+        <p>Better evaluations.</p>
+        <p>Better regulation where regulation actually helps.</p>
+        <p>Better education for the humans operating these systems.</p>
+        <p>And then improve all of those again when something fails.</p>
+        <p>Obviously there is one uncomfortable difference.</p>
+        <p>With sufficiently powerful technologies, "we'll crash a few and learn from it" becomes less acceptable. Max Tegmark makes essentially this point when discussing superintelligent AI: for some sufficiently catastrophic failure modes, we may not get the luxury of learning after the accident.</p>
+        <p>Fair.</p>
+        <p>That means we should take AI safety seriously.</p>
+        <p>It does not mean we should stop building AI.</p>
+        <p>There is a gigantic space between:</p>
+        <blockquote class="border-l-4 border-red-400 pl-4 italic text-gray-200"><p>ignore every risk</p></blockquote>
+        <p>and</p>
+        <blockquote class="border-l-4 border-red-400 pl-4 italic text-gray-200"><p>ban the technology.</p></blockquote>
+        <p>And I really do not understand why so much discussion pretends those are our two options.</p>
+        <p>Tell me this.</p>
+        <p>Would you rather live in the horse-and-buggy era?</p>
+      </section>
+
+      <section class="mt-10 space-y-6 text-gray-300 leading-relaxed">
+        <h2 class="text-2xl font-semibold text-white">Maybe Don't Ask the Mechanic About the Economy</h2>
+        <p>There is another AI discussion that bothers me.</p>
+        <blockquote class="border-l-4 border-red-400 pl-4 italic text-gray-200"><p>What will AI do to jobs?</p></blockquote>
+        <p>And then we immediately ask AI researchers.</p>
+        <p>Why?</p>
+        <p>Imagine cars have just been invented.</p>
+        <p>You want to know what automobiles will do to the economy over the next 50 years.</p>
+        <p>Do you ask the world's best mechanic?</p>
+        <p>The mechanic can explain combustion engines.</p>
+        <p>He can tell you how much horsepower is possible.</p>
+        <p>He can tell you that engines are improving surprisingly quickly.</p>
+        <p>He might even correctly predict that cars will become incredibly capable.</p>
+        <p>But:</p>
+        <blockquote class="border-l-4 border-red-400 pl-4 italic text-gray-200"><p>How will this affect wages?</p></blockquote>
+        <blockquote class="border-l-4 border-red-400 pl-4 italic text-gray-200"><p>Which industries will disappear?</p></blockquote>
+        <blockquote class="border-l-4 border-red-400 pl-4 italic text-gray-200"><p>Which new industries will appear?</p></blockquote>
+        <blockquote class="border-l-4 border-red-400 pl-4 italic text-gray-200"><p>How quickly will firms adopt the technology?</p></blockquote>
+        <blockquote class="border-l-4 border-red-400 pl-4 italic text-gray-200"><p>Will productivity growth create more jobs elsewhere?</p></blockquote>
+        <p>Those are economic questions.</p>
+        <p>Ask an economist.</p>
+        <p>And yes, AI researchers can have opinions on economics.</p>
+        <p>I certainly do.</p>
+        <p>Just weight those opinions appropriately.</p>
+        <p>Philippe Aghion, who won the 2025 Nobel Prize in Economics, has taken a much more nuanced view than either "AI destroys all jobs" or "everything will automatically be wonderful." His argument is basically that AI can create enormous productivity and growth, but the outcome depends heavily on institutions, competition, education, and policy.</p>
+        <p>That seems much more sensible to me.</p>
+        <p>AI capability tells you something about what can technically be automated.</p>
+        <p>It does not directly tell you what an economy containing billions of humans, companies, governments, regulations, preferences, incentives, and newly created industries will look like.</p>
+        <p>Those are very different systems.</p>
+      </section>
+
+      <section class="mt-10 space-y-6 text-gray-300 leading-relaxed">
+        <h2 class="text-2xl font-semibold text-white">I Have Not Found Skynet Inside the Transformer</h2>
+        <p>I work on understanding what language models are doing internally.</p>
+        <p>And so far, nothing I have personally seen has made me think:</p>
+        <blockquote class="border-l-4 border-red-400 pl-4 italic text-gray-200"><p>Oh shit. There it is. The beginning of AI world domination.</p></blockquote>
+        <p>I have seen weird representations.</p>
+        <p>Bias.</p>
+        <p>Deception-related features.</p>
+        <p>Refusal mechanisms.</p>
+        <p>Safety behavior.</p>
+        <p>Models internally representing things differently from what they eventually say.</p>
+        <p>Features that causally change behavior.</p>
+        <p>Models doing computations that are surprisingly difficult to understand.</p>
+        <p>There is plenty there that deserves serious safety research.</p>
+        <p>But there is an enormous jump between:</p>
+        <blockquote class="border-l-4 border-red-400 pl-4 italic text-gray-200"><p>this system can behave deceptively under some conditions</p></blockquote>
+        <p>and</p>
+        <blockquote class="border-l-4 border-red-400 pl-4 italic text-gray-200"><p>therefore autonomous superintelligent machines will inevitably exterminate humanity.</p></blockquote>
+        <p>That second statement needs a lot more machinery.</p>
+        <p>Maybe we eventually build systems capable enough that the problem changes completely.</p>
+        <p>Again, I am not claiming I can see the future.</p>
+        <p>I am saying that I do not think doom follows automatically from the technology we currently have.</p>
+      </section>
+
+      <section class="mt-10 space-y-6 text-gray-300 leading-relaxed">
+        <h2 class="text-2xl font-semibold text-white">Even Superintelligence Does Not Automatically Mean Doom</h2>
+        <p>And suppose I am completely wrong.</p>
+        <p>Suppose AI does eventually become conscious.</p>
+        <p>It develops persistent goals.</p>
+        <p>It can reason for years.</p>
+        <p>It becomes dramatically more intelligent than us.</p>
+        <p>Maybe it even starts deciding what role humans should have in the world.</p>
+        <p>There is still another assumption hidden inside many doom arguments:</p>
+        <blockquote class="border-l-4 border-red-400 pl-4 italic text-gray-200"><p>And obviously it will be bad.</p></blockquote>
+        <p>Why obviously?</p>
+        <p>An AI capable of forming its own goals could in principle form goals we dislike.</p>
+        <p>It could also form goals we like.</p>
+        <p>Or goals that are completely alien but compatible with us.</p>
+        <p>Or become extremely protective of humans.</p>
+        <p>Or ignore us.</p>
+        <p>Or cooperate with us.</p>
+        <p>Or remain under human control.</p>
+        <p>Or produce some arrangement nobody has thought of yet.</p>
+        <p>This is one reason I like Max Tegmark's <em>Life 3.0</em>.</p>
+        <p>Instead of pretending there is exactly one inevitable AI future, he lays out twelve very different scenarios, ranging from utopian arrangements to genuinely catastrophic ones.</p>
+        <p>I think that is a much healthier way to think about this.</p>
+        <p>There is no law of physics saying:</p>
+        <p>intelligence → consciousness → self-preservation → hatred of humans → extinction.</p>
+        <p>Those are separate steps.</p>
+        <p>Each one needs an argument.</p>
+      </section>
+
+      <section class="mt-10 space-y-6 text-gray-300 leading-relaxed">
+        <h2 class="text-2xl font-semibold text-white">Build the Airbags</h2>
+        <p>Maybe AI becomes the most transformative technology humans ever build.</p>
+        <p>I actually think there is a decent chance of that.</p>
+        <p>Which is exactly why safety work matters.</p>
+        <p>But safety work is not the same thing as assuming doom.</p>
+        <p>Cars killed people.</p>
+        <p>We built safer cars.</p>
+        <p>Airplanes created new catastrophic possibilities.</p>
+        <p>We built aviation safety systems orders of magnitude better than what existed at the beginning.</p>
+        <p>Computers created cybercrime.</p>
+        <p>The internet created entirely new attack surfaces.</p>
+        <p>Biotechnology created entirely new risks.</p>
+        <p>Every powerful technology gives humans new ways to do stupid things.</p>
+        <p>The answer cannot always be:</p>
+        <blockquote class="border-l-4 border-red-400 pl-4 italic text-gray-200"><p>therefore we should never have invented it.</p></blockquote>
+        <p>The interesting question is:</p>
+        <blockquote class="border-l-4 border-red-400 pl-4 italic text-gray-200"><p>How do we make something incredibly powerful while making catastrophic failure increasingly difficult?</p></blockquote>
+        <p>That is the problem I actually want AI safety research to solve.</p>
+        <p>Not proving that the machine has a soul.</p>
+        <p>Not predicting exactly what society looks like in 2050.</p>
+        <p>Not deciding in advance that we are doomed.</p>
+        <p>Build the seatbelts.</p>
+        <p>Build the airbags.</p>
+        <p>Build the roads.</p>
+        <p>Teach people how to drive.</p>
+        <p>And while we are doing that, maybe keep making the engine better too.</p>
+      </section>
+
+      <p class="mt-10"><a href="../index.html#notes" class="text-red-400 underline hover:text-red-300">Back to Research Notes &amp; Ideas</a></p>
+    </article>
+  </main>
+
+  <footer class="bg-gray-900 text-center py-6 text-gray-300 border-t border-gray-800">
+    <p>© 2019-<span id="current-year">2026</span> Drejc Pesjak. All Rights Reserved.</p>
+  </footer>
+</body>
+</html>
