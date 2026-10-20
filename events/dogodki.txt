@@ -1,3 +1,12 @@
+Data Science Talks #1 : Data Science@UL-FRI (27. 10. 2026, Teads LJ)
+Mostovi umetne inteligence - od algoritma do podjetništva : 50. konferenca SSK (21. 10. 2026, IJS LJ)
+Claude Ljubljana Meetup #2 - Claude at Work : SLOAI (15. 10. 2026, Teads LJ)
+How to Study Probability in High and Super-High Dimensions : Andrej Srakar, Solomon Seminar (14. 10. 2026, IJS LJ)
+How to Analyze PPG Data with Foundation Models : Gašper Slapničar et al., SLAIF Workshop (8. 10. 2026, IJS LJ)
+Slovenian Conference on Artificial Intelligence : SKUI 2026 (8. - 9. 10. 2026, IJS LJ)
+Data Mining and Data Warehouses : SiKDD 2026 Conference (7. 10. 2026, IJS LJ) https://aile3.ijs.si/dunja/SiKDD2026/Papers/IS_2026_paper__89.pdf https://aile3.ijs.si/dunja/SiKDD2026/Papers/IS_2026_paper__90.pdf
+Umetna inteligenca: izkušnje iz našega laboratorija in vprašanja, ki jih odpira : Kolokvij IJS (23. 9. 2026, IJS LJ)
+AI Developer Summit - The Era of 100× Engineers : Astra AI × Vercel (22. 9. 2026, Odiseja LJ)
 European Summer School on Artificial Intelligence : EurAI (6. - 10. 7. 2026, Vienna)
 LLM in agenti brez iluzij : KCUI (2. 7. 2026, online)
 AI at Google - Search & Reasoning : SLOAI Meetup #8 (18. 6. 2026, LJ)

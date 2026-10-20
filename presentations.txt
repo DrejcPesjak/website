@@ -1,3 +1,11 @@
+Technical AI Safety - From Real-World Risks to Debugging Your Own LLM
+https://docs.google.com/presentation/d/1gHAE8wNmjuEu1MM1FNCHRScGQBL2vMWius-kbehy8ho/edit?usp=sharing
+date: 2026-10-21
+tags: AI safety, LLM debugging
+note: Practical look at AI safety risks, mitigations, frontier lab efforts, and app-layer LLM debugging demo.
+
+---
+
 Mechanistic Interpretability of Large Language Models, part2
 https://docs.google.com/presentation/d/1mJr-MjrfQso2SH503f1gmCN-w2zcjgcOGYiaAunm9vY/edit?usp=sharing
 date: 2026-05-25
