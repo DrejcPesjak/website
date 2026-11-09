@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-C40SJWN8QX"></script>
+<script src="../analytics.js"></script>
+<title>Why VLMs are built wrong and why agentic VLMs are the solution</title>
+<meta content="A small experiment in visual attention: giving VLMs a crop tool lets them look again, improving GPT-5.4 from 73% to 90% on 60 benchmark images." name="description"/>
+<meta content="Drejc Pesjak" name="author"/>
+<link href="https://drejcpesjak.github.io/website/posts/agentic-vlm.html" rel="canonical"/>
+<meta content="Why VLMs are built wrong and why agentic VLMs are the solution" property="og:title"/>
+<meta content="A small experiment in visual attention: giving VLMs a crop tool lets them look again, improving GPT-5.4 from 73% to 90% on 60 benchmark images." property="og:description"/>
+<meta content="https://drejcpesjak.github.io/website/pic/emerald-sky.webp" property="og:image"/>
+<meta content="Emerald green sky" property="og:image:alt"/>
+<meta content="https://drejcpesjak.github.io/website/posts/agentic-vlm.html" property="og:url"/>
+<meta content="article" property="og:type"/>
+<meta content="Drejc Pesjak" property="og:site_name"/>
+<meta content="2026-11-09" property="article:published_time"/>
+<meta content="2026-11-09" property="article:modified_time"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="Why VLMs are built wrong and why agentic VLMs are the solution" name="twitter:title"/>
+<meta content="A small experiment in visual attention: giving VLMs a crop tool lets them look again, improving GPT-5.4 from 73% to 90% on 60 benchmark images." name="twitter:description"/>
+<meta content="https://drejcpesjak.github.io/website/pic/emerald-sky.webp" name="twitter:image"/>
+<meta content="Emerald green sky" name="twitter:image:alt"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Why VLMs are built wrong and why agentic VLMs are the solution",
+  "description": "A small experiment in visual attention: giving VLMs a crop tool lets them look again, improving GPT-5.4 from 73% to 90% on 60 benchmark images.",
+  "image": "https://drejcpesjak.github.io/website/pic/emerald-sky.webp",
+  "datePublished": "2026-11-09",
+  "dateModified": "2026-11-09",
+  "author": {
+    "@type": "Person",
+    "name": "Drejc Pesjak",
+    "url": "https://drejcpesjak.github.io/website/"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://drejcpesjak.github.io/website/posts/agentic-vlm.html"
+  }
+}
+  </script>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="../style.css" rel="stylesheet"/>
+<link href="../pic/favicon.png" rel="icon" type="image/png"/>
+<script defer="" src="../script.js"></script>
+<style>
+    .post-content { color: #d1d5db; line-height: 1.8; }
+    .post-content p, .post-content ul, .post-content figure, .post-content .chat { margin: 1.5rem 0; }
+    .post-content h2 { margin: 2.5rem 0 1rem; color: #fff; font-size: 1.5rem; font-weight: 600; line-height: 1.3; }
+    .post-content a { color: #f87171; text-decoration: underline; text-underline-offset: 3px; }
+    .post-content a:hover { color: #fca5a5; }
+    .post-content strong { color: #fff; }
+    .post-content ul { padding-left: 1.5rem; list-style: disc; }
+    .post-content li + li { margin-top: .5rem; }
+    .post-content figure img { display: block; width: 100%; border: 1px solid white; border-radius: .5rem; }
+    .post-content .chat { border: 1px solid #374151; border-radius: .75rem; overflow: hidden; }
+    .post-content .row { display: flex; gap: 1rem; align-items: baseline; padding: 1rem; }
+    .post-content .row + .row { border-top: 1px solid #374151; }
+    .post-content .who { flex: 0 0 9rem; color: #9ca3af; font-size: .75rem; text-transform: uppercase; letter-spacing: .05em; }
+    .post-content .model { font-weight: 700; }
+    .post-content .sees { background: #1f2937; }
+    .post-content .row > span:last-child { min-width: 0; }
+    .post-content code { display: inline-block; padding: 0 .3rem; margin: .15rem 0; border-radius: .25rem; background: #374151; color: #fca5a5; font-size: .875rem; }
+    .post-content footer { margin-top: 2.5rem; padding-top: 1rem; border-top: 1px solid #374151; font-size: .875rem; }
+    @media (max-width: 640px) {
+      .post-content .row { flex-direction: column; gap: .25rem; }
+      .post-content .who { flex: none; }
+    }
+  </style>
+</head>
+<body class="bg-gray-900 text-white">
+<header class="bg-gray-900 border-b border-gray-800">
+<div class="mx-auto max-w-6xl px-4 py-5 flex items-center justify-between">
+<a class="flex items-center gap-3" href="../index.html">
+<img alt="Drejc Pesjak Logo" class="w-48" src="../pic/logo_cropped.svg"/>
+</a>
+<nav class="text-gray-300">
+<a class="hover:underline mr-4" href="../index.html">Home</a>
+</nav>
+</div>
+</header>
+<main class="mx-auto max-w-6xl px-4 pb-16">
+<article class="max-w-3xl mx-auto">
+<header class="mt-8">
+<p class="text-sm font-bold uppercase tracking-wider text-red-400">A small experiment in visual attention</p>
+<h1 class="mt-3 text-4xl font-bold text-white leading-tight">Why VLMs are built wrong and why agentic VLMs are the solution</h1>
+<p class="mt-3 text-sm text-gray-400">by <a class="text-red-400 underline" href="https://github.com/DrejcPesjak">Drejc Pesjak</a> · About 7 minutes · 60 images · 2 models</p>
+<p class="mt-3 text-sm font-semibold uppercase tracking-wide text-red-400">Published <time datetime="2026-11-09">November 9, 2026</time></p>
+<div class="flex flex-wrap gap-2 mt-5"><span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-900 px-3 py-1 text-sm text-gray-300">Vision Language Models</span><span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-900 px-3 py-1 text-sm text-gray-300">AI Agents</span><span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-900 px-3 py-1 text-sm text-gray-300">Visual Attention</span></div>
+</header>
+<div class="post-content mt-10">
+<p>Give a vision language model a photo and it will describe the scene, read the signs, and explain the chart in the background. Then ask it how many times two lines cross, or which letter has a red circle around it, and it will confidently get it wrong. A child answers those at a glance.</p>
+<p>I think a big part of the reason is a design decision. A VLM compresses the image into a fixed set of numbers before it has seen your question. It has to guess in advance which details will matter. When it guesses wrong, the detail you asked about is simply not there, and no amount of clever reasoning afterwards brings it back.</p>
+<p>The proper fix is an encoder that knows the question, which means new architectures and retraining. But there is a fix that works on the models we already have. Let the model go back to the original pixels and look again, this time knowing what it is looking for. That is the agentic part. I tested the simplest version of it, a crop tool, on 60 benchmark images. GPT-5.4 went from 73% to 90%.</p>
+<h2>What a VLM actually receives</h2>
+<p>A typical VLM is two models glued together, a vision encoder and a language model. The encoder cuts the image into patches and turns each patch into a vector, a list of numbers describing shapes, colours, and how neighbouring regions relate.</p>
+<p>Your question takes a different path. A tokenizer splits the text into tokens, and each token is looked up in a table to get its own vector. Both sets of vectors then enter the language model, which reads them together and writes the answer.</p>
+<figure><img alt="Image patches and question tokens follow separate paths, then enter the same language model" loading="lazy" src="https://drejcpesjak.github.io/agentic-vlm-test/blog/assets-dark/vlm-architecture.png"/></figure>
+<p>The diagram is a simplified version of the <a href="https://newsletter.maartengrootendorst.com/p/a-visual-guide-to-gemma-4">Gemma 4 architecture</a>. A vision transformer encodes the patches, pooling merges neighbouring patches to save space, and a projection maps the result into the language model's embedding space.</p>
+<p>The thing to notice is where the two paths meet. By the time the image and the question come together, the image has already been encoded. The encoder never sees the question. Typing the question before the image changes nothing, because the encoder runs on the image alone.</p>
+<h2>What gets squeezed out</h2>
+<p>The encoder works with a fixed budget of vectors, and detail goes missing at every step. Resizing shrinks the image. Pooling merges small features into their neighbours. And the encoder itself learned during training which features are worth keeping and which are not.</p>
+<p>That last one is the subtle one, so here is an example. In nearly every training photo with a sky in it, the sky is blue. The two go together so reliably that storing the colour separately is a waste of space. If you know it is sky, you already know the colour. A good compressor drops exactly this kind of redundancy.</p>
+<p>Now show that model a photo with a green sky. The encoder can record that there is a sky and never record that it is green. Ask the language model what colour the sky is, and all it has to go on is its prior, which says blue.</p>
+<p>This is only a thought experiment, but it shows the gap that matters. What is in the pixels and what reaches the language model are two different things.</p>
+<h2>Thinking harder does not help</h2>
+<p>Once a detail is missing from the vectors, the language model cannot think its way back to it. It can reason for longer and you can ask again, but the same image through the same encoder gives the same vectors every time.</p>
+<p>Text has a famous version of this problem. LLMs do not read letters. They read tokens, which are chunks of words. So you get this.</p>
+<div class="chat"><div class="row you"><span class="who">You</span><span>How many Rs are in strawberry?</span></div><div class="row sees"><span class="who">What the model sees</span><span><code>str</code> <code>aw</code> <code>berry</code></span></div><div class="row model"><span class="who">Model</span><span>There are two Rs in strawberry.</span></div></div>
+<p>The model is not bad at counting. It was asked to count letters and was never shown any. It is like handing you strawberry written in Chinese characters and asking how many Rs it has. Now change what the model gets to look at.</p>
+<div class="chat"><div class="row you"><span class="who">You</span><span>Spell strawberry one letter at a time, then count the Rs.</span></div><div class="row model"><span class="who">Model</span><span>S T R A W B E R R Y. There are three Rs.</span></div><div class="row sees"><span class="who">What the model sees</span><span><code>S</code> <code>T</code> <code>R</code> <code>A</code> <code>W</code> <code>B</code> <code>E</code> <code>R</code> <code>R</code> <code>Y</code></span></div></div>
+<p>Same model, same intelligence. The only thing that changed is that the things it had to count became visible.</p>
+<p>This is what I mean by built wrong. Encoding the image once, without the question, is cheap and good enough for most questions. The price is paid on the questions that need exactly the detail the encoder did not bet on. Not every VLM mistake is of this kind, and some are plain reasoning errors. But this is the kind that more reasoning cannot fix. The model needs a better view.</p>
+<h2>Let the model look again</h2>
+<p>So I built the simplest fix I could think of, a crop tool. The model looks at the full image, reads the question, and asks for a rectangle. Plain code cuts that rectangle out of the original pixels and hands it back. The same VLM then encodes the crop as a new image, in the same conversation.</p>
+<figure><img alt="Three steps show the model requesting a crop, the tool cutting pixels, and the next model call receiving the crop in the same chat" loading="lazy" src="https://drejcpesjak.github.io/agentic-vlm-test/blog/assets-dark/crop-loop.png"/></figure>
+<p>The encoder is still compressing, but now it spends its whole budget on the region the question is about. A letter that covered two patches now covers fifty. The surroundings that were eating the budget are gone.</p>
+<p>But how can the model know where to look for a detail it never saw? The same way you do. Picture a cat sitting small in a wide photo, and someone asks you to count its whiskers. You cannot make out a single whisker from there, but you know whiskers live on the face, so you zoom in on the face. Knowing where the information is takes far less than having it. The coarse first view is enough for that, and the original pixels hold the rest.</p>
+<p>Cropping is just the simplest tool of this kind. An agent could also boost contrast, isolate one colour, or write its own image processing code. Anything that produces a new image to look at gives the encoder another chance, this time steered by the question.</p>
+<h2>The experiment</h2>
+<p>To see whether this actually helps, I ran a small experiment. I used three tasks from <a href="https://vlmsareblind.github.io">VLMs Are Blind</a>, a benchmark of visual questions that are trivial for people and surprisingly hard for models. Each one has a short answer that can be checked against ground truth.</p>
+<ul><li>Count how many times a red line and a blue line cross</li><li>Name the letter inside a red circle</li><li>Count the subway routes connecting two named stations</li></ul>
+<figure><img alt="Benchmark examples of crossing lines, an enlarged circled letter, and a subway map" loading="lazy" src="https://drejcpesjak.github.io/agentic-vlm-test/blog/assets-dark/task-gallery.png"/></figure>
+<p>I took 20 images per task, 60 in total, and ran GPT-5.4 and GPT-4o on every image in three setups.</p>
+<ul><li><strong>Single view.</strong> The model sees the full image once and answers.</li><li><strong>Repeat.</strong> The model may ask to see the full image again before answering.</li><li><strong>Crop.</strong> The model must crop at least once before answering, and may crop more.</li></ul>
+<p>In the two tool setups the model could look up to five times, counting the original. The model picks the crop coordinates itself and the tool cuts from the original image. The tool does nothing clever. It does not suggest a region, read text, or say whether an answer is right.</p>
+<p>Why force the crop? Because in a pilot where cropping was optional, neither model ever used it. They do not seem to notice when their first view is not good enough. So the first crop is mandatory, which means this experiment tests whether a model can use a second look well, not whether it knows when to ask for one.</p>
+<p>All the code is <a href="https://github.com/DrejcPesjak/agentic-vlm-test">on GitHub</a>.</p>
+<h2>What happened</h2>
+<p>With cropping, GPT-5.4 went from <strong>44/60 to 54/60</strong> correct, which is <strong>73% to 90%</strong>. GPT-4o went from <strong>34/60 to 36/60</strong>, or <strong>57% to 60%</strong>.</p>
+<figure><img alt="Results for both models in all three conditions" loading="lazy" src="https://drejcpesjak.github.io/agentic-vlm-test/blog/assets-dark/results.png"/></figure>
+<p>For GPT-5.4 the crop was pure upside. It fixed ten answers and broke none. Most of the gain came from subway maps, which went from <strong>6/20 to 14/20</strong>. Circled letters went from <strong>18/20 to 20/20</strong>, and line intersections were already perfect.</p>
+<p>Here is one of the fixed letters. Looking at the full image once, GPT-5.4 answered <strong>U</strong>. In the crop run it selected the region around the text and answered <strong>i</strong>, which is correct. The rectangle on the left is the region the model asked for.</p>
+<figure><img alt="The full image and actual model-selected crop, with their separate answers" loading="lazy" src="https://drejcpesjak.github.io/agentic-vlm-test/blog/assets-dark/poster-example.png"/></figure>
+<p>GPT-4o is a different story. Cropping fixed nine of its wrong answers and broke seven that had been right. A second look only helps if the model aims it well and reads it well, and GPT-4o often does neither.</p>
+<p>This run shows the aiming problem. GPT-4o's first two crops missed the red ring entirely. The third one caught the circled <strong>y</strong> and it answered correctly. With a single view it had answered <strong>o</strong>.</p>
+<figure><img alt="Three crops selected by GPT-4o, with the target reached on the third attempt" loading="lazy" src="https://drejcpesjak.github.io/agentic-vlm-test/blog/assets-dark/three-crops.png"/></figure>
+<p>The repeat setup turned out to be a dud, but a useful one. Not once did either model take the offer to look at the full image again, so it is effectively a second single-view run. It scored <strong>47/60</strong> for GPT-5.4 and <strong>33/60</strong> for GPT-4o, which tells you how much these scores wobble from run to run. About three answers. GPT-4o's gain of two is inside that wobble. GPT-5.4's gain of ten is not.</p>
+<h2>What this does and does not show</h2>
+<p>This is a small experiment. It covers 60 images, with one run per image and setup, 360 runs in total, for about <strong>$2.06</strong> of API usage. It shows that a capable model, told to look again, picks useful regions and answers better. It also shows that a weaker model gains almost nothing from the same tool.</p>
+<p>It does not prove that the encoder dropped the missing details. They might still be somewhere in the vectors, just too buried for the language model to use. Telling those apart means opening up the representation itself. For practical purposes it hardly matters, because the remedy is the same either way. A new view, chosen with the question in mind.</p>
+<p>So I still think VLMs are built wrong. The image gets compressed before anyone knows what it will be asked, and some questions pay for that. The real solution is an encoder guided by the question. Until someone ships that, an agent loop is the next best thing, and it works today. Let the model decide what to look at next, and give it the pixels.</p>
+<p><em>Images come from the <a href="https://huggingface.co/datasets/XAI/vlmsareblind">XAI VLMs Are Blind dataset</a>, by Rahmanzadehgervi, Bolton, Taesiri, and Nguyen. Code and setup are in the <a href="https://github.com/DrejcPesjak/agentic-vlm-test">repo</a>, and the full numbers are in the <a href="https://drejcpesjak.github.io/agentic-vlm-test/evaluation-results.md">evaluation notes</a>.</em></p><footer><a href="https://github.com/DrejcPesjak/agentic-vlm-test">Code on GitHub</a> · <a href="https://drejcpesjak.github.io/agentic-vlm-test/blog/post.md">Markdown source</a> · <a href="https://drejcpesjak.github.io/agentic-vlm-test/blog/assets/provenance.json">Figure sources</a></footer>
+</div>
+<p class="mt-10"><a class="text-red-400 underline hover:text-red-300" href="../index.html#notes">Back to Research Notes &amp; Ideas</a></p>
+</article>
+</main>
+<footer class="bg-gray-900 text-center py-6 text-gray-300 border-t border-gray-800">
+<p>© 2019-<span id="current-year">2026</span> Drejc Pesjak. All Rights Reserved.</p>
+</footer>
+</body>
+</html>
+
